@@ -3,8 +3,8 @@
  *	File          : stackHanoi.h
  *	Deskripsi     : Header file dari ADT Stack [Linked List]
  *  Author        : Muhammad Rasyid Fadlurrahman - 201524019
- *                  Gefi
- *                  Salma 
+ *                  Gefi Aulia Sanjaya - 201524008
+ *                  Salma Syawalan Putriadhinia - 201524027 
  */
 
 #ifndef stackHanoi_H
