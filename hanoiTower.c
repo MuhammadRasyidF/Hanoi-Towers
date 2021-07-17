@@ -49,7 +49,7 @@ F.S. : pada layar telah tampil penjelasan permainan, cara bermain, dan juga cred
 
 //fitur play
 void moveCakram(stack a, stack b){
-/*	Author : Salma Syawalan Putriadhinia
+/*	Author : Muhammad Rasyid Fadlurrahman
 I.S. : cakram teratas dari stack a belum berpindah
 F.S. : cakram sudah berpindah ke stack b*/
     infotype temp;
