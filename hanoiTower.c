@@ -18,7 +18,9 @@ void inputUname (char* nama){
 * I.S : nama = NULL
    F.S : mengembalikan nama yang sudah diinputkan 
 */
-
+    printf("\nInput Username = ");
+    scanf("%s", nama);
+    printf("\n");
 }
 
 //fitur choose language
