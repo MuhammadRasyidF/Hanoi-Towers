@@ -46,11 +46,13 @@ F.S. : pada layar telah tampil penjelasan permainan, cara bermain, dan juga cred
 }
 
 //fitur play
-void moveCakram(stack a, stack b){  //isinya pake push pop
+void moveCakram(stack a, stack b){
 /*	Author : Salma Syawalan Putriadhinia
 I.S. : cakram teratas dari stack a belum berpindah
 F.S. : cakram sudah berpindah ke stack b*/
-
+    infotype temp;
+    keluarCakram(&a, &temp);
+    masukCakram(&b, temp);
 }
 
 //fitur menampilkan tower
