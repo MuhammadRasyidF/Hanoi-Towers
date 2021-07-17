@@ -51,7 +51,7 @@ void buatTower(stack *S);
 Address alokasi(infotype X);
 //Mengirim sebuah elemen stack dalam bentuk address
 
-void dealokasi(address P);
+void dealokasi(Address P);
 /* I.S : P terdefinisi
    F.S : P dikembalikan ke sistem
    		 Melakukan dealokasi / pengembalian address P ke sistem
