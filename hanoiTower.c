@@ -20,6 +20,12 @@ void inputUname(char* nama){
 */
    nama = (char*)malloc(sizeof(char)*20); //alokasi char nama maks 20  huruf
 
+   for (i=0 ; i < 11 ; i++) //print banner username
+   		printf("%c", 219);
+   	printf(" Username ");
+	for (i=0 ; i < 11 ; i++)
+   		printf("%c", 219);
+   
    printf("\nInput Username = ");
    scanf("%s", nama);
    printf("\n");
@@ -127,5 +133,12 @@ void banner (){
 * I.S : program belum berjalan 
    F.S : Menampilkan banner game pada bagian atas interface
 */
-
+   int i;
+	for (i=0 ; i < 32 ; i++)
+   		printf("%c", 223);
+   	printf("\n");
+   	printf("           HANOI TOWER          \n");
+   	for (i=0 ; i < 32 ; i++)
+   		printf("%c", 220);
+   	printf("\n\n");
 }
