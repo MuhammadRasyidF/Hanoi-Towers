@@ -27,7 +27,7 @@ void inputUname(char* nama){
    		printf("%c", 219);
    
    printf("\nInput Username = ");
-   scanf("%s", nama);
+   scanf("%s", nama); fflush(stdin);
    printf("\n");
 }
 
@@ -91,19 +91,21 @@ int score(int moves, int cakram){
 	return score
 }
 
-void highscore(){
+void printHighscore(){
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : mengambil data dari file
-   F.S : menamilkan highhscore 10 besar 
+   F.S : menampilkan highhscore 10 besar 
 */
 
 }
 
-int chooseMode(int choose){
+int chooseMode(){
 /* Author : Gefi Aulia Sanjaya 
    I.S : mode belum dipilih
    F.S : mengembalikan nilai chooseMode antara 3/4/5 
 */	
+
+   int choose;
 	printf(" Pilih Mode Permaian :\n");
 	printf(" 1. Mudah (3 Cakram)\n");
    printf(" 2. Sedang (4 Cakram)\n");
@@ -128,7 +130,7 @@ void checkWinner(stack S, int mode){
 //moves(Salma)
 /* ini bisa tanpa modul. Jadi misal ada variabel int namanya countMoves, setiap selesai 1 kali loop nanti countMoves++.*/
 
-void banner (){
+void banner(){
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : program belum berjalan 
    F.S : Menampilkan banner game pada bagian atas interface

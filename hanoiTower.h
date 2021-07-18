@@ -64,10 +64,10 @@ int score(int moves, int cakram);
    	F.S : Mengembalikan nilai score */
 // 
 
-void highscore();
+void printHighscore();
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : mengambil data dari file
-   F.S : menamilkan highhscore 10 besar 
+   F.S : menampilkan highhscore 10 besar 
 */
 
 int chooseMode();
@@ -85,7 +85,7 @@ void checkWinner(stack S, int mode);
 //moves(Salma)
 /* ini bisa tanpa modul. Jadi misal ada variabel int namanya countMoves, setiap selesai 1 kali loop nanti countMoves++.*/
 
-void banner ();
+void banner();
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : program belum berjalan 
    F.S : Menampilkan banner game pada bagian atas interface
