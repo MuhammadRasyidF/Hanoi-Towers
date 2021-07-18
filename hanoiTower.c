@@ -20,6 +20,12 @@ void inputUname(char* nama){
 */
    nama = (char*)malloc(sizeof(char)*20); //alokasi char nama maks 20  huruf
 
+   for (i=0 ; i < 11 ; i++) //print banner username
+   		printf("%c", 219);
+   	printf(" Username ");
+	for (i=0 ; i < 11 ; i++)
+   		printf("%c", 219);
+   
    printf("\nInput Username = ");
    scanf("%s", nama);
    printf("\n");
@@ -100,21 +106,39 @@ int chooseMode(int choose){
 */	
 	printf(" Pilih Mode Permaian :\n");
 	printf(" 1. Mudah (3 Cakram)\n");
-    printf(" 2. Sedang (4 Cakram)\n");
-    printf(" 3. Sulit (5 Cakram)\n");
-    printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
+   printf(" 2. Sedang (4 Cakram)\n");
+   printf(" 3. Sulit (5 Cakram)\n");
+   printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
     
-    return choose;
+   return choose;
 }
 
-void checkWinner(stack S){
+void checkWinner(stack S, int mode){
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : stack S mungkin kosong atau ada isi 
    F.S : mengembalikan nilai true apabila sudah ada tersusun lengkap pada tiang tengah atau bawah, dan false apabila belum ada yang tersusun lengkap
 */
+   if(hitungBanyakCakram(S) == mode){
+      return true;
+   }
 
+   return false;
 }
 
 //moves(Salma)
 /* ini bisa tanpa modul. Jadi misal ada variabel int namanya countMoves, setiap selesai 1 kali loop nanti countMoves++.*/
 
+void banner (){
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : program belum berjalan 
+   F.S : Menampilkan banner game pada bagian atas interface
+*/
+   int i;
+	for (i=0 ; i < 32 ; i++)
+   		printf("%c", 223);
+   	printf("\n");
+   	printf("           HANOI TOWER          \n");
+   	for (i=0 ; i < 32 ; i++)
+   		printf("%c", 220);
+   	printf("\n\n");
+}
