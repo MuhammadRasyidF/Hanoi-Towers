@@ -24,9 +24,7 @@
 
 /* Definisi Type Bentukan ADT Stack [Linked List] */
 
-typedef struct{
-int value;
-}infotype;
+typedef int infotype;
 
 typedef struct telmstack *Address;
 
