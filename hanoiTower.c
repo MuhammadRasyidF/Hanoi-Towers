@@ -18,9 +18,11 @@ void inputUname (char* nama){
 * I.S : nama = NULL
    F.S : mengembalikan nama yang sudah diinputkan 
 */
-    printf("\nInput Username = ");
-    scanf("%s", nama);
-    printf("\n");
+   nama = (char*)malloc(sizeof(char)*20); //alokasi char nama maks 20  huruf
+
+   printf("\nInput Username = ");
+   scanf("%s", nama);
+   printf("\n");
 }
 
 //fitur choose language
