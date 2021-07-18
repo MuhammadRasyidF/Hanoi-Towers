@@ -76,7 +76,7 @@ int chooseMode();
    F.S : mengembalikan nilai chooseMode antara 3/4/5 */
 
 
-void checkWinner(stack S)
+void checkWinner(stack S);
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : stack S mungkin kosong atau ada isi 
    F.S : mengembalikan nilai true apabila sudah ada tersusun lengkap pada tiang tengah atau bawah, dan false apabila belum ada yang tersusun lengkap
