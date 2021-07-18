@@ -65,13 +65,35 @@ void keluarCakram(stack *S, infotype *X){
    *X = S->Top->Cakram;
    Address temp = S->Top;
    S->Top = S->Top->Prev;
-   Dealokasi(temp);
+   dealokasi(temp);
 }
 
-void printTower(stack S);
+void printTower(stack S, int mode){
 /* I.S : S terdefinisi, mungkin kosong
    F.S : Menampilkan seluruh elemen dalam stack ke layar dari mulai TOP sampai dengan bottom jika tidak kosong
 */
+	int h, i;
+	int tanpaCakram = mode - hitungBanyakCakram(S);
+	
+	for(h = 0; h < tanpaCakram; h++){
+		for(i = 0; i < mode - 2; i++){
+			printf(" ");
+		}
+		printf("|");
+	}
+	Address current = S.Top;
+	for(h = 0; h < hitungBanyakCakram(S) && current != Nil; h++){
+		for(i = 0; i < (mode - current->Cakram); i++)
+			printf(" ");
+		for(i = 0; i <= current->Cakram; i++)
+			printf("%c", 178);
+		for(i = 0; i < (mode - current->Cakram); i++)
+			printf(" ");
+		printf("\n");
+		current = current->Prev;
+	}
+	printf("===========");
+}
 
 boolean isTowerEmpty(stack S){
 /* I.S : S terdefinisi, mungkin kosong, mungkin penuh
@@ -79,3 +101,19 @@ boolean isTowerEmpty(stack S){
 */
    return (S.Top == Nil);
 }
+
+int hitungBanyakCakram(stack S){
+/* I.S : S terdefinisi, mungkin kosong, mungkin penuh
+   F.S : mengembalikan nilai jumlah cakram pada suatu tower(stack)
+*/
+	Address	current = S.Top;
+	int banyakCakram = 0;
+	
+	while(current != Nil){
+		banyakCakram++;
+		current = current->Prev;
+	}
+	
+	return banyakCakram;
+}
+
