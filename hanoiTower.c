@@ -70,12 +70,19 @@ F.S. : ketiga tower sudah ditampilkan ke layar*/
 //fitur surrender(Gefi)
 /* ini bisa tanpa modul. Misal ada if( variabel == 0) maka menampilkan pilihan mau return ke mainmenu atau quit .*/
 
-int score(int countMoves){
+int score(int moves, int cakram){
 /* 	Author : Gefi Aulia Sanjaya 
-   	I.S : countMoves belum operasikan
+   	I.S : score = Nil
    	F.S : Mengembalikan nilai score */
-// 
-
+	int temp, score = 0;
+	
+	temp = moves - (pow(2,cakram) -1 ); // untuk mencari moves yang lebih dari minimum
+	if(temp == 0){
+		score = 5000;
+	}else{
+		score = 5000 - (temp *(300/cakram)) - ((temp - 1)* 10);
+	}
+	return score
 }
 
 void highscore(){
@@ -86,11 +93,18 @@ void highscore(){
 
 }
 
-int chooseMode(){
+int chooseMode(int choose){
 /* Author : Gefi Aulia Sanjaya 
    I.S : mode belum dipilih
-   F.S : mengembalikan nilai chooseMode antara 3/4/5 */
-
+   F.S : mengembalikan nilai chooseMode antara 3/4/5 
+*/	
+	printf(" Pilih Mode Permaian :\n");
+	printf(" 1. Mudah (3 Cakram)\n");
+    printf(" 2. Sedang (4 Cakram)\n");
+    printf(" 3. Sulit (5 Cakram)\n");
+    printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
+    
+    return choose;
 }
 
 void checkWinner(stack S){
