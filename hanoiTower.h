@@ -76,7 +76,7 @@ int chooseMode();
    F.S : mengembalikan nilai chooseMode antara 3/4/5 */
 
 
-void checkWinner(stack S);
+void checkWinner(stack S, int mode);
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : stack S mungkin kosong atau ada isi 
    F.S : mengembalikan nilai true apabila sudah ada tersusun lengkap pada tiang tengah atau bawah, dan false apabila belum ada yang tersusun lengkap
@@ -84,5 +84,11 @@ void checkWinner(stack S);
 
 //moves(Salma)
 /* ini bisa tanpa modul. Jadi misal ada variabel int namanya countMoves, setiap selesai 1 kali loop nanti countMoves++.*/
+
+void banner ();
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : program belum berjalan 
+   F.S : Menampilkan banner game pada bagian atas interface
+*/
 
 #endif
