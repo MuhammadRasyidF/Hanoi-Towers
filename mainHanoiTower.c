@@ -23,12 +23,23 @@ int main(){
     buatTower(&Tower2);
     buatTower(&Tower3);
 
+    //algorithm 
+    banner();
+    inputUname(nama); //menu input username
+    system("cls");
+
+    banner();
+    language = chooseLanguage(); //menu pilih bahasa
+    system("cls"):
+
+    showWelcome(language);
+    system("cls");
+
     while (true)
     {
         banner();
-        inputUname(nama);
-        language = chooseLanguage(); //butuh kondisi pada setiap interface
-        choose = printMenu(); //Menampilkan Main Menu
+        choose = printMenu(); //Menampilkan Main Menu //butuh parameter kondisi bahasa
+        system("cls"):
 
         switch (choose)
         {
