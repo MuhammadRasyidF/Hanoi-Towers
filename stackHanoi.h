@@ -24,9 +24,7 @@
 
 /* Definisi Type Bentukan ADT Stack [Linked List] */
 
-typedef struct{
-int value;
-}infotype;
+typedef int infotype;
 
 typedef struct telmstack *Address;
 
@@ -68,7 +66,7 @@ void keluarCakram(stack *S, infotype *X);
    F.S : Menghapus elemen pada top(s)
 */
 
-void printTower(stack S);
+void printTower(stack S, int mode);
 /* I.S : S terdefinisi, mungkin kosong
    F.S : Menampilkan seluruh elemen dalam stack ke layar dari mulai TOP sampai dengan bottom jika tidak kosong
 */
@@ -76,6 +74,11 @@ void printTower(stack S);
 boolean isTowerEmpty(stack S);
 /* I.S : S terdefinisi, mungkin kosong, mungkin penuh
    F.S : mengembalikan nilai true apabila kosong dan false apabila tidak kosong.
+*/
+
+int hitungBanyakCakram(stack S);
+/* I.S : S terdefinisi, mungkin kosong, mungkin penuh
+   F.S : mengembalikan nilai jumlah cakram pada suatu tower(stack)
 */
 
 #endif

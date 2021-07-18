@@ -13,7 +13,7 @@
 #include "hanoiTower.h"
 
 //fitur username
-void inputUname (char* nama){
+void inputUname(char* nama){
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : nama = NULL
    F.S : mengembalikan nama yang sudah diinputkan 
@@ -27,7 +27,7 @@ void inputUname (char* nama){
 int chooseLanguage(){
 /*	Author : Salma Syawalan Putriadhinia
 I.S. : bahasa belum dipilih
-F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 utnuk bahasa Inggris*/
+F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 untuk bahasa Inggris*/
 
 }
 
@@ -41,10 +41,10 @@ F.S : Menampilkan tampilan Main Menu ke layar*/
 
 //fitur tutorial
 int printTutorial(){
-/*	Author : Salma Syawalan Putriadhinia
-I.S. : layar
-F.S. : pada layar telah tampil penjelasan permainan, cara bermain, dan juga credits mengenai identitas pembuat program.*/
-
+	/*	Author : Salma Syawalan Putriadhinia
+	I.S. : tutorial belum ditampilkan ke layar
+	F.S. : pada layar telah tampil penjelasan permainan, cara bermain, dan juga credits mengenai identitas pembuat program.*/
+	
 }
 
 //fitur play
