@@ -91,4 +91,10 @@ void banner();
    F.S : Menampilkan banner game pada bagian atas interface
 */
 
+void showWelcome(int language);
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : program belum berjalan 
+   F.S : Menampilkan ucapan selamat datang di game hanoi tower
+*/
+
 #endif

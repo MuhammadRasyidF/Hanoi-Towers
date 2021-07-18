@@ -25,7 +25,7 @@ void inputUname(char* nama){
    	printf(" Username ");
 	for (i=0 ; i < 11 ; i++)
    		printf("%c", 219);
-   
+   printf("\n\n");
    printf("\nInput Username = ");
    scanf("%s", nama); fflush(stdin);
    printf("\n");
@@ -105,12 +105,12 @@ int chooseMode(){
    F.S : mengembalikan nilai chooseMode antara 3/4/5 
 */	
 
-   int choose;
+   	int choose;
 	printf(" Pilih Mode Permaian :\n");
 	printf(" 1. Mudah (3 Cakram)\n");
-   printf(" 2. Sedang (4 Cakram)\n");
-   printf(" 3. Sulit (5 Cakram)\n");
-   printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
+  	printf(" 2. Sedang (4 Cakram)\n");
+   	printf(" 3. Sulit (5 Cakram)\n");
+   	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
     
    return choose;
 }
@@ -143,4 +143,34 @@ void banner(){
    	for (i=0 ; i < 32 ; i++)
    		printf("%c", 220);
    	printf("\n\n");
+}
+
+void showWelcome(int language){
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : program belum berjalan 
+   F.S : Menampilkan ucapan selamat bermain game hanoi tower
+*/
+	if (language == 1)
+	{
+		for (i=0 ; i < 32 ; i++)
+			printf("%c", 219);
+		printf("\n\n");
+		printf("         SELAMAT BERMAIN         \n");
+		printf("         GAME HANOI TOWER        \n\n");
+		for (i=0 ; i < 32 ; i++)
+			printf("%c", 219);
+		printf("\n\n");
+	}
+	else{
+		for (i=0 ; i < 32 ; i++)
+			printf("%c", 219);
+		printf("\n\n");
+		printf("              WELCOME             \n");
+		printf("                TO                \n");
+		printf("         HANOI TOWER GAME         \n\n");
+		for (i=0 ; i < 32 ; i++)
+			printf("%c", 219);
+		printf("\n\n");
+	}
+	system("pause");
 }
