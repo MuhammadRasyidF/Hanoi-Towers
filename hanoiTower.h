@@ -58,9 +58,9 @@ F.S. : ketiga tower sudah ditampilkan ke layar*/
 //fitur surrender(Gefi)
 /* ini bisa tanpa modul. Misal ada if( variabel == 0) maka menampilkan pilihan mau return ke mainmenu atau quit .*/
 
-int score(int countMoves);
+int score(int moves, int cakram);
 /* 	Author : Gefi Aulia Sanjaya 
-   	I.S : countMoves belum operasikan
+   	I.S : score = Nil
    	F.S : Mengembalikan nilai score */
 // 
 
