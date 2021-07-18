@@ -72,11 +72,11 @@ void printTower(stack S, int mode){
 /* I.S : S terdefinisi, mungkin kosong
    F.S : Menampilkan seluruh elemen dalam stack ke layar dari mulai TOP sampai dengan bottom jika tidak kosong
 */
-	int h, i;
+	int h, i;	//h = height
 	int tanpaCakram = mode - hitungBanyakCakram(S);
 	
 	for(h = 0; h < tanpaCakram; h++){
-		for(i = 0; i < mode - 2; i++){
+		for(i = 0; i < mode - 1; i++){
 			printf(" ");
 		}
 		printf("|");
@@ -85,7 +85,7 @@ void printTower(stack S, int mode){
 	for(h = 0; h < hitungBanyakCakram(S) && current != Nil; h++){
 		for(i = 0; i < (mode - current->Cakram); i++)
 			printf(" ");
-		for(i = 0; i <= current->Cakram; i++)
+		for(i = 0; i <= (2 * current->Cakram) + 1; i++)
 			printf("%c", 178);
 		for(i = 0; i < (mode - current->Cakram); i++)
 			printf(" ");
