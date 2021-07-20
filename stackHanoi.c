@@ -92,7 +92,7 @@ void printTower(stack S, int mode){
 		printf("\n");
 		current = current->Prev;
 	}
-	printf("===========");
+	printf("===========\n\n\n");
 }
 
 boolean isTowerEmpty(stack S){
