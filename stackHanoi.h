@@ -40,44 +40,52 @@ typedef struct{
 /* Prototype ADT Stack [Linked List] */
 /* {Konstruktor pembentuk Stack} */
 void buatTower(stack *S);
-/* I.S : S terdefinisi, tidak diketahui nilainya
+/* Author : Muhammad Rasyid Fadlurrahman 
+   I.S : S terdefinisi, tidak diketahui nilainya
    F.S : S diinisialisasi top(s) = nil,
 */
 
 /* {Operasi terhadap komponen : selektor Get dan Set} */
 //Destruktor or Dealokator
 Address alokasi(infotype X);
+//Author : Gefi Aulia Sanjaya 
 //Mengirim sebuah elemen stack dalam bentuk address
 
 void dealokasi(Address P);
-/* I.S : P terdefinisi
+/* Author : Muhammad Rasyid Fadlurrahman 
+   I.S : P terdefinisi
    F.S : P dikembalikan ke sistem
    		 Melakukan dealokasi / pengembalian address P ke sistem
 */
 
 /* {Kelompok Interaksi Dengan I/O Device} */
 void masukCakram(stack *S, infotype X);
-/* I.S : S terdefinisi sembarang, mungkin kosong
+/* Author : Gefi Aulia Sanjaya 
+   I.S : S terdefinisi sembarang, mungkin kosong
    F.S : S bertambah sebuah elemen sebagai elemen pertama
 */
 
 void keluarCakram(stack *S, infotype *X);
-/* I.S : S terdefinisi, Stack tidak kosong
+/* Author : Muhammad Rasyid Fadlurrahman 
+   I.S : S terdefinisi, Stack tidak kosong
    F.S : Menghapus elemen pada top(s)
 */
 
 void printTower(stack S, int mode);
-/* I.S : S terdefinisi, mungkin kosong
+/* Author : Salma Syawalan Putriadhinia
+   I.S : S terdefinisi, mungkin kosong
    F.S : Menampilkan seluruh elemen dalam stack ke layar dari mulai TOP sampai dengan bottom jika tidak kosong
 */
 
 boolean isTowerEmpty(stack S);
-/* I.S : S terdefinisi, mungkin kosong, mungkin penuh
+/* Author : Gefi Aulia Sanjaya 
+   I.S : S terdefinisi, mungkin kosong, mungkin penuh
    F.S : mengembalikan nilai true apabila kosong dan false apabila tidak kosong.
 */
 
 int hitungBanyakCakram(stack S);
-/* I.S : S terdefinisi, mungkin kosong, mungkin penuh
+/* Author : Salma Syawalan Putriadhinia
+   I.S : S terdefinisi, mungkin kosong, mungkin penuh
    F.S : mengembalikan nilai jumlah cakram pada suatu tower(stack)
 */
 
