@@ -22,11 +22,11 @@ void inputUname(char* nama){
 
    for (i=0 ; i < 11 ; i++) //print banner username
    		printf("%c", 219);
-   	printf(" Username ");
+   	printf(" USERNAME ");
 	for (i=0 ; i < 11 ; i++)
    		printf("%c", 219);
    printf("\n\n");
-   printf("\nInput Username = ");
+   printf("\nUsername	: ");
    scanf("%s", nama); fflush(stdin);
    printf("\n");
 }
