@@ -58,11 +58,13 @@ F.S. : cakram sudah berpindah ke stack b*/
 }
 
 //fitur menampilkan tower
-void showTowers(stack a, stack b, stack c){  //keine ahnung! :)
+void showTowers(stack a, stack b, stack c, int mode){
 /*	Author : Salma Syawalan Putriadhinia
 I.S. : ketiga tower belum ditampilkan ke layar
 F.S. : ketiga tower sudah ditampilkan ke layar*/
-
+	printTower(a, mode);
+	printTower(b, mode);
+	printTower(c, mode);
 }
 
 //fitur surrender(Gefi)
