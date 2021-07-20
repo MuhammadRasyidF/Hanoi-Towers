@@ -58,16 +58,16 @@ F.S. : ketiga tower sudah ditampilkan ke layar*/
 //fitur surrender(Gefi)
 /* ini bisa tanpa modul. Misal ada if( variabel == 0) maka menampilkan pilihan mau return ke mainmenu atau quit .*/
 
-int score(int countMoves);
+int score(int moves, int cakram);
 /* 	Author : Gefi Aulia Sanjaya 
-   	I.S : countMoves belum operasikan
+   	I.S : score = Nil
    	F.S : Mengembalikan nilai score */
 // 
 
-void highscore();
+void printHighscore();
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : mengambil data dari file
-   F.S : menamilkan highhscore 10 besar 
+   F.S : menampilkan highhscore 10 besar 
 */
 
 int chooseMode();
@@ -75,8 +75,7 @@ int chooseMode();
    I.S : mode belum dipilih
    F.S : mengembalikan nilai chooseMode antara 3/4/5 */
 
-
-void checkWinner(stack S);
+void checkWinner(stack S, int mode);
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : stack S mungkin kosong atau ada isi 
    F.S : mengembalikan nilai true apabila sudah ada tersusun lengkap pada tiang tengah atau bawah, dan false apabila belum ada yang tersusun lengkap
@@ -84,5 +83,17 @@ void checkWinner(stack S);
 
 //moves(Salma)
 /* ini bisa tanpa modul. Jadi misal ada variabel int namanya countMoves, setiap selesai 1 kali loop nanti countMoves++.*/
+
+void banner();
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : program belum berjalan 
+   F.S : Menampilkan banner game pada bagian atas interface
+*/
+
+void showWelcome(int language);
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : program belum berjalan 
+   F.S : Menampilkan ucapan selamat datang di game hanoi tower
+*/
 
 #endif
