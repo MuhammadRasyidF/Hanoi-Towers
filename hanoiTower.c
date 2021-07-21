@@ -78,17 +78,17 @@ F.S. : ketiga tower sudah ditampilkan ke layar*/
 //fitur surrender(Gefi)
 /* ini bisa tanpa modul. Misal ada if( variabel == 0) maka menampilkan pilihan mau return ke mainmenu atau quit .*/
 
-int score(int moves, int cakram){
+int score(int moves, int mode){
 /* 	Author : Gefi Aulia Sanjaya 
    	I.S : score = Nil
    	F.S : Mengembalikan nilai score */
 	int temp, score = 0;
 	
-	temp = moves - (pow(2,cakram) -1 ); // untuk mencari moves yang lebih dari minimum
+	temp = moves - (pow(2,mode) -1 ); // untuk mencari moves yang lebih dari minimum
 	if(temp == 0){
 		score = 5000;
 	}else{
-		score = 5000 - (temp *(300/cakram)) - ((temp - 1)* 10);
+		score = 5000 - (temp *(300/mode)) - ((temp - 1)* 10);
 	}
 	return score
 }
