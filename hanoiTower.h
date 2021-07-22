@@ -31,7 +31,7 @@ I.S. : bahasa belum dipilih
 F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 utnuk bahasa Inggris*/
 
 //fitur main menu
-int printMenu();
+int printMenu(int language);
 /* 	Author : Gefi Aulia Sanjaya 
 I.S : Layar kosong
 F.S : Menampilkan tampilan Main Menu ke layar*/
@@ -70,7 +70,7 @@ void printHighscore();
    F.S : menampilkan highhscore 10 besar 
 */
 
-int chooseMode();
+int chooseMode(int language);
 /* Author : Gefi Aulia Sanjaya 
    I.S : mode belum dipilih
    F.S : mengembalikan nilai chooseMode antara 3/4/5 */

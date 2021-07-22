@@ -38,11 +38,17 @@ int chooseLanguage(){
 /*	Author : Salma Syawalan Putriadhinia
 I.S. : bahasa belum dipilih
 F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 untuk bahasa Inggris*/
-
+	int choose = 0;
+	while(choose < 1 || choose > 2){
+		printf("[1] ID		[2] EN\n");
+		printf("\npilihan bahasa anda : ");
+		scanf("%d", &choose); fflush(stdin);
+	}
+	return choose;
 }
 
 //fitur main menu
-int printMenu(){
+int printMenu(int language){
 /* 	Author : Gefi Aulia Sanjaya 
 I.S : Layar kosong
 F.S : Menampilkan tampilan Main Menu ke layar*/
@@ -56,11 +62,20 @@ F.S : Menampilkan tampilan Main Menu ke layar*/
 		printf("%c", 219);	
 	}
 	printf("\n\n");
-	printf(" [1] Bermain\n");
-  	printf(" [2] Tutorial\n");
-   	printf(" [3] High Score\n");
-   	printf(" [4] Keluar\n\n");
-   	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
+	
+	if(language == 1){
+		printf(" [1] Bermain\n");
+	  	printf(" [2] Tutorial\n");
+	   	printf(" [3] Highscore\n");
+	   	printf(" [0] Keluar\n\n");
+	   	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
+	} else{
+		printf(" [1] Play\n");
+	  	printf(" [2] Tutorial\n");
+	   	printf(" [3] Highscore\n");
+	   	printf(" [0] Exit\n\n");
+	   	printf(" Your Choice : "); scanf("%d", &choose); fflush(stdin);
+	}
     
 	return choose;
 }
@@ -70,9 +85,14 @@ int printTutorial(){
 	/*	Author : Salma Syawalan Putriadhinia
 	I.S. : tutorial, cara bermain, dan credits belum ditampilkan ke layar
 	F.S. : pada layar telah tampil penjelasan permainan, cara bermain, dan juga credits mengenai identitas pembuat program.*/
-	printf("==========================================================\n\n");
+	int i;
+	for (i=0 ; i < 58 ; i++)
+   		printf("%c", 223);
+   	printf("\n");
 	printf("                        HANOI TOWER\n\n");
-	printf("==========================================================\n\n");
+	for (i=0 ; i < 58 ; i++)
+   		printf("%c", 220);
+   	printf("\n\n");
 	printf("[1] Permainan ini terdiri dari tiga tiang dan sejumlah\n");
 	printf("    cakram antara lain 3 cakram, 4 cakram, dan 5 cakram,\n");
 	printf("    dengan ukuran yang berbeda-beda yang dapat dimasukan\n");
@@ -96,9 +116,8 @@ int printTutorial(){
 	printf("[1] Gefi Aulia Sanjaya\n");
 	printf("[2] Muhammad Rasyid Fadlurrahman\n");
 	printf("[3] Salma Syawalan Putriadhinia\n\n");
-	printf("Tekan tombol manapun untuk melanjutkan...\n\n");
-	printf("==========================================================");
-	getchar();fflush(stdin);
+	printf("==========================================================\n");
+
 }
 
 //fitur plindah cakram
@@ -147,7 +166,7 @@ void printHighscore(){
 
 }
 
-int chooseMode(){
+int chooseMode(int language){
 /* Author : Gefi Aulia Sanjaya 
    I.S : mode belum dipilih
    F.S : mengembalikan nilai chooseMode antara 3/4/5 
@@ -162,12 +181,23 @@ int chooseMode(){
 		printf("%c", 219);	
 	}
 	printf("\n\n");
+	
+	if(language == 1){
 	printf(" Pilih Mode Permaian :\n");
-	printf(" 1. Mudah (3 Cakram)\n");
-  	printf(" 2. Sedang (4 Cakram)\n");
-   	printf(" 3. Sulit (5 Cakram)\n\n");
+	printf(" [1] Mudah (3 Cakram)\n");
+  	printf(" [2] Sedang (4 Cakram)\n");
+   	printf(" [3] Sulit (5 Cakram)\n");
+   	printf(" [0] Kembali\n");
    	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
-    
+   }else{
+	printf(" Choose Game Mode :\n");
+	printf(" [1] Easy (3 Disks)\n");
+  	printf(" [2] Medium (4 Disks)\n");
+   	printf(" [3] Hard (5 Disks)\n");
+   	printf(" [0] Back\n");
+   	printf(" Your Choice : "); scanf("%d", &choose); fflush(stdin);
+   }
+
    return choose;
 }
 
