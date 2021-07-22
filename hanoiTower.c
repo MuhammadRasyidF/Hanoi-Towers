@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "hanoiTower.h"
 
 //fitur username
@@ -91,7 +92,7 @@ int score(int moves, int mode){
 	}else{
 		score = 5000 - (temp *(300/mode)) - ((temp - 1)* 10);
 	}
-	return score
+	return score;
 }
 
 void printHighscore(){
@@ -159,8 +160,8 @@ void showWelcome(int language){
 		for (i=0 ; i < 32 ; i++)
 			printf("%c", 219);
 		printf("\n\n");
-		printf("         SELAMAT BERMAIN         \n");
-		printf("         GAME HANOI TOWER        \n\n");
+		printf("        SELAMAT BERMAIN         \n");
+		printf("        GAME HANOI TOWER        \n\n");
 		for (i=0 ; i < 32 ; i++)
 			printf("%c", 219);
 		printf("\n\n");
@@ -169,9 +170,9 @@ void showWelcome(int language){
 		for (i=0 ; i < 32 ; i++)
 			printf("%c", 219);
 		printf("\n\n");
-		printf("              WELCOME             \n");
-		printf("                TO                \n");
-		printf("         HANOI TOWER GAME         \n\n");
+		printf("             WELCOME              \n");
+		printf("               TO                \n");
+		printf("        HANOI TOWER GAME         \n\n");
 		for (i=0 ; i < 32 ; i++)
 			printf("%c", 219);
 		printf("\n\n");
