@@ -119,7 +119,7 @@ int chooseMode(){
    return choose;
 }
 
-void checkWinner(stack S, int mode){
+boolean checkWinner(stack S, int mode){
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : stack S mungkin kosong atau ada isi 
    F.S : mengembalikan nilai true apabila sudah ada tersusun lengkap pada tower tengah atau bawah, dan false apabila belum ada yang tersusun lengkap
