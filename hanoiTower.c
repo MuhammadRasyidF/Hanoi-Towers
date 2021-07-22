@@ -40,6 +40,8 @@ I.S. : bahasa belum dipilih
 F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 untuk bahasa Inggris*/
 	int choose = 0;
 	while(choose < 1 || choose > 2){
+		system("cls");
+		banner();
 		printf("[1] ID		[2] EN\n");
 		printf("\npilihan bahasa anda : ");
 		scanf("%d", &choose); fflush(stdin);
@@ -151,9 +153,9 @@ int score(int moves, int mode){
 	
 	temp = moves - (pow(2,mode) -1 ); // untuk mencari moves yang lebih dari minimum
 	if(temp == 0){
-		score = 5000;
+		score = mode * 1000;
 	}else{
-		score = 5000 - (temp *(300/mode)) - ((temp - 1)* 10);
+		score = (mode * 1000) - (temp *(300/mode)) - ((temp - 1)* 10);
 	}
 	return score;
 }
