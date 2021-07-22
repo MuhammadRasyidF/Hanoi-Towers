@@ -37,19 +37,19 @@ int main(){
     while (true)
     {
         banner();
-        choose = printMenu(); //Menampilkan Main Menu //butuh parameter kondisi bahasa
+        choose = printMenu(language); //Menampilkan Main Menu //butuh parameter kondisi bahasa
         system("cls");
 
         switch (choose)
         {
         case 1: //play
             banner();
-            mode = chooseMode(); //butuh parameter kondisi bahasa
+            mode = chooseMode(language); //butuh parameter kondisi bahasa
             //modul untuk main
             system("pause");
             break;
         case 2: //tutorial
-            printTutorial(); //butuh parameter kondisi bahasa
+            printTutorial(language); //butuh parameter kondisi bahasa
             system("pause");
             system("cls");
             break;
