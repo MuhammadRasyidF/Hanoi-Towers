@@ -38,7 +38,13 @@ int chooseLanguage(){
 /*	Author : Salma Syawalan Putriadhinia
 I.S. : bahasa belum dipilih
 F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 untuk bahasa Inggris*/
-
+	int pilih = 0;
+	while(pilih < 1 || pilih > 2){
+		printf("[1] ID		[2] EN\n");
+		printf("pilihan bahasa anda : ");
+		scanf("%d", &pilih); fflush(stdin);
+	}
+	return pilih;
 }
 
 //fitur main menu
@@ -79,9 +85,14 @@ int printTutorial(){
 	/*	Author : Salma Syawalan Putriadhinia
 	I.S. : tutorial, cara bermain, dan credits belum ditampilkan ke layar
 	F.S. : pada layar telah tampil penjelasan permainan, cara bermain, dan juga credits mengenai identitas pembuat program.*/
-	printf("==========================================================\n\n");
+	int i;
+	for (i=0 ; i < 58 ; i++)
+   		printf("%c", 223);
+   	printf("\n");
 	printf("                        HANOI TOWER\n\n");
-	printf("==========================================================\n\n");
+	for (i=0 ; i < 58 ; i++)
+   		printf("%c", 220);
+   	printf("\n\n");
 	printf("[1] Permainan ini terdiri dari tiga tiang dan sejumlah\n");
 	printf("    cakram antara lain 3 cakram, 4 cakram, dan 5 cakram,\n");
 	printf("    dengan ukuran yang berbeda-beda yang dapat dimasukan\n");
@@ -105,9 +116,8 @@ int printTutorial(){
 	printf("[1] Gefi Aulia Sanjaya\n");
 	printf("[2] Muhammad Rasyid Fadlurrahman\n");
 	printf("[3] Salma Syawalan Putriadhinia\n\n");
-	printf("Tekan tombol manapun untuk melanjutkan...\n\n");
 	printf("==========================================================");
-	getchar();fflush(stdin);
+
 }
 
 //fitur pindah cakram
@@ -156,7 +166,7 @@ void printHighscore(){
 
 }
 
-int chooseMode(){
+int chooseMode(int language){
 /* Author : Gefi Aulia Sanjaya 
    I.S : mode belum dipilih
    F.S : mengembalikan nilai chooseMode antara 3/4/5 
