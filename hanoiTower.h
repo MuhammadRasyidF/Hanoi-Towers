@@ -42,9 +42,9 @@ int printTutorial();
 I.S. : layar
 F.S. : pada layar telah tampil penjelasan permainan, cara bermain, dan juga credits mengenai identitas pembuat program.*/
 
-//fitur play
-void moveCakram(stack a, stack b);  //isinya pake push pop
-/*	Author : Salma Syawalan Putriadhinia
+//fitur plindah cakram
+void moveCakram(stack a, stack b); 
+/*	Author : Muhammad Rasyid Fadlurrahman
 I.S. : cakram teratas dari stack a belum berpindah
 F.S. : cakram sudah berpindah ke stack b*/
 
