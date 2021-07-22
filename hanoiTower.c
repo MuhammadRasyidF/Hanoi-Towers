@@ -46,7 +46,22 @@ int printMenu(){
 /* 	Author : Gefi Aulia Sanjaya 
 I.S : Layar kosong
 F.S : Menampilkan tampilan Main Menu ke layar*/
-
+	int choose, i;
+	
+	for(i = 0; i < 11; i++){
+		printf("%c", 219);	
+	}
+	printf(" MAINMENU ");
+	for(i = 0; i < 11; i++){
+		printf("%c", 219);	
+	}
+	printf("\n\n");
+	printf(" [1] Bermain\n");
+  	printf(" [2] Tutorial\n");
+   	printf(" [3] High Score\n");
+   	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
+    
+	return choose;
 }
 
 //fitur tutorial
