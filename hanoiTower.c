@@ -38,13 +38,13 @@ int chooseLanguage(){
 /*	Author : Salma Syawalan Putriadhinia
 I.S. : bahasa belum dipilih
 F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 untuk bahasa Inggris*/
-	int pilih = 0;
-	while(pilih < 1 || pilih > 2){
+	int choose = 0;
+	while(choose < 1 || choose > 2){
 		printf("[1] ID		[2] EN\n");
-		printf("pilihan bahasa anda : ");
-		scanf("%d", &pilih); fflush(stdin);
+		printf("\npilihan bahasa anda : ");
+		scanf("%d", &choose); fflush(stdin);
 	}
-	return pilih;
+	return choose;
 }
 
 //fitur main menu
@@ -116,7 +116,7 @@ int printTutorial(){
 	printf("[1] Gefi Aulia Sanjaya\n");
 	printf("[2] Muhammad Rasyid Fadlurrahman\n");
 	printf("[3] Salma Syawalan Putriadhinia\n\n");
-	printf("==========================================================");
+	printf("==========================================================\n");
 
 }
 
