@@ -25,7 +25,7 @@ void inputUname (char* nama);
 */
 
 //fitur choose language
-int chooseLanguage(int language);
+int chooseLanguage();
 /*	Author : Salma Syawalan Putriadhinia
 I.S. : bahasa belum dipilih
 F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 utnuk bahasa Inggris*/
@@ -70,7 +70,7 @@ void printHighscore();
    F.S : menampilkan highhscore 10 besar 
 */
 
-int chooseMode();
+int chooseMode(int language);
 /* Author : Gefi Aulia Sanjaya 
    I.S : mode belum dipilih
    F.S : mengembalikan nilai chooseMode antara 3/4/5 */
