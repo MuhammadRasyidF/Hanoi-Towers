@@ -28,9 +28,9 @@ int main(){
     inputUname(nama); //menu input username
     system("cls");
 
-    banner();
     language = chooseLanguage(); //menu pilih bahasa
     system("cls");
+
     showWelcome(language);
     system("cls");
 
