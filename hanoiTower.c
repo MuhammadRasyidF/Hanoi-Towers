@@ -20,8 +20,9 @@ void inputUname(char* nama){
 */
    nama = (char*)malloc(sizeof(char)*20); //alokasi char nama maks 20  huruf
 
-   for (i=0 ; i < 11 ; i++) //print banner username
-   		printf("%c", 219);
+	int i;
+    for (i=0 ; i < 11 ; i++) //print banner username
+  		printf("%c", 219);
    	printf(" USERNAME ");
 	for (i=0 ; i < 11 ; i++)
    		printf("%c", 219);
@@ -120,7 +121,7 @@ int chooseMode(){
 void checkWinner(stack S, int mode){
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : stack S mungkin kosong atau ada isi 
-   F.S : mengembalikan nilai true apabila sudah ada tersusun lengkap pada tiang tengah atau bawah, dan false apabila belum ada yang tersusun lengkap
+   F.S : mengembalikan nilai true apabila sudah ada tersusun lengkap pada tower tengah atau bawah, dan false apabila belum ada yang tersusun lengkap
 */
    if(hitungBanyakCakram(S) == mode){
       return true;
@@ -152,6 +153,7 @@ void showWelcome(int language){
 * I.S : program belum berjalan 
    F.S : Menampilkan ucapan selamat bermain game hanoi tower
 */
+	int i;
 	if (language == 1)
 	{
 		for (i=0 ; i < 32 ; i++)

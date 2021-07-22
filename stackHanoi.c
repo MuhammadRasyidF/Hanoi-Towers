@@ -64,7 +64,6 @@ void keluarCakram(stack *S, infotype *X){
    F.S : Menghapus elemen pada top(s)
 */
    if(isTowerEmpty(*S)){
-      printf(" Parkiran Kosong\n");
       return;
    }
    *X = S->Top->Cakram;
