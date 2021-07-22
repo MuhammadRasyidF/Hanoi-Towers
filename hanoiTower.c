@@ -89,7 +89,7 @@ int printTutorial(){
 	printf("[1] Pemain hanya dapat memindahkan satu cakram dalam satu\n");
 	printf("    waktu.\n");
 	printf("[2] Pemain tidak boleh meletakkan cakram di atas cakram lain\n");
-	printf("    yang lebih kecil.\n\n")
+	printf("    yang lebih kecil.\n\n");
 	printf("========================= TENTANG =========================\n");
 	printf("Permainan ini dibuat dengan menggunakan bahasa C\n\n");
 	printf("Author : \n");
