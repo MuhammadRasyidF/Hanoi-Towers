@@ -42,7 +42,7 @@ F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 untuk bahasa Ing
 }
 
 //fitur main menu
-int printMenu(){
+int printMenu(int language){
 /* 	Author : Gefi Aulia Sanjaya 
 I.S : Layar kosong
 F.S : Menampilkan tampilan Main Menu ke layar*/
@@ -56,11 +56,20 @@ F.S : Menampilkan tampilan Main Menu ke layar*/
 		printf("%c", 219);	
 	}
 	printf("\n\n");
-	printf(" [1] Bermain\n");
-  	printf(" [2] Tutorial\n");
-   	printf(" [3] High Score\n");
-   	printf(" [4] Keluar\n\n");
-   	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
+	
+	if(language == 1){
+		printf(" [1] Bermain\n");
+	  	printf(" [2] Tutorial\n");
+	   	printf(" [3] Highscore\n");
+	   	printf(" [0] Keluar\n\n");
+	   	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
+	} else{
+		printf(" [1] Play\n");
+	  	printf(" [2] Tutorial\n");
+	   	printf(" [3] Highscore\n");
+	   	printf(" [0] Exit\n\n");
+	   	printf(" Your Choice : "); scanf("%d", &choose); fflush(stdin);
+	}
     
 	return choose;
 }
@@ -162,12 +171,23 @@ int chooseMode(){
 		printf("%c", 219);	
 	}
 	printf("\n\n");
+	
+	if(language == 1){
 	printf(" Pilih Mode Permaian :\n");
-	printf(" 1. Mudah (3 Cakram)\n");
-  	printf(" 2. Sedang (4 Cakram)\n");
-   	printf(" 3. Sulit (5 Cakram)\n\n");
+	printf(" [1] Mudah (3 Cakram)\n");
+  	printf(" [2] Sedang (4 Cakram)\n");
+   	printf(" [3] Sulit (5 Cakram)\n");
+   	printf(" [0] Kembali\n");
    	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
-    
+   }else{
+	printf(" Choose Game Mode :\n");
+	printf(" [1] Easy (3 Disks)\n");
+  	printf(" [2] Medium (4 Disks)\n");
+   	printf(" [3] Hard (5 Disks)\n");
+   	printf(" [0] Back\n");
+   	printf(" Your Choice : "); scanf("%d", &choose); fflush(stdin);
+   }
+
    return choose;
 }
 
