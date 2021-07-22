@@ -50,7 +50,7 @@ F.S : Menampilkan tampilan Main Menu ke layar*/
 //fitur tutorial
 int printTutorial(){
 	/*	Author : Salma Syawalan Putriadhinia
-	I.S. : tutorial belum ditampilkan ke layar
+	I.S. : tutorial, cara bermain, dan credits belum ditampilkan ke layar
 	F.S. : pada layar telah tampil penjelasan permainan, cara bermain, dan juga credits mengenai identitas pembuat program.*/
 	printf("==========================================================\n\n");
 	printf("                        HANOI TOWER\n\n");
