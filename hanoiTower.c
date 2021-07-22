@@ -38,7 +38,13 @@ int chooseLanguage(){
 /*	Author : Salma Syawalan Putriadhinia
 I.S. : bahasa belum dipilih
 F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 untuk bahasa Inggris*/
-
+	int pilih = 0;
+	while(pilih < 1 || pilih > 2){
+		printf("[1] ID		[2] EN\n");
+		printf("pilihan bahasa anda : ");
+		scanf("%d", &pilih); fflush(stdin);
+	}
+	return pilih;
 }
 
 //fitur main menu
