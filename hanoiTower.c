@@ -101,7 +101,7 @@ int printTutorial(){
 	getchar();fflush(stdin);
 }
 
-//fitur plindah cakram
+//fitur pindah cakram
 void moveCakram(stack a, stack b){
 /*	Author : Muhammad Rasyid Fadlurrahman
 I.S. : cakram teratas dari stack a belum berpindah

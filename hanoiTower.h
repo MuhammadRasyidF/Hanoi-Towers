@@ -42,7 +42,7 @@ int printTutorial();
 I.S. : layar
 F.S. : pada layar telah tampil penjelasan permainan, cara bermain, dan juga credits mengenai identitas pembuat program.*/
 
-//fitur plindah cakram
+//fitur pindah cakram
 void moveCakram(stack a, stack b); 
 /*	Author : Muhammad Rasyid Fadlurrahman
 I.S. : cakram teratas dari stack a belum berpindah
