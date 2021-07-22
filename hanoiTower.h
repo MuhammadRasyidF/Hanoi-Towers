@@ -25,7 +25,7 @@ void inputUname (char* nama);
 */
 
 //fitur choose language
-int chooseLanguage();
+int chooseLanguage(int language);
 /*	Author : Salma Syawalan Putriadhinia
 I.S. : bahasa belum dipilih
 F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 utnuk bahasa Inggris*/
