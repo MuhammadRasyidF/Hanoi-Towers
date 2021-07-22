@@ -16,7 +16,7 @@ int main(){
     stack Tower1;
     stack Tower2;
     stack Tower3;
-    int choose, mode, language1;
+    int choose, mode, language;
     char nama[20];
 
     buatTower(&Tower1);
@@ -30,8 +30,7 @@ int main(){
 
     banner();
     language = chooseLanguage(); //menu pilih bahasa
-    system("cls"):
-
+    system("cls");
     showWelcome(language);
     system("cls");
 
@@ -39,7 +38,7 @@ int main(){
     {
         banner();
         choose = printMenu(); //Menampilkan Main Menu //butuh parameter kondisi bahasa
-        system("cls"):
+        system("cls");
 
         switch (choose)
         {
