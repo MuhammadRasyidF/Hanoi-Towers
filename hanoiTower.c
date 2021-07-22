@@ -46,15 +46,59 @@ int printMenu(){
 /* 	Author : Gefi Aulia Sanjaya 
 I.S : Layar kosong
 F.S : Menampilkan tampilan Main Menu ke layar*/
-
+	int choose, i;
+	
+	for(i = 0; i < 11; i++){
+		printf("%c", 219);	
+	}
+	printf(" MAINMENU ");
+	for(i = 0; i < 11; i++){
+		printf("%c", 219);	
+	}
+	printf("\n\n");
+	printf(" [1] Bermain\n");
+  	printf(" [2] Tutorial\n");
+   	printf(" [3] High Score\n");
+   	printf(" [4] Keluar\n\n");
+   	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
+    
+	return choose;
 }
 
 //fitur tutorial
 int printTutorial(){
 	/*	Author : Salma Syawalan Putriadhinia
-	I.S. : tutorial belum ditampilkan ke layar
+	I.S. : tutorial, cara bermain, dan credits belum ditampilkan ke layar
 	F.S. : pada layar telah tampil penjelasan permainan, cara bermain, dan juga credits mengenai identitas pembuat program.*/
-	
+	printf("==========================================================\n\n");
+	printf("                        HANOI TOWER\n\n");
+	printf("==========================================================\n\n");
+	printf("[1] Permainan ini terdiri dari tiga tiang dan sejumlah\n");
+	printf("    cakram antara lain 3 cakram, 4 cakram, dan 5 cakram,\n");
+	printf("    dengan ukuran yang berbeda-beda yang dapat dimasukan\n");
+	printf("    ke tiang mana saja.\n");
+	printf("[2] Permainan dimulai dengan cakram-cakram yang tertumpuk\n");
+	printf("    berurutan berdasarkan ukuran dalam tiang yang paling\n");
+	printf("    kiri, cakram terbesar diletakkan terbawah dan cakram\n");
+	printf("    terkecil diletakkan teratas, sehingga membentuk\n");
+	printf("    kerucut.\n");
+	printf("[3] Pemain harus memindahkan cakram ke tiang lain, baik\n");
+	printf("    tiang tengah atau tiang kanan, sampai susunan cakram\n");
+	printf("    tersusun di tiang lain\n\n");
+	printf("========================== ATURAN ========================\n\n");
+	printf("[1] Pemain hanya dapat memindahkan satu cakram dalam satu\n");
+	printf("    waktu.\n");
+	printf("[2] Pemain tidak boleh meletakkan cakram di atas cakram lain\n");
+	printf("    yang lebih kecil.\n\n")
+	printf("========================= TENTANG =========================\n");
+	printf("Permainan ini dibuat dengan menggunakan bahasa C\n\n");
+	printf("Author : \n");
+	printf("[1] Gefi Aulia Sanjaya\n");
+	printf("[2] Muhammad Rasyid Fadlurrahman\n");
+	printf("[3] Salma Syawalan Putriadhinia\n\n");
+	printf("Tekan tombol manapun untuk melanjutkan...\n\n");
+	printf("==========================================================");
+	getchar();fflush(stdin);
 }
 
 //fitur play
@@ -108,12 +152,20 @@ int chooseMode(){
    I.S : mode belum dipilih
    F.S : mengembalikan nilai chooseMode antara 3/4/5 
 */	
-
-   	int choose;
+	int choose, i;
+	
+	for(i = 0; i < 11; i++){
+		printf("%c", 219);	
+	}
+	printf(" GAMEMODE ");
+	for(i = 0; i < 11; i++){
+		printf("%c", 219);	
+	}
+	printf("\n\n");
 	printf(" Pilih Mode Permaian :\n");
 	printf(" 1. Mudah (3 Cakram)\n");
   	printf(" 2. Sedang (4 Cakram)\n");
-   	printf(" 3. Sulit (5 Cakram)\n");
+   	printf(" 3. Sulit (5 Cakram)\n\n");
    	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
     
    return choose;
