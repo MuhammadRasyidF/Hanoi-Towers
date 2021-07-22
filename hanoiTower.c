@@ -59,6 +59,7 @@ F.S : Menampilkan tampilan Main Menu ke layar*/
 	printf(" [1] Bermain\n");
   	printf(" [2] Tutorial\n");
    	printf(" [3] High Score\n");
+   	printf(" [4] Keluar\n\n");
    	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
     
 	return choose;
@@ -123,8 +124,8 @@ int chooseMode(){
    I.S : mode belum dipilih
    F.S : mengembalikan nilai chooseMode antara 3/4/5 
 */	
-
-   	int choose;
+	int choose;
+	
 	printf(" Pilih Mode Permaian :\n");
 	printf(" 1. Mudah (3 Cakram)\n");
   	printf(" 2. Sedang (4 Cakram)\n");
