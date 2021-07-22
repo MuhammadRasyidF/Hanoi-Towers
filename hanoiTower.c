@@ -46,7 +46,23 @@ int printMenu(){
 /* 	Author : Gefi Aulia Sanjaya 
 I.S : Layar kosong
 F.S : Menampilkan tampilan Main Menu ke layar*/
-
+	int choose, i;
+	
+	for(i = 0; i < 11; i++){
+		printf("%c", 219);	
+	}
+	printf(" MAINMENU ");
+	for(i = 0; i < 11; i++){
+		printf("%c", 219);	
+	}
+	printf("\n\n");
+	printf(" [1] Bermain\n");
+  	printf(" [2] Tutorial\n");
+   	printf(" [3] High Score\n");
+   	printf(" [4] Keluar\n\n");
+   	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
+    
+	return choose;
 }
 
 //fitur tutorial
@@ -136,12 +152,20 @@ int chooseMode(){
    I.S : mode belum dipilih
    F.S : mengembalikan nilai chooseMode antara 3/4/5 
 */	
-
-   	int choose;
+	int choose, i;
+	
+	for(i = 0; i < 11; i++){
+		printf("%c", 219);	
+	}
+	printf(" GAMEMODE ");
+	for(i = 0; i < 11; i++){
+		printf("%c", 219);	
+	}
+	printf("\n\n");
 	printf(" Pilih Mode Permaian :\n");
 	printf(" 1. Mudah (3 Cakram)\n");
   	printf(" 2. Sedang (4 Cakram)\n");
-   	printf(" 3. Sulit (5 Cakram)\n");
+   	printf(" 3. Sulit (5 Cakram)\n\n");
    	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
     
    return choose;

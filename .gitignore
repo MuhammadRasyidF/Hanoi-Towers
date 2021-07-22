@@ -3,3 +3,8 @@ stackHanoi.h.gch
 hanoiTower.h.gch
 hanoiTower.exe
 mainHanoiTower.exe
+hanoiTower.o
+mainHanoiTower.o
+Makefile.win
+stackHanoi.o
+Tubes.exe
