@@ -40,6 +40,8 @@ I.S. : bahasa belum dipilih
 F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 untuk bahasa Inggris*/
 	int choose = 0;
 	while(choose < 1 || choose > 2){
+		system("cls");
+		banner();
 		printf("[1] ID		[2] EN\n");
 		printf("\npilihan bahasa anda : ");
 		scanf("%d", &choose); fflush(stdin);
