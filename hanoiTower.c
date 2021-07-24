@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "hanoiTower.h"
 
 //fitur username
@@ -20,13 +21,14 @@ void inputUname(char* nama){
 */
    nama = (char*)malloc(sizeof(char)*20); //alokasi char nama maks 20  huruf
 
-   for (i=0 ; i < 11 ; i++) //print banner username
-   		printf("%c", 219);
-   	printf(" Username ");
+	int i;
+    for (i=0 ; i < 11 ; i++) //print banner username
+  		printf("%c", 219);
+   	printf(" USERNAME ");
 	for (i=0 ; i < 11 ; i++)
    		printf("%c", 219);
    printf("\n\n");
-   printf("\nInput Username = ");
+   printf("\nUsername	: ");
    scanf("%s", nama); fflush(stdin);
    printf("\n");
 }
@@ -48,11 +50,36 @@ F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 untuk bahasa Ing
 }
 
 //fitur main menu
-int printMenu(){
+int printMenu(int language){
 /* 	Author : Gefi Aulia Sanjaya 
 I.S : Layar kosong
 F.S : Menampilkan tampilan Main Menu ke layar*/
-
+	int choose, i;
+	
+	for(i = 0; i < 11; i++){
+		printf("%c", 219);	
+	}
+	printf(" MAINMENU ");
+	for(i = 0; i < 11; i++){
+		printf("%c", 219);	
+	}
+	printf("\n\n");
+	
+	if(language == 1){
+		printf(" [1] Bermain\n");
+	  	printf(" [2] Tutorial\n");
+	   	printf(" [3] Highscore\n");
+	   	printf(" [0] Keluar\n\n");
+	   	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
+	} else{
+		printf(" [1] Play\n");
+	  	printf(" [2] Tutorial\n");
+	   	printf(" [3] Highscore\n");
+	   	printf(" [0] Exit\n\n");
+	   	printf(" Your Choice : "); scanf("%d", &choose); fflush(stdin);
+	}
+    
+	return choose;
 }
 
 //fitur tutorial
@@ -95,7 +122,7 @@ int printTutorial(){
 
 }
 
-//fitur play
+//fitur pindah cakram
 void moveCakram(stack a, stack b){
 /*	Author : Muhammad Rasyid Fadlurrahman
 I.S. : cakram teratas dari stack a belum berpindah
@@ -118,19 +145,19 @@ F.S. : ketiga tower sudah ditampilkan ke layar*/
 //fitur surrender(Gefi)
 /* ini bisa tanpa modul. Misal ada if( variabel == 0) maka menampilkan pilihan mau return ke mainmenu atau quit .*/
 
-int score(int moves, int cakram){
+int score(int moves, int mode){
 /* 	Author : Gefi Aulia Sanjaya 
    	I.S : score = Nil
    	F.S : Mengembalikan nilai score */
 	int temp, score = 0;
 	
-	temp = moves - (pow(2,cakram) -1 ); // untuk mencari moves yang lebih dari minimum
+	temp = moves - (pow(2,mode) -1 ); // untuk mencari moves yang lebih dari minimum
 	if(temp == 0){
-		score = 5000;
+		score = mode * 1000;
 	}else{
-		score = 5000 - (temp *(300/cakram)) - ((temp - 1)* 10);
+		score = (mode * 1000) - (temp *(300/mode)) - ((temp - 1)* 10);
 	}
-	return score
+	return score;
 }
 
 void printHighscore(){
@@ -141,26 +168,45 @@ void printHighscore(){
 
 }
 
-int chooseMode(){
+int chooseMode(int language){
 /* Author : Gefi Aulia Sanjaya 
    I.S : mode belum dipilih
    F.S : mengembalikan nilai chooseMode antara 3/4/5 
 */	
-
-   	int choose;
+	int choose, i;
+	
+	for(i = 0; i < 11; i++){
+		printf("%c", 219);	
+	}
+	printf(" GAMEMODE ");
+	for(i = 0; i < 11; i++){
+		printf("%c", 219);	
+	}
+	printf("\n\n");
+	
+	if(language == 1){
 	printf(" Pilih Mode Permaian :\n");
-	printf(" 1. Mudah (3 Cakram)\n");
-  	printf(" 2. Sedang (4 Cakram)\n");
-   	printf(" 3. Sulit (5 Cakram)\n");
+	printf(" [1] Mudah (3 Cakram)\n");
+  	printf(" [2] Sedang (4 Cakram)\n");
+   	printf(" [3] Sulit (5 Cakram)\n");
+   	printf(" [0] Kembali\n");
    	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
-    
+   }else{
+	printf(" Choose Game Mode :\n");
+	printf(" [1] Easy (3 Disks)\n");
+  	printf(" [2] Medium (4 Disks)\n");
+   	printf(" [3] Hard (5 Disks)\n");
+   	printf(" [0] Back\n");
+   	printf(" Your Choice : "); scanf("%d", &choose); fflush(stdin);
+   }
+
    return choose;
 }
 
-void checkWinner(stack S, int mode){
+boolean checkWinner(stack S, int mode){
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : stack S mungkin kosong atau ada isi 
-   F.S : mengembalikan nilai true apabila sudah ada tersusun lengkap pada tiang tengah atau bawah, dan false apabila belum ada yang tersusun lengkap
+   F.S : mengembalikan nilai true apabila sudah ada tersusun lengkap pada tower tengah atau bawah, dan false apabila belum ada yang tersusun lengkap
 */
    if(hitungBanyakCakram(S) == mode){
       return true;
@@ -192,13 +238,14 @@ void showWelcome(int language){
 * I.S : program belum berjalan 
    F.S : Menampilkan ucapan selamat bermain game hanoi tower
 */
+	int i;
 	if (language == 1)
 	{
 		for (i=0 ; i < 32 ; i++)
 			printf("%c", 219);
 		printf("\n\n");
-		printf("         SELAMAT BERMAIN         \n");
-		printf("         GAME HANOI TOWER        \n\n");
+		printf("        SELAMAT BERMAIN         \n");
+		printf("        GAME HANOI TOWER        \n\n");
 		for (i=0 ; i < 32 ; i++)
 			printf("%c", 219);
 		printf("\n\n");
@@ -207,9 +254,9 @@ void showWelcome(int language){
 		for (i=0 ; i < 32 ; i++)
 			printf("%c", 219);
 		printf("\n\n");
-		printf("              WELCOME             \n");
-		printf("                TO                \n");
-		printf("         HANOI TOWER GAME         \n\n");
+		printf("             WELCOME              \n");
+		printf("               TO                \n");
+		printf("        HANOI TOWER GAME         \n\n");
 		for (i=0 ; i < 32 ; i++)
 			printf("%c", 219);
 		printf("\n\n");

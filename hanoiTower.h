@@ -31,7 +31,7 @@ I.S. : bahasa belum dipilih
 F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 utnuk bahasa Inggris*/
 
 //fitur main menu
-int printMenu();
+int printMenu(int language);
 /* 	Author : Gefi Aulia Sanjaya 
 I.S : Layar kosong
 F.S : Menampilkan tampilan Main Menu ke layar*/
@@ -42,9 +42,9 @@ int printTutorial();
 I.S. : layar
 F.S. : pada layar telah tampil penjelasan permainan, cara bermain, dan juga credits mengenai identitas pembuat program.*/
 
-//fitur play
-void moveCakram(stack a, stack b);  //isinya pake push pop
-/*	Author : Salma Syawalan Putriadhinia
+//fitur pindah cakram
+void moveCakram(stack a, stack b); 
+/*	Author : Muhammad Rasyid Fadlurrahman
 I.S. : cakram teratas dari stack a belum berpindah
 F.S. : cakram sudah berpindah ke stack b*/
 
@@ -58,7 +58,7 @@ F.S. : ketiga tower sudah ditampilkan ke layar*/
 //fitur surrender(Gefi)
 /* ini bisa tanpa modul. Misal ada if( variabel == 0) maka menampilkan pilihan mau return ke mainmenu atau quit .*/
 
-int score(int moves, int cakram);
+int score(int moves, int mode);
 /* 	Author : Gefi Aulia Sanjaya 
    	I.S : score = Nil
    	F.S : Mengembalikan nilai score */
@@ -70,12 +70,12 @@ void printHighscore();
    F.S : menampilkan highhscore 10 besar 
 */
 
-int chooseMode();
+int chooseMode(int language);
 /* Author : Gefi Aulia Sanjaya 
    I.S : mode belum dipilih
    F.S : mengembalikan nilai chooseMode antara 3/4/5 */
 
-void checkWinner(stack S, int mode);
+boolean checkWinner(stack S, int mode);
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : stack S mungkin kosong atau ada isi 
    F.S : mengembalikan nilai true apabila sudah ada tersusun lengkap pada tiang tengah atau bawah, dan false apabila belum ada yang tersusun lengkap
