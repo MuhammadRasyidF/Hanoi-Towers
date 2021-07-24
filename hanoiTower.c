@@ -63,25 +63,29 @@ F.S : Menampilkan tampilan Main Menu ke layar*/
 	}
 	printf("\n\n");
 	
-	if(language == 1){
-		printf(" [1] Bermain\n");
-	  	printf(" [2] Tutorial\n");
-	   	printf(" [3] Highscore\n");
-	   	printf(" [0] Keluar\n\n");
-	   	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
-	} else{
-		printf(" [1] Play\n");
-	  	printf(" [2] Tutorial\n");
-	   	printf(" [3] Highscore\n");
-	   	printf(" [0] Exit\n\n");
-	   	printf(" Your Choice : "); scanf("%d", &choose); fflush(stdin);
+	while(choose < 0 || choose > 3){
+		system("cls");
+		banner();
+		if(language == 1){
+			printf(" [1] Bermain\n");
+		  	printf(" [2] Tutorial\n");
+		   	printf(" [3] Highscore\n");
+		   	printf(" [0] Keluar\n\n");
+		   	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
+		} else{
+			printf(" [1] Play\n");
+		  	printf(" [2] Tutorial\n");
+		   	printf(" [3] Highscore\n");
+		   	printf(" [0] Exit\n\n");
+		   	printf(" Your Choice : "); scanf("%d", &choose); fflush(stdin);
+		}
 	}
     
 	return choose;
 }
 
 //fitur tutorial
-int printTutorial(){
+int printTutorial(int language){
 	/*	Author : Salma Syawalan Putriadhinia
 	I.S. : tutorial, cara bermain, dan credits belum ditampilkan ke layar
 	F.S. : pada layar telah tampil penjelasan permainan, cara bermain, dan juga credits mengenai identitas pembuat program.*/
@@ -93,31 +97,56 @@ int printTutorial(){
 	for (i=0 ; i < 58 ; i++)
    		printf("%c", 220);
    	printf("\n\n");
-	printf("[1] Permainan ini terdiri dari tiga tiang dan sejumlah\n");
-	printf("    cakram antara lain 3 cakram, 4 cakram, dan 5 cakram,\n");
-	printf("    dengan ukuran yang berbeda-beda yang dapat dimasukan\n");
-	printf("    ke tiang mana saja.\n");
-	printf("[2] Permainan dimulai dengan cakram-cakram yang tertumpuk\n");
-	printf("    berurutan berdasarkan ukuran dalam tiang yang paling\n");
-	printf("    kiri, cakram terbesar diletakkan terbawah dan cakram\n");
-	printf("    terkecil diletakkan teratas, sehingga membentuk\n");
-	printf("    kerucut.\n");
-	printf("[3] Pemain harus memindahkan cakram ke tiang lain, baik\n");
-	printf("    tiang tengah atau tiang kanan, sampai susunan cakram\n");
-	printf("    tersusun di tiang lain\n\n");
-	printf("========================== ATURAN ========================\n\n");
-	printf("[1] Pemain hanya dapat memindahkan satu cakram dalam satu\n");
-	printf("    waktu.\n");
-	printf("[2] Pemain tidak boleh meletakkan cakram di atas cakram lain\n");
-	printf("    yang lebih kecil.\n\n");
-	printf("========================= TENTANG =========================\n");
-	printf("Permainan ini dibuat dengan menggunakan bahasa C\n\n");
-	printf("Author : \n");
-	printf("[1] Gefi Aulia Sanjaya\n");
-	printf("[2] Muhammad Rasyid Fadlurrahman\n");
-	printf("[3] Salma Syawalan Putriadhinia\n\n");
-	printf("==========================================================\n");
-
+   	if(language == 1){
+		printf("[1] Permainan ini terdiri dari tiga tiang dan sejumlah\n");
+		printf("    cakram antara lain 3 cakram, 4 cakram, dan 5 cakram,\n");
+		printf("    dengan ukuran yang berbeda-beda yang dapat dimasukan\n");
+		printf("    ke tiang mana saja.\n");
+		printf("[2] Permainan dimulai dengan cakram-cakram yang tertumpuk\n");
+		printf("    berurutan berdasarkan ukuran dalam tiang yang paling\n");
+		printf("    kiri, cakram terbesar diletakkan terbawah dan cakram\n");
+		printf("    terkecil diletakkan teratas, sehingga membentuk\n");
+		printf("    kerucut.\n");
+		printf("[3] Pemain harus memindahkan cakram ke tiang lain, baik\n");
+		printf("    tiang tengah atau tiang kanan, sampai susunan cakram\n");
+		printf("    tersusun di tiang lain\n\n");
+		printf("========================== ATURAN ========================\n\n");
+		printf("[1] Pemain hanya dapat memindahkan satu cakram dalam satu\n");
+		printf("    waktu.\n");
+		printf("[2] Pemain tidak boleh meletakkan cakram di atas cakram lain\n");
+		printf("    yang lebih kecil.\n\n");
+		printf("========================= TENTANG =========================\n");
+		printf("Permainan ini dibuat dengan menggunakan bahasa C\n\n");
+		printf("Author : \n");
+		printf("[1] Gefi Aulia Sanjaya\n");
+		printf("[2] Muhammad Rasyid Fadlurrahman\n");
+		printf("[3] Salma Syawalan Putriadhinia\n\n");
+		printf("==========================================================\n");
+	}else{
+		printf("[1] This game consists of three towers and a number\n");
+		printf("    of discs including 3 discs, 4 discs, and 5 discs,\n");
+		printf("    with different sizes that can be inserted into\n");
+		printf("    any tower.\n");
+		printf("[2] The game starts with the discs stacked in\n");
+		printf("    order according to size in the far left tower,\n");
+		printf("    the largest disc is placed at the bottom and the\n");
+		printf("    smallest disc is placed at the top, thus forming\n");
+		printf("    a cone.\n");
+		printf("[3] Players must move the disc to another tower,\n");
+		printf("    either the center tower or the right tower, until\n");
+		printf("    the discs are arranged on the other tower.\n\n");
+		printf("========================== RULES ==========================\n\n");
+		printf("[1] Players can only move one disc at a time\n");
+		printf("[2] Players may not place a disc on top of another,\n");
+		printf("    smaller disc.\n\n");
+		printf("========================== ABOUT ==========================\n");
+		printf("This game is made in C. language\n\n");
+		printf("Author : \n");
+		printf("[1] Gefi Aulia Sanjaya\n");
+		printf("[2] Muhammad Rasyid Fadlurrahman\n");
+		printf("[3] Salma Syawalan Putriadhinia\n\n");
+		printf("==========================================================\n");
+	}
 }
 
 //fitur pindah cakram
@@ -182,21 +211,25 @@ int chooseMode(int language){
 	}
 	printf("\n\n");
 	
-	if(language == 1){
-	printf(" Pilih Mode Permaian :\n");
-	printf(" [1] Mudah (3 Cakram)\n");
-  	printf(" [2] Sedang (4 Cakram)\n");
-   	printf(" [3] Sulit (5 Cakram)\n");
-   	printf(" [0] Kembali\n");
-   	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
-   }else{
-	printf(" Choose Game Mode :\n");
-	printf(" [1] Easy (3 Disks)\n");
-  	printf(" [2] Medium (4 Disks)\n");
-   	printf(" [3] Hard (5 Disks)\n");
-   	printf(" [0] Back\n");
-   	printf(" Your Choice : "); scanf("%d", &choose); fflush(stdin);
-   }
+	while(choose < 0 || choose > 3){
+		system("cls");
+		banner();
+		if(language == 1){
+		printf(" Pilih Mode Permaian :\n");
+		printf(" [1] Mudah (3 Cakram)\n");
+	  	printf(" [2] Sedang (4 Cakram)\n");
+	   	printf(" [3] Sulit (5 Cakram)\n");
+	   	printf(" [0] Kembali\n");
+	   	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
+	   }else{
+		printf(" Choose Game Mode :\n");
+		printf(" [1] Easy (3 Disks)\n");
+	  	printf(" [2] Medium (4 Disks)\n");
+	   	printf(" [3] Hard (5 Disks)\n");
+	   	printf(" [0] Back\n");
+	   	printf(" Your Choice : "); scanf("%d", &choose); fflush(stdin);
+	   }
+	}
 
    return choose;
 }
@@ -213,18 +246,31 @@ boolean checkWinner(stack S, int mode){
    return false;
 }
 
+
 char* descLevel(int cakram){
 	switch(cakram){
 		case 3:
-			return "easy";
+			if(language == 1){
+				return "Mudah";
+			}else{
+				return "Easy";
+			}
 		case 4:
-			return "medium";
+			if(language == 1){
+				return "Sedang";
+			}else{
+				return "Medium";
+			}
 		case 5:
-			return "hard";
+			if(language == 1){
+				return "Sulit";
+			}else{
+				return "Hard";
+			}
 	}
 }
 
-void showIsWin(boolean isWin, int moves, int mode){
+void showIsWin(boolean isWin, int moves, int mode, int language){
 	system("cls");
 	banner();
 
@@ -236,16 +282,26 @@ void showIsWin(boolean isWin, int moves, int mode){
            printf("%c", 219);
     printf("\n\n");
     
-	if(isWin){
-		printf("Selamat! Anda berhasil\nmenyelesaikan permainan Hanoi\nTower dengan %d langkah dalam mode %s !\n", moves, level(mode));
-		printf("Skor anda : %d\n\n", score(moves, mode));
-	}
-	else{
-		printf("Anda memilih untuk menyerah...\n\n");
+	if(language == 1){
+		if(isWin){
+			printf("Selamat! Anda berhasil\nmenyelesaikan permainan Hanoi\nTower dengan %d langkah dalam mode %s !\n", moves, level(mode,1));
+			printf("Skor anda : %d\n\n", score(moves, mode));
+		}
+		else{
+			printf("Anda memilih untuk menyerah...\n\n");
+		}
+	}else{
+		if(isWin){
+			printf("Congratulations! You have won\nHanoi Tower Game \nwithin %d steps at %s mode!\n", moves, level(mode,2));
+			printf("Your score : %d\n\n", score(moves, mode));
+		}
+		else{
+			printf("You have been surrender...\n\n");
+		}
 	}
 }
 
-void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, int *moves){
+void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, int *moves, int language){
 	int dari, ke;
 	
 	while((*isWin) == false){
@@ -254,12 +310,19 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 		banner();
 		printf("\nMoves : %d\n\n", moves);
 		showTowers(Tower1, Tower2, Tower3, mode);
-		printf("\nPindahkan\ndari tower (masukkan '0' untuk menyerah) : "); scanf("%d", &dari); fflush(stdin);
+		if(language == 1){
+			printf("\nPindahkan\ndari tower (masukkan '0' untuk menyerah) : "); scanf("%d", &dari); fflush(stdin);
+		}else{
+			printf("\nMove\nfrom tower (insert '0' to surrender) : "); scanf("%d", &dari); fflush(stdin);
+		}
 		if(dari == 0){
 			return;
 		}
-		
-		printf("ke tower : "); scanf("%d", &ke); fflush(stdin);
+		if(language == 1){
+			printf("ke tower : "); scanf("%d", &ke); fflush(stdin);
+		}else{
+			printf("to tower : "); scanf("%d", &ke); fflush(stdin);
+		}
 		Beep(500, 500);
 		
 		//move pake switch

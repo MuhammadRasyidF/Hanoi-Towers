@@ -37,7 +37,7 @@ I.S : Layar kosong
 F.S : Menampilkan tampilan Main Menu ke layar*/
 
 //fitur tutorial
-int printTutorial();
+int printTutorial(int language);
 /*	Author : Salma Syawalan Putriadhinia
 I.S. : layar
 F.S. : pada layar telah tampil penjelasan permainan, cara bermain, dan juga credits mengenai identitas pembuat program.*/
@@ -83,9 +83,9 @@ boolean checkWinner(stack S, int mode);
 
 char* descLevel(int cakram);
 
-void showIsWin(boolean isWin, int moves, int mode);
+void showIsWin(boolean isWin, int moves, int mode, int language);
 
-void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, int *moves);
+void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, int *moves, int language);
 /* Author : Salma Syawalan Putriadhinia 
 * I.S : mode permainan sudah dipilih
    F.S : memulai permainan, permainan berlangsung sampai pemain menang atau menyerah
