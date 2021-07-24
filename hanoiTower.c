@@ -215,22 +215,48 @@ boolean checkWinner(stack S, int mode){
    return false;
 }
 
-void printIfWin(booelan isWin){
-	
+char* level(int cakram){
+	switch(cakram){
+		case 3:
+			return "easy";
+		case 4:
+			return "medium";
+		case 5:
+			return "hard";
+	}
 }
 
-void play(int mode, stack Tower1, stack Tower2, stack Tower3){
+void showIsWin(booelan isWin, int moves, int mode){
+	banner();
+	for (i=0 ; i < 11 ; i++)
+           printf("%c", 219);
+    printf(" GAMEOVER ");
+    for (i=0 ; i < 11 ; i++)
+           printf("%c", 219);
+    printf("\n\n");
+    
+	if(isWin){
+		printf("Selamat! Anda berhasil\nmenyelesaikan permainan Hanoi\nTower dengan %d langkah dalam mode %s !\n", moves, level(mode));
+		printf("Skor anda : %d\n\n", score(moves, mode));
+	}
+	else{
+		printf("Anda memilih untuk menyerah...\n\n");
+	}
+}
+
+void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, int *moves){
 	int dari, ke;
 	boolean isWin;
 	
-	while(true){
+	while((*isWin) == false){
 		system("cls");
 		//tampilin tower
 		banner();
+		printf("\nMoves : %d\n\n", move);
 		showTowers(Tower1, Tower2, Tower3, mode);
 		printf("\nPindahkan\ndari tower (masukkan '0' untuk menyerah) : "); scanf("%d", &dari); fflush(stdin);
+		
 		if(dari == 0){
-			printf("Pemain menyerah...\n");
 			return;
 		}
 		
@@ -260,12 +286,13 @@ void play(int mode, stack Tower1, stack Tower2, stack Tower3){
 				break;
 			}
 		}
-			
+		(*moves)++;
+		
 		//cek kondisi menang;
-		isWin = checkWinner(Tower2, mode);
-		printIfWin(isWin);
-		isWin = checkWinner(Tower3, mode);
-		printIfWin(isWin);
+		(*isWin) = checkWinner(Tower2, mode);
+		if((*isWin))
+			continue;
+		(*isWin) = checkWinner(Tower3, mode);
 		/*if(isWin){
 			printf("Selamat! Anda berhasil menyelesaikan permainan!\n");
 			return;

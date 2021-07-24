@@ -81,7 +81,11 @@ boolean checkWinner(stack S, int mode);
    F.S : mengembalikan nilai true apabila sudah ada tersusun lengkap pada tiang tengah atau bawah, dan false apabila belum ada yang tersusun lengkap
 */
 
-void play(int mode, stack Tower1, stack Tower2, stack Tower3);
+char* level(int cakram);
+
+void showIsWin(booelan isWin, int moves, int mode);
+
+void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3);
 /* Author : Salma Syawalan Putriadhinia 
 * I.S : mode permainan sudah dipilih
    F.S : memulai permainan, permainan berlangsung sampai pemain menang atau menyerah

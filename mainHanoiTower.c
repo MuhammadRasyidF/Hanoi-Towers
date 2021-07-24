@@ -16,7 +16,9 @@ int main(){
     stack Tower1;
     stack Tower2;
     stack Tower3;
-    int choose, mode, language;
+    int choose, mode, language, i;
+    int moves = 0;
+    boolean isWin = false;
     char nama[20];
 
     buatTower(&Tower1);
@@ -45,7 +47,11 @@ int main(){
         case 1: //play
             banner();
             mode = chooseMode(language); //butuh parameter kondisi bahasa
-            //modul untuk main
+            /*for(i = mode; i > 0; i--){
+            	
+			}*/
+            play(mode, &isWin, Tower1, Tower2, Tower3, &moves);
+            showIsWin(isWin, moves);
             system("pause");
             break;
         case 2: //tutorial
