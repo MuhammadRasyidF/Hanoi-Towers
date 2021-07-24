@@ -215,7 +215,7 @@ boolean checkWinner(stack S, int mode){
    return false;
 }
 
-char* level(int cakram){
+char* descLevel(int cakram){
 	switch(cakram){
 		case 3:
 			return "easy";
@@ -246,7 +246,6 @@ void showIsWin(booelan isWin, int moves, int mode){
 
 void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, int *moves){
 	int dari, ke;
-	boolean isWin;
 	
 	while((*isWin) == false){
 		system("cls");
