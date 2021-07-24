@@ -157,7 +157,7 @@ int chooseMode(){
    return choose;
 }
 
-void checkWinner(stack S, int mode){
+boolean checkWinner(stack S, int mode){
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : stack S mungkin kosong atau ada isi 
    F.S : mengembalikan nilai true apabila sudah ada tersusun lengkap pada tiang tengah atau bawah, dan false apabila belum ada yang tersusun lengkap
@@ -169,8 +169,63 @@ void checkWinner(stack S, int mode){
    return false;
 }
 
-//moves(Salma)
-/* ini bisa tanpa modul. Jadi misal ada variabel int namanya countMoves, setiap selesai 1 kali loop nanti countMoves++.*/
+void printIfWin(booelan isWin){
+	
+}
+
+void play(int mode, stack Tower1, stack Tower2, stack Tower3){
+	int dari, ke;
+	boolean isWin;
+	
+	while(true){
+		system("cls");
+		//tampilin tower
+		banner();
+		showTowers(Tower1, Tower2, Tower3, mode);
+		printf("\nPindahkan\ndari tower (masukkan '0' untuk menyerah) : "); scanf("%d", &dari); fflush(stdin);
+		if(dari == 0){
+			printf("Pemain menyerah...\n");
+			return;
+		}
+		
+		printf("ke tower : "); scanf("%d", &ke); fflush(stdin);
+		
+		//move pake switch
+		switch(dari){
+			case 1 :{ 
+				if(ke == 2)
+					moveCakram(Tower1, Tower2);
+				else if(ke == 3)
+					moveCakram(Tower1, Tower3);
+				break;
+			}
+			case 2:{
+				if(ke == 1)
+					moveCakram(Tower2, Tower1);
+				else if(ke == 3)
+					moveCakram(Tower2, Tower3);
+				break;
+			}
+			case 3:{
+				if(ke == 1)
+					moveCakram(Tower3, Tower1);
+				else if(ke == 2)
+					moveCakram(Tower3, Tower2);
+				break;
+			}
+		}
+			
+		//cek kondisi menang;
+		isWin = checkWinner(Tower2, mode);
+		printIfWin(isWin);
+		isWin = checkWinner(Tower3, mode);
+		printIfWin(isWin);
+		/*if(isWin){
+			printf("Selamat! Anda berhasil menyelesaikan permainan!\n");
+			return;
+		}*/
+	}
+}
 
 void banner(){
 /* Author : Muhammad Rasyid Fadlurrahman 
