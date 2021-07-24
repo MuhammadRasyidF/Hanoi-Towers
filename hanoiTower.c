@@ -38,7 +38,15 @@ int chooseLanguage(){
 /*	Author : Salma Syawalan Putriadhinia
 I.S. : bahasa belum dipilih
 F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 untuk bahasa Inggris*/
-
+	int choose = 0;
+	while(choose < 1 || choose > 2){
+		system("cls");
+		banner();
+		printf("[1] ID		[2] EN\n");
+		printf("\npilihan bahasa anda : ");
+		scanf("%d", &choose); fflush(stdin);
+	}
+	return choose;
 }
 
 //fitur main menu
@@ -79,9 +87,14 @@ int printTutorial(){
 	/*	Author : Salma Syawalan Putriadhinia
 	I.S. : tutorial, cara bermain, dan credits belum ditampilkan ke layar
 	F.S. : pada layar telah tampil penjelasan permainan, cara bermain, dan juga credits mengenai identitas pembuat program.*/
-	printf("==========================================================\n\n");
+	int i;
+	for (i=0 ; i < 58 ; i++)
+   		printf("%c", 223);
+   	printf("\n");
 	printf("                        HANOI TOWER\n\n");
-	printf("==========================================================\n\n");
+	for (i=0 ; i < 58 ; i++)
+   		printf("%c", 220);
+   	printf("\n\n");
 	printf("[1] Permainan ini terdiri dari tiga tiang dan sejumlah\n");
 	printf("    cakram antara lain 3 cakram, 4 cakram, dan 5 cakram,\n");
 	printf("    dengan ukuran yang berbeda-beda yang dapat dimasukan\n");
@@ -98,19 +111,18 @@ int printTutorial(){
 	printf("[1] Pemain hanya dapat memindahkan satu cakram dalam satu\n");
 	printf("    waktu.\n");
 	printf("[2] Pemain tidak boleh meletakkan cakram di atas cakram lain\n");
-	printf("    yang lebih kecil.\n\n")
+	printf("    yang lebih kecil.\n\n");
 	printf("========================= TENTANG =========================\n");
 	printf("Permainan ini dibuat dengan menggunakan bahasa C\n\n");
 	printf("Author : \n");
 	printf("[1] Gefi Aulia Sanjaya\n");
 	printf("[2] Muhammad Rasyid Fadlurrahman\n");
 	printf("[3] Salma Syawalan Putriadhinia\n\n");
-	printf("Tekan tombol manapun untuk melanjutkan...\n\n");
-	printf("==========================================================");
-	getchar();fflush(stdin);
+	printf("==========================================================\n");
+
 }
 
-//fitur play
+//fitur pindah cakram
 void moveCakram(stack a, stack b){
 /*	Author : Muhammad Rasyid Fadlurrahman
 I.S. : cakram teratas dari stack a belum berpindah
@@ -203,8 +215,90 @@ boolean checkWinner(stack S, int mode){
    return false;
 }
 
-//moves(Salma)
-/* ini bisa tanpa modul. Jadi misal ada variabel int namanya countMoves, setiap selesai 1 kali loop nanti countMoves++.*/
+char* level(int cakram){
+	switch(cakram){
+		case 3:
+			return "easy";
+		case 4:
+			return "medium";
+		case 5:
+			return "hard";
+	}
+}
+
+void showIsWin(booelan isWin, int moves, int mode){
+	banner();
+	for (i=0 ; i < 11 ; i++)
+           printf("%c", 219);
+    printf(" GAMEOVER ");
+    for (i=0 ; i < 11 ; i++)
+           printf("%c", 219);
+    printf("\n\n");
+    
+	if(isWin){
+		printf("Selamat! Anda berhasil\nmenyelesaikan permainan Hanoi\nTower dengan %d langkah dalam mode %s !\n", moves, level(mode));
+		printf("Skor anda : %d\n\n", score(moves, mode));
+	}
+	else{
+		printf("Anda memilih untuk menyerah...\n\n");
+	}
+}
+
+void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, int *moves){
+	int dari, ke;
+	boolean isWin;
+	
+	while((*isWin) == false){
+		system("cls");
+		//tampilin tower
+		banner();
+		printf("\nMoves : %d\n\n", move);
+		showTowers(Tower1, Tower2, Tower3, mode);
+		printf("\nPindahkan\ndari tower (masukkan '0' untuk menyerah) : "); scanf("%d", &dari); fflush(stdin);
+		
+		if(dari == 0){
+			return;
+		}
+		
+		printf("ke tower : "); scanf("%d", &ke); fflush(stdin);
+		
+		//move pake switch
+		switch(dari){
+			case 1 :{ 
+				if(ke == 2)
+					moveCakram(Tower1, Tower2);
+				else if(ke == 3)
+					moveCakram(Tower1, Tower3);
+				break;
+			}
+			case 2:{
+				if(ke == 1)
+					moveCakram(Tower2, Tower1);
+				else if(ke == 3)
+					moveCakram(Tower2, Tower3);
+				break;
+			}
+			case 3:{
+				if(ke == 1)
+					moveCakram(Tower3, Tower1);
+				else if(ke == 2)
+					moveCakram(Tower3, Tower2);
+				break;
+			}
+		}
+		(*moves)++;
+		
+		//cek kondisi menang;
+		(*isWin) = checkWinner(Tower2, mode);
+		if((*isWin))
+			continue;
+		(*isWin) = checkWinner(Tower3, mode);
+		/*if(isWin){
+			printf("Selamat! Anda berhasil menyelesaikan permainan!\n");
+			return;
+		}*/
+	}
+}
 
 void banner(){
 /* Author : Muhammad Rasyid Fadlurrahman 

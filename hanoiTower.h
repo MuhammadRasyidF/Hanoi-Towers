@@ -42,9 +42,9 @@ int printTutorial();
 I.S. : layar
 F.S. : pada layar telah tampil penjelasan permainan, cara bermain, dan juga credits mengenai identitas pembuat program.*/
 
-//fitur play
-void moveCakram(stack a, stack b);  //isinya pake push pop
-/*	Author : Salma Syawalan Putriadhinia
+//fitur pindah cakram
+void moveCakram(stack a, stack b); 
+/*	Author : Muhammad Rasyid Fadlurrahman
 I.S. : cakram teratas dari stack a belum berpindah
 F.S. : cakram sudah berpindah ke stack b*/
 
@@ -81,8 +81,15 @@ boolean checkWinner(stack S, int mode);
    F.S : mengembalikan nilai true apabila sudah ada tersusun lengkap pada tiang tengah atau bawah, dan false apabila belum ada yang tersusun lengkap
 */
 
-//moves(Salma)
-/* ini bisa tanpa modul. Jadi misal ada variabel int namanya countMoves, setiap selesai 1 kali loop nanti countMoves++.*/
+char* level(int cakram);
+
+void showIsWin(booelan isWin, int moves, int mode);
+
+void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3);
+/* Author : Salma Syawalan Putriadhinia 
+* I.S : mode permainan sudah dipilih
+   F.S : memulai permainan, permainan berlangsung sampai pemain menang atau menyerah
+*/
 
 void banner();
 /* Author : Muhammad Rasyid Fadlurrahman 
