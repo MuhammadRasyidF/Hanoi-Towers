@@ -13,27 +13,22 @@
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
+#include <windows.h>
 #include "boolean.h"
 
-#define Nil NULL
+#define Nil 0
+#define MaxEl 5
 
-#define Cakram(p) (p)->cakram
-#define Prev(p) p->prev
-
-#define top(s) (s).top
+#define Top(S) (S).Top
+#define InfoTop(S) (S).Cakram[(S).Top]
 
 /* Definisi Type Bentukan ADT Stack [Linked List] */
 
 typedef int infotype;
-
-typedef struct telmstack *Address;
+typedef int Address;
 
 typedef struct telmstack{
-	infotype Cakram;
-	Address Prev;
-}elemen;
-
-typedef struct{
+	infotype Cakram[MaxEl+1];
 	Address Top;
 }stack;
 
@@ -42,20 +37,7 @@ typedef struct{
 void buatTower(stack *S);
 /* Author : Muhammad Rasyid Fadlurrahman 
    I.S : S terdefinisi, tidak diketahui nilainya
-   F.S : S diinisialisasi top(s) = nil,
-*/
-
-/* {Operasi terhadap komponen : selektor Get dan Set} */
-//Destruktor or Dealokator
-Address alokasi(infotype X);
-//Author : Gefi Aulia Sanjaya 
-//Mengirim sebuah elemen stack dalam bentuk address
-
-void dealokasi(Address P);
-/* Author : Muhammad Rasyid Fadlurrahman 
-   I.S : P terdefinisi
-   F.S : P dikembalikan ke sistem
-   		 Melakukan dealokasi / pengembalian address P ke sistem
+   F.S : S diinisialisasi top(s) = 0,
 */
 
 /* {Kelompok Interaksi Dengan I/O Device} */
