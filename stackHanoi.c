@@ -58,17 +58,17 @@ void printTower(stack S, int mode){
 		}
 		printf("|");
 	}
-	Address current = S.Top;
-	// for(h = 0; h < hitungBanyakCakram(S) && current != Nil; h++){
-	// 	for(i = 0; i < (mode - current->Cakram); i++)
-	// 		printf(" ");
-	// 	for(i = 0; i <= (2 * current->Cakram) + 1; i++)
-	// 		printf("%c", 178);
-	// 	for(i = 0; i < (mode - current->Cakram); i++)
-	// 		printf(" ");
-	// 	printf("\n");
-	// 	current = current->Prev;
-	// }
+	Address current = Top(S);
+	for(h = 0; h < hitungBanyakCakram(S) && current != Nil; h++){
+		for(i = 0; i < (mode - InfoTop(S)); i++)
+			printf(" ");
+		for(i = 0; i <= (2 * InfoTop(S)) + 1; i++)
+			printf("%c", 178);
+		for(i = 0; i < (mode - InfoTop(S)); i++)
+			printf(" ");
+		printf("\n");
+		current = current--;
+	}
 	printf("===========\n\n\n");
 }
 
@@ -85,12 +85,12 @@ int hitungBanyakCakram(stack S){
    I.S : S terdefinisi, mungkin kosong, mungkin penuh
    F.S : mengembalikan nilai jumlah cakram pada suatu tower(stack)
 */
-	Address	current = S.Top;
+	Address	current = Top(S);
 	int banyakCakram = 0;
 	
 	while(current != Nil){
 		banyakCakram++;
-		// current = current->Prev;
+		current = current--;
 	}
 	
 	return banyakCakram;
