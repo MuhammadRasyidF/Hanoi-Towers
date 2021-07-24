@@ -225,6 +225,7 @@ char* level(int cakram){
 }
 
 void showIsWin(boolean isWin, int moves, int mode){
+	system("cls");
 	banner();
 
 	int i;
@@ -254,12 +255,12 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 		printf("\nMoves : %d\n\n", moves);
 		showTowers(Tower1, Tower2, Tower3, mode);
 		printf("\nPindahkan\ndari tower (masukkan '0' untuk menyerah) : "); scanf("%d", &dari); fflush(stdin);
-		
 		if(dari == 0){
 			return;
 		}
 		
 		printf("ke tower : "); scanf("%d", &ke); fflush(stdin);
+		Beep(500, 500);
 		
 		//move pake switch
 		switch(dari){
@@ -285,7 +286,9 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 				break;
 			}
 		}
-		(*moves)++;
+		if((dari != ke) && (dari > 0 && dari < 4)  && (ke > 0 && ke < 4)){
+			(*moves)++;
+		}
 		
 		//cek kondisi menang;
 		(*isWin) = checkWinner(Tower2, mode);

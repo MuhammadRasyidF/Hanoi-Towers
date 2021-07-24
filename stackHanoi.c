@@ -59,16 +59,16 @@ void printTower(stack S, int mode){
 		printf("|");
 	}
 	Address current = S.Top;
-	for(h = 0; h < hitungBanyakCakram(S) && current != Nil; h++){
-		for(i = 0; i < (mode - current->Cakram); i++)
-			printf(" ");
-		for(i = 0; i <= (2 * current->Cakram) + 1; i++)
-			printf("%c", 178);
-		for(i = 0; i < (mode - current->Cakram); i++)
-			printf(" ");
-		printf("\n");
-		current = current->Prev;
-	}
+	// for(h = 0; h < hitungBanyakCakram(S) && current != Nil; h++){
+	// 	for(i = 0; i < (mode - current->Cakram); i++)
+	// 		printf(" ");
+	// 	for(i = 0; i <= (2 * current->Cakram) + 1; i++)
+	// 		printf("%c", 178);
+	// 	for(i = 0; i < (mode - current->Cakram); i++)
+	// 		printf(" ");
+	// 	printf("\n");
+	// 	current = current->Prev;
+	// }
 	printf("===========\n\n\n");
 }
 
@@ -90,7 +90,7 @@ int hitungBanyakCakram(stack S){
 	
 	while(current != Nil){
 		banyakCakram++;
-		current = current->Prev;
+		// current = current->Prev;
 	}
 	
 	return banyakCakram;
