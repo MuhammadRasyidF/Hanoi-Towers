@@ -28,7 +28,7 @@ void masukCakram(stack *S, infotype X){
    I.S : S terdefinisi sembarang, mungkin kosong
    F.S : S bertambah sebuah elemen sebagai elemen pertama
 */
-   Top(*S) = Top(*S)+1;
+    Top(*S) = Top(*S)+1;
 	InfoTop(*S) = X;
 }
 
@@ -37,7 +37,7 @@ void keluarCakram(stack *S, infotype *X){
    I.S : S terdefinisi, Stack tidak kosong
    F.S : Menghapus elemen pada top(s)
 */
-   *X = InfoTop(*S);
+    *X = InfoTop(*S);
 	Top(*S) = Top(*S)-1;
 }
 

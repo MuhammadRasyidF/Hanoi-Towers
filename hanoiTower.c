@@ -14,13 +14,11 @@
 #include "hanoiTower.h"
 
 //fitur username
-void inputUname(char* nama){
+void inputUname(char nama[20]){
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : nama = NULL
    F.S : mengembalikan nama yang sudah diinputkan 
 */
-   nama = (char*)malloc(sizeof(char)*20); //alokasi char nama maks 20  huruf
-
 	int i;
     for (i=0 ; i < 11 ; i++) //print banner username
   		printf("%c", 219);

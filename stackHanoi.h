@@ -16,9 +16,10 @@
 #include "boolean.h"
 
 #define Nil 0
+#define MaxEl 5
 
 #define Top(S) (S).TOP
-#define InfoTop(S) (S).T[(S).TOP]
+#define InfoTop(S) (S).Cakram[(S).TOP]
 
 /* Definisi Type Bentukan ADT Stack [Linked List] */
 
@@ -26,7 +27,7 @@ typedef int infotype;
 typedef int Address;
 
 typedef struct telmstack{
-	infotype Cakram;
+	infotype Cakram[MaxEl+1];
 	Address Top;
 }stack;
 
