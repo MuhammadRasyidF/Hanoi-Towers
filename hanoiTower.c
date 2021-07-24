@@ -215,8 +215,90 @@ boolean checkWinner(stack S, int mode){
    return false;
 }
 
-//moves(Salma)
-/* ini bisa tanpa modul. Jadi misal ada variabel int namanya countMoves, setiap selesai 1 kali loop nanti countMoves++.*/
+char* level(int cakram){
+	switch(cakram){
+		case 3:
+			return "easy";
+		case 4:
+			return "medium";
+		case 5:
+			return "hard";
+	}
+}
+
+void showIsWin(booelan isWin, int moves, int mode){
+	banner();
+	for (i=0 ; i < 11 ; i++)
+           printf("%c", 219);
+    printf(" GAMEOVER ");
+    for (i=0 ; i < 11 ; i++)
+           printf("%c", 219);
+    printf("\n\n");
+    
+	if(isWin){
+		printf("Selamat! Anda berhasil\nmenyelesaikan permainan Hanoi\nTower dengan %d langkah dalam mode %s !\n", moves, level(mode));
+		printf("Skor anda : %d\n\n", score(moves, mode));
+	}
+	else{
+		printf("Anda memilih untuk menyerah...\n\n");
+	}
+}
+
+void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, int *moves){
+	int dari, ke;
+	boolean isWin;
+	
+	while((*isWin) == false){
+		system("cls");
+		//tampilin tower
+		banner();
+		printf("\nMoves : %d\n\n", move);
+		showTowers(Tower1, Tower2, Tower3, mode);
+		printf("\nPindahkan\ndari tower (masukkan '0' untuk menyerah) : "); scanf("%d", &dari); fflush(stdin);
+		
+		if(dari == 0){
+			return;
+		}
+		
+		printf("ke tower : "); scanf("%d", &ke); fflush(stdin);
+		
+		//move pake switch
+		switch(dari){
+			case 1 :{ 
+				if(ke == 2)
+					moveCakram(Tower1, Tower2);
+				else if(ke == 3)
+					moveCakram(Tower1, Tower3);
+				break;
+			}
+			case 2:{
+				if(ke == 1)
+					moveCakram(Tower2, Tower1);
+				else if(ke == 3)
+					moveCakram(Tower2, Tower3);
+				break;
+			}
+			case 3:{
+				if(ke == 1)
+					moveCakram(Tower3, Tower1);
+				else if(ke == 2)
+					moveCakram(Tower3, Tower2);
+				break;
+			}
+		}
+		(*moves)++;
+		
+		//cek kondisi menang;
+		(*isWin) = checkWinner(Tower2, mode);
+		if((*isWin))
+			continue;
+		(*isWin) = checkWinner(Tower3, mode);
+		/*if(isWin){
+			printf("Selamat! Anda berhasil menyelesaikan permainan!\n");
+			return;
+		}*/
+	}
+}
 
 void banner(){
 /* Author : Muhammad Rasyid Fadlurrahman 
