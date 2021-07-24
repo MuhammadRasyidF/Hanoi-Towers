@@ -39,14 +39,12 @@ int main(){
     while (true)
     {
         system("cls");
-        banner();
         choose = printMenu(language); //Menampilkan Main Menu //butuh parameter kondisi bahasa
         system("cls");
 
         switch (choose)
         {
         case 1: //play
-            banner();
             mode = chooseMode(language); //butuh parameter kondisi bahasa
             if(mode == 0){
                 continue;
@@ -54,8 +52,8 @@ int main(){
             /*for(i = mode; i > 0; i--){
             	
 			}*/
-            play(mode, &isWin, Tower1, Tower2, Tower3, &moves);
-            showIsWin(isWin, moves, mode);
+            play(mode, &isWin, Tower1, Tower2, Tower3, &moves, language);
+            showIsWin(isWin, moves, mode, language);
             system("pause");
             break;
         case 2: //tutorial

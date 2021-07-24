@@ -8,3 +8,5 @@ mainHanoiTower.o
 Makefile.win
 stackHanoi.o
 Tubes.exe
+Tubes.dev
+Tubes.layout
