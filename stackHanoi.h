@@ -18,8 +18,8 @@
 #define Nil 0
 #define MaxEl 5
 
-#define Top(S) (S).TOP
-#define InfoTop(S) (S).Cakram[(S).TOP]
+#define Top(S) (S).Top
+#define InfoTop(S) (S).Cakram[(S).Top]
 
 /* Definisi Type Bentukan ADT Stack [Linked List] */
 

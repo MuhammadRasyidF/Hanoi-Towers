@@ -51,7 +51,7 @@ int main(){
             	
 			}*/
             play(mode, &isWin, Tower1, Tower2, Tower3, &moves);
-            showIsWin(isWin, moves);
+            showIsWin(isWin, moves, mode);
             system("pause");
             break;
         case 2: //tutorial

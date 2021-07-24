@@ -224,8 +224,10 @@ char* level(int cakram){
 	}
 }
 
-void showIsWin(booelan isWin, int moves, int mode){
+void showIsWin(boolean isWin, int moves, int mode){
 	banner();
+
+	int i;
 	for (i=0 ; i < 11 ; i++)
            printf("%c", 219);
     printf(" GAMEOVER ");
@@ -244,13 +246,12 @@ void showIsWin(booelan isWin, int moves, int mode){
 
 void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, int *moves){
 	int dari, ke;
-	boolean isWin;
 	
 	while((*isWin) == false){
 		system("cls");
 		//tampilin tower
 		banner();
-		printf("\nMoves : %d\n\n", move);
+		printf("\nMoves : %d\n\n", moves);
 		showTowers(Tower1, Tower2, Tower3, mode);
 		printf("\nPindahkan\ndari tower (masukkan '0' untuk menyerah) : "); scanf("%d", &dari); fflush(stdin);
 		
