@@ -93,7 +93,7 @@ int printTutorial(int language){
 	for (i=0 ; i < 58 ; i++)
    		printf("%c", 223);
    	printf("\n");
-	printf("                        HANOI TOWER\n\n");
+	printf("                        HANOI TOWER\n");
 	for (i=0 ; i < 58 ; i++)
    		printf("%c", 220);
    	printf("\n\n");
