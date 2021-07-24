@@ -17,30 +17,9 @@
 void buatTower(stack *S){
 /* Author : Muhammad Rasyid Fadlurrahman 
    I.S : S terdefinisi, tidak diketahui nilainya
-   F.S : S diinisialisasi top(s) = nil,
+   F.S : S diinisialisasi top(s) = 0,
 */
-   S->Top = Nil;
-}
-
-/* {Operasi terhadap komponen : selektor Get dan Set} */
-//Destruktor or Dealokator
-Address alokasi(infotype X){
-//Author : Gefi Aulia Sanjaya 
-//Mengirim sebuah elemen stack dalam bentuk address
-   Address temp = (Address)malloc(sizeof(elemen));
-   temp->Cakram = X;
-   temp->Prev = Nil;
-   return temp;
-}
-
-void dealokasi(Address P){
-/* Author : Muhammad Rasyid Fadlurrahman 
-   I.S : P terdefinisi
-   F.S : P dikembalikan ke sistem
-   		 Melakukan dealokasi / pengembalian address P ke sistem
-*/
-   P->Prev = Nil;
-	free(P);
+   Top(*S) = Nil;
 }
 
 /* {Kelompok Interaksi Dengan I/O Device} */
@@ -49,13 +28,8 @@ void masukCakram(stack *S, infotype X){
    I.S : S terdefinisi sembarang, mungkin kosong
    F.S : S bertambah sebuah elemen sebagai elemen pertama
 */
-   Address temp = alokasi(X);
-   if(S->Top == Nil){
-      S->Top = temp;
-      return;
-   }
-   temp->Prev = S->Top;
-   S->Top = temp;
+    Top(*S) = Top(*S)+1;
+	InfoTop(*S) = X;
 }
 
 void keluarCakram(stack *S, infotype *X){
@@ -63,13 +37,11 @@ void keluarCakram(stack *S, infotype *X){
    I.S : S terdefinisi, Stack tidak kosong
    F.S : Menghapus elemen pada top(s)
 */
-   if(isTowerEmpty(*S)){
-      return;
-   }
-   *X = S->Top->Cakram;
-   Address temp = S->Top;
-   S->Top = S->Top->Prev;
-   dealokasi(temp);
+	if(isTowerEmpty(*S)){
+		return;
+	}
+    *X = InfoTop(*S);
+	Top(*S) = Top(*S)-1;
 }
 
 void printTower(stack S, int mode){
@@ -87,16 +59,16 @@ void printTower(stack S, int mode){
 		printf("|");
 	}
 	Address current = S.Top;
-	for(h = 0; h < hitungBanyakCakram(S) && current != Nil; h++){
-		for(i = 0; i < (mode - current->Cakram); i++)
-			printf(" ");
-		for(i = 0; i <= (2 * current->Cakram) + 1; i++)
-			printf("%c", 178);
-		for(i = 0; i < (mode - current->Cakram); i++)
-			printf(" ");
-		printf("\n");
-		current = current->Prev;
-	}
+	// for(h = 0; h < hitungBanyakCakram(S) && current != Nil; h++){
+	// 	for(i = 0; i < (mode - current->Cakram); i++)
+	// 		printf(" ");
+	// 	for(i = 0; i <= (2 * current->Cakram) + 1; i++)
+	// 		printf("%c", 178);
+	// 	for(i = 0; i < (mode - current->Cakram); i++)
+	// 		printf(" ");
+	// 	printf("\n");
+	// 	current = current->Prev;
+	// }
 	printf("===========\n\n\n");
 }
 
@@ -105,7 +77,7 @@ boolean isTowerEmpty(stack S){
    I.S : S terdefinisi, mungkin kosong, mungkin penuh
    F.S : mengembalikan nilai true apabila kosong dan false apabila tidak kosong.
 */
-   return (S.Top == Nil);
+   return (Top(S) == Nil);
 }
 
 int hitungBanyakCakram(stack S){
@@ -118,7 +90,7 @@ int hitungBanyakCakram(stack S){
 	
 	while(current != Nil){
 		banyakCakram++;
-		current = current->Prev;
+		// current = current->Prev;
 	}
 	
 	return banyakCakram;

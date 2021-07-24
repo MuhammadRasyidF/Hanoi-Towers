@@ -38,6 +38,7 @@ int main(){
 
     while (true)
     {
+        system("cls");
         banner();
         choose = printMenu(language); //Menampilkan Main Menu //butuh parameter kondisi bahasa
         system("cls");
@@ -47,22 +48,23 @@ int main(){
         case 1: //play
             banner();
             mode = chooseMode(language); //butuh parameter kondisi bahasa
+            if(mode == 0){
+                continue;
+            }
             /*for(i = mode; i > 0; i--){
             	
 			}*/
             play(mode, &isWin, Tower1, Tower2, Tower3, &moves);
-            showIsWin(isWin, moves);
+            showIsWin(isWin, moves, mode);
             system("pause");
             break;
         case 2: //tutorial
             printTutorial(language); //butuh parameter kondisi bahasa
             system("pause");
-            system("cls");
             break;
         case 3: //highscore
             printHighscore();
             system("pause");
-            system("cls");
             break;
         case 0: //Exit Program
             exit(0);
