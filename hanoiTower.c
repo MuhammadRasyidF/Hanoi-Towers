@@ -246,7 +246,8 @@ boolean checkWinner(stack S, int mode){
    return false;
 }
 
-char* level(int cakram, int language){
+
+char* descLevel(int cakram){
 	switch(cakram){
 		case 3:
 			if(language == 1){
