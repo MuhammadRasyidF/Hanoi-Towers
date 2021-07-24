@@ -83,9 +83,9 @@ boolean checkWinner(stack S, int mode);
 
 char* level(int cakram);
 
-void showIsWin(booelan isWin, int moves, int mode);
+void showIsWin(boolean isWin, int moves, int mode);
 
-void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3);
+void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, int *moves);
 /* Author : Salma Syawalan Putriadhinia 
 * I.S : mode permainan sudah dipilih
    F.S : memulai permainan, permainan berlangsung sampai pemain menang atau menyerah

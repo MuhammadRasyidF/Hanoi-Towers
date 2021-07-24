@@ -37,6 +37,9 @@ void keluarCakram(stack *S, infotype *X){
    I.S : S terdefinisi, Stack tidak kosong
    F.S : Menghapus elemen pada top(s)
 */
+	if(isTowerEmpty(*S)){
+		return;
+	}
     *X = InfoTop(*S);
 	Top(*S) = Top(*S)-1;
 }
