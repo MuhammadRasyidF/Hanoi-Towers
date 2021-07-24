@@ -16,7 +16,7 @@ int main(){
     stack Tower1;
     stack Tower2;
     stack Tower3;
-    int choose, mode, language1;
+    int choose, mode, language;
     char nama[20];
 
     buatTower(&Tower1);
@@ -28,9 +28,8 @@ int main(){
     inputUname(nama); //menu input username
     system("cls");
 
-    banner();
     language = chooseLanguage(); //menu pilih bahasa
-    system("cls"):
+    system("cls");
 
     showWelcome(language);
     system("cls");
@@ -38,25 +37,26 @@ int main(){
     while (true)
     {
         banner();
-        choose = printMenu(); //Menampilkan Main Menu //butuh parameter kondisi bahasa
-        system("cls"):
+        choose = printMenu(language); //Menampilkan Main Menu //butuh parameter kondisi bahasa
+        system("cls");
 
         switch (choose)
         {
         case 1: //play
             banner();
-            mode = chooseMode(); //butuh parameter kondisi bahasa
+            mode = chooseMode(language); //butuh parameter kondisi bahasa
             //modul untuk main
             system("pause");
             break;
         case 2: //tutorial
-            banner();
-            printTutorial(); //butuh parameter kondisi bahasa
+            printTutorial(language); //butuh parameter kondisi bahasa
             system("pause");
+            system("cls");
             break;
         case 3: //highscore
             printHighscore();
             system("pause");
+            system("cls");
             break;
         case 0: //Exit Program
             exit(0);
