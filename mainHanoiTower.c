@@ -53,9 +53,7 @@ int main(){
             if(mode == 0){
                 continue;
             }
-            for(i = mode; i > 0; i--){
-                masukCakram(&Tower1, i);
-			}
+            
             play(mode, &isWin, Tower1, Tower2, Tower3, &moves, language);
             showIsWin(isWin, moves, mode, language);
             system("pause");

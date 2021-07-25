@@ -21,6 +21,7 @@
 
 #define Top(S) (S).Top
 #define InfoTop(S) (S).Cakram[(S).Top]
+#define Info(A) (S).Cakram[A]
 
 /* Definisi Type Bentukan ADT Stack [Linked List] */
 
