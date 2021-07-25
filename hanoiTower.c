@@ -26,7 +26,7 @@ void inputUname(char nama[20]){
 	for (i=0 ; i < 11 ; i++)
    		printf("%c", 219);
    printf("\n\n");
-   printf("\nUsername	: ");
+   printf("\n Username	: ");
    scanf("%s", nama); fflush(stdin);
    printf("\n");
 }
@@ -57,7 +57,7 @@ F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 untuk bahasa Ing
 }
 
 //fitur main menu
-int printMenu(int language){
+int printMenu(int language, char nama[20]){
 /* 	Author : Gefi Aulia Sanjaya 
 I.S : Layar kosong
 F.S : Menampilkan tampilan Main Menu ke layar*/
@@ -76,13 +76,16 @@ F.S : Menampilkan tampilan Main Menu ke layar*/
 			printf("%c", 219);	
 		}
 		printf("\n\n");
+
 		if(language == 1){
+			printf(" Nama Pemain : %s\n\n", nama);
 			printf(" [1] Bermain\n");
 		  	printf(" [2] Tutorial\n");
 		   	printf(" [3] Highscore\n");
 		   	printf(" [0] Keluar\n\n");
 		   	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
 		} else{
+			printf(" Username : %s\n\n", nama);
 			printf(" [1] Play\n");
 		  	printf(" [2] Tutorial\n");
 		   	printf(" [3] Highscore\n");
@@ -245,7 +248,7 @@ int chooseMode(int language){
 	   }
 	}
 
-   return choose == 1 ? 3 : choose == 2 ? 4 : 5;
+   return choose == 1 ? 3 : choose == 2 ? 4 : choose == 3 ? 5 : 0;
 }
 
 boolean checkWinner(stack S, int mode){
@@ -298,7 +301,7 @@ void showIsWin(boolean isWin, int moves, int mode, int language){
     
 	if(language == 1){
 		if(isWin){
-			printf("Selamat! Anda berhasil\nmenyelesaikan permainan Hanoi\nTower dengan %d langkah dalam mode %s !\n", moves, descLevel(mode,1));
+			printf("Selamat!\nAnda berhasil menyelesaikan \npermainan Hanoi Tower \ndengan %d langkah dalam mode %s !\n\n", moves, descLevel(mode,1));
 			printf("Skor anda : %d\n\n", score(moves, mode));
 		}
 		else{
@@ -306,7 +309,7 @@ void showIsWin(boolean isWin, int moves, int mode, int language){
 		}
 	}else{
 		if(isWin){
-			printf("Congratulations! You have won\nHanoi Tower Game \nwithin %d steps at %s mode!\n", moves, descLevel(mode,2));
+			printf("Congratulations!\nYou have won Hanoi Tower Game \nwithin %d steps at %s mode!\n\n", moves, descLevel(mode,2));
 			printf("Your score : %d\n\n", score(moves, mode));
 		}
 		else{

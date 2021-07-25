@@ -16,9 +16,7 @@ int main(){
     stack Tower1;
     stack Tower2;
     stack Tower3;
-    int choose, mode, language, i;
-    int moves = 0;
-    boolean isWin = false;
+    int language, i;
     char nama[20];
 
     buatTower(&Tower1);
@@ -38,8 +36,11 @@ int main(){
 
     while (true)
     {
+        int choose, mode, moves = 0;
+        boolean isWin = false;
+
         system("cls");
-        choose = printMenu(language); //Menampilkan Main Menu //butuh parameter kondisi bahasa
+        choose = printMenu(language, nama); //Menampilkan Main Menu //butuh parameter kondisi bahasa
         system("cls");
 
         switch (choose)
