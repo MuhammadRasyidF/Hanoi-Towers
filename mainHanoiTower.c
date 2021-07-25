@@ -23,7 +23,10 @@ int main(){
     buatTower(&Tower2);
     buatTower(&Tower3);
 
-    //algorithm 
+    //algorithm
+    showBegin(); //menampilkan tampilan awal
+    system("cls");
+    
     banner();
     inputUname(nama); //menu input username
     system("cls");

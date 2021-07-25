@@ -103,4 +103,10 @@ void showWelcome(int language);
    F.S : Menampilkan ucapan selamat datang di game hanoi tower
 */
 
+void showBegin();
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : program belum berjalan 
+  F.S : Menampilkan tampilan awal game hanoi tower
+*/
+
 #endif
