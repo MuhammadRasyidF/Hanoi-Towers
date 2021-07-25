@@ -248,7 +248,7 @@ int chooseMode(int language){
 	   }
 	}
 
-   return choose == 1 ? 3 : choose == 2 ? 4 : 5;
+   return choose == 1 ? 3 : choose == 2 ? 4 : choose == 3 ? 5 : 0;
 }
 
 boolean checkWinner(stack S, int mode){
@@ -301,7 +301,7 @@ void showIsWin(boolean isWin, int moves, int mode, int language){
     
 	if(language == 1){
 		if(isWin){
-			printf("Selamat! Anda berhasil\nmenyelesaikan permainan Hanoi\nTower dengan %d langkah dalam mode %s !\n", moves, descLevel(mode,1));
+			printf("Selamat!\nAnda berhasil menyelesaikan \npermainan Hanoi Tower \ndengan %d langkah dalam mode %s !\n\n", moves, descLevel(mode,1));
 			printf("Skor anda : %d\n\n", score(moves, mode));
 		}
 		else{
@@ -309,7 +309,7 @@ void showIsWin(boolean isWin, int moves, int mode, int language){
 		}
 	}else{
 		if(isWin){
-			printf("Congratulations! You have won\nHanoi Tower Game \nwithin %d steps at %s mode!\n", moves, descLevel(mode,2));
+			printf("Congratulations!\nYou have won Hanoi Tower Game \nwithin %d steps at %s mode!\n\n", moves, descLevel(mode,2));
 			printf("Your score : %d\n\n", score(moves, mode));
 		}
 		else{
