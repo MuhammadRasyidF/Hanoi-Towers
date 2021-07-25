@@ -58,14 +58,12 @@ void printTower(stack S, int mode){
 		}
 		printf("|\n");
 	}
-	infotype current = InfoTop(S);
+	Address current = Top(S);
 	for(h = 0; h < hitungBanyakCakram(S) && current != Nil ; h++){
-		for(i = 0; i < (mode - InfoTop(S)); i++)
+		for(i = 0; i < (mode - Info(current)); i++)
 			printf(" ");
-		for(i = 0; i <= (2 * InfoTop(S)) + 1; i++)
+		for(i = 0; i < (2 * Info(current)) + 1; i++)
 			printf("%c", 178);
-		for(i = 0; i < (mode - InfoTop(S)); i++)
-			printf(" ");
 		printf("\n");
 		current = --current;
 	}

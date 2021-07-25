@@ -163,13 +163,18 @@ int printTutorial(int language){
 }
 
 //fitur pindah cakram
-void moveCakram(stack a, stack b){
+void moveCakram(stack *a, stack *b, boolean *isMoved){
 /*	Author : Muhammad Rasyid Fadlurrahman
 I.S. : cakram teratas dari stack a belum berpindah
 F.S. : cakram sudah berpindah ke stack b*/
     infotype temp;
-    keluarCakram(&a, &temp);
-    masukCakram(&b, temp);
+    if(InfoTop(*a) < InfoTop(*b) || isTowerEmpty((*b))){
+    	keluarCakram(a, &temp);
+    	masukCakram(b, temp);
+    	*isMoved = true;
+    	return;
+	}
+	*isMoved = false;
 }
 
 //fitur menampilkan tower
@@ -319,7 +324,11 @@ void showIsWin(boolean isWin, int moves, int mode, int language){
 }
 
 void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, int *moves, int language){
-	int dari, ke;
+	int dari, ke, i;
+	boolean isMoved = false;
+	for(i = mode; i > 0; i--){
+        masukCakram(&Tower1, i);
+	}
 	
 	while((*isWin) == false){
 		system("cls");
@@ -346,29 +355,38 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 		//move pake switch
 		switch(dari){
 			case 1 :{ 
-				if(ke == 2)
-					moveCakram(Tower1, Tower2);
-				else if(ke == 3)
-					moveCakram(Tower1, Tower3);
+				if(!isTowerEmpty(Tower1)){
+					if(ke == 2)
+						moveCakram(&Tower1, &Tower2, &isMoved);
+					else if(ke == 3)
+						moveCakram(&Tower1, &Tower3, &isMoved);
+					if(isMoved)
+						(*moves)++;
+				}
 				break;
 			}
 			case 2:{
-				if(ke == 1)
-					moveCakram(Tower2, Tower1);
-				else if(ke == 3)
-					moveCakram(Tower2, Tower3);
+				if(!isTowerEmpty(Tower2)){
+					if(ke == 1)
+						moveCakram(&Tower2, &Tower1, &isMoved);
+					else if(ke == 3)
+						moveCakram(&Tower2, &Tower3, &isMoved);
+					if(isMoved)
+						(*moves)++;
+				}
 				break;
 			}
 			case 3:{
-				if(ke == 1)
-					moveCakram(Tower3, Tower1);
-				else if(ke == 2)
-					moveCakram(Tower3, Tower2);
+				if(!isTowerEmpty(Tower3)){
+					if(ke == 1)
+						moveCakram(&Tower3, &Tower1, &isMoved);
+					else if(ke == 2)
+						moveCakram(&Tower3, &Tower2, &isMoved);
+					if(isMoved)
+						(*moves)++;
+				}
 				break;
 			}
-		}
-		if((dari != ke) && (dari > 0 && dari < 4)  && (ke > 0 && ke < 4)){
-			(*moves)++;
 		}
 		
 		//cek kondisi menang;
