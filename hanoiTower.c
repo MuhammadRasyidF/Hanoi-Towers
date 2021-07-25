@@ -37,9 +37,18 @@ int chooseLanguage(){
 I.S. : bahasa belum dipilih
 F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 untuk bahasa Inggris*/
 	int choose = 0;
+	int i;
 	while(choose < 1 || choose > 2){
 		system("cls");
 		banner();
+		for(i = 0; i < 11; i++){
+			printf("%c", 219);	
+		}
+		printf(" LANGUAGE ");
+		for(i = 0; i < 11; i++){
+			printf("%c", 219);	
+		}
+		printf("\n\n");
 		printf("[1] ID		[2] EN\n");
 		printf("\npilihan bahasa anda : ");
 		scanf("%d", &choose); fflush(stdin);
@@ -54,18 +63,19 @@ I.S : Layar kosong
 F.S : Menampilkan tampilan Main Menu ke layar*/
 	int choose, i;
 	
-	for(i = 0; i < 11; i++){
-		printf("%c", 219);	
-	}
-	printf(" MAINMENU ");
-	for(i = 0; i < 11; i++){
-		printf("%c", 219);	
-	}
-	printf("\n\n");
+	
 	
 	while(choose < 0 || choose > 3){
 		system("cls");
 		banner();
+		for(i = 0; i < 11; i++){
+			printf("%c", 219);	
+		}
+		printf(" MAINMENU ");
+		for(i = 0; i < 11; i++){
+			printf("%c", 219);	
+		}
+		printf("\n\n");
 		if(language == 1){
 			printf(" [1] Bermain\n");
 		  	printf(" [2] Tutorial\n");
@@ -93,7 +103,7 @@ int printTutorial(int language){
 	for (i=0 ; i < 58 ; i++)
    		printf("%c", 223);
    	printf("\n");
-	printf("                        HANOI TOWER\n\n");
+	printf("                        HANOI TOWER\n");
 	for (i=0 ; i < 58 ; i++)
    		printf("%c", 220);
    	printf("\n\n");
@@ -165,8 +175,11 @@ void showTowers(stack a, stack b, stack c, int mode){
 I.S. : ketiga tower belum ditampilkan ke layar
 F.S. : ketiga tower sudah ditampilkan ke layar*/
 	printTower(a, mode);
+	printf("\n\n");
 	printTower(b, mode);
+	printf("\n\n");
 	printTower(c, mode);
+	printf("\n");
 }
 
 //fitur surrender(Gefi)
@@ -202,18 +215,19 @@ int chooseMode(int language){
 */	
 	int choose, i;
 	
-	for(i = 0; i < 11; i++){
-		printf("%c", 219);	
-	}
-	printf(" GAMEMODE ");
-	for(i = 0; i < 11; i++){
-		printf("%c", 219);	
-	}
-	printf("\n\n");
+	
 	
 	while(choose < 0 || choose > 3){
 		system("cls");
 		banner();
+		for(i = 0; i < 11; i++){
+			printf("%c", 219);	
+		}
+		printf(" GAMEMODE ");
+		for(i = 0; i < 11; i++){
+			printf("%c", 219);	
+		}
+		printf("\n\n");
 		if(language == 1){
 		printf(" Pilih Mode Permaian :\n");
 		printf(" [1] Mudah (3 Cakram)\n");
@@ -231,7 +245,7 @@ int chooseMode(int language){
 	   }
 	}
 
-   return choose;
+   return choose == 1 ? 3 : choose == 2 ? 4 : 5;
 }
 
 boolean checkWinner(stack S, int mode){
@@ -247,7 +261,7 @@ boolean checkWinner(stack S, int mode){
 }
 
 
-char* descLevel(int cakram){
+char* descLevel(int cakram, int language){
 	switch(cakram){
 		case 3:
 			if(language == 1){
@@ -284,7 +298,7 @@ void showIsWin(boolean isWin, int moves, int mode, int language){
     
 	if(language == 1){
 		if(isWin){
-			printf("Selamat! Anda berhasil\nmenyelesaikan permainan Hanoi\nTower dengan %d langkah dalam mode %s !\n", moves, level(mode,1));
+			printf("Selamat! Anda berhasil\nmenyelesaikan permainan Hanoi\nTower dengan %d langkah dalam mode %s !\n", moves, descLevel(mode,1));
 			printf("Skor anda : %d\n\n", score(moves, mode));
 		}
 		else{
@@ -292,7 +306,7 @@ void showIsWin(boolean isWin, int moves, int mode, int language){
 		}
 	}else{
 		if(isWin){
-			printf("Congratulations! You have won\nHanoi Tower Game \nwithin %d steps at %s mode!\n", moves, level(mode,2));
+			printf("Congratulations! You have won\nHanoi Tower Game \nwithin %d steps at %s mode!\n", moves, descLevel(mode,2));
 			printf("Your score : %d\n\n", score(moves, mode));
 		}
 		else{
@@ -308,12 +322,12 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 		system("cls");
 		//tampilin tower
 		banner();
-		printf("\nMoves : %d\n\n", moves);
+		printf("\nMoves : %d\n\n", *moves);
 		showTowers(Tower1, Tower2, Tower3, mode);
 		if(language == 1){
-			printf("\nPindahkan\ndari tower (masukkan '0' untuk menyerah) : "); scanf("%d", &dari); fflush(stdin);
+			printf("\nPindahkan\ndari tower ('0' untuk menyerah) : "); scanf("%d", &dari); fflush(stdin);
 		}else{
-			printf("\nMove\nfrom tower (insert '0' to surrender) : "); scanf("%d", &dari); fflush(stdin);
+			printf("\nMove\nfrom tower ('0' to surrender) : "); scanf("%d", &dari); fflush(stdin);
 		}
 		if(dari == 0){
 			return;
@@ -323,7 +337,7 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 		}else{
 			printf("to tower : "); scanf("%d", &ke); fflush(stdin);
 		}
-		Beep(500, 500);
+		Beep(300, 300);
 		
 		//move pake switch
 		switch(dari){
