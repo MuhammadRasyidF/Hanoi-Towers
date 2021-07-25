@@ -81,7 +81,7 @@ boolean checkWinner(stack S, int mode);
    F.S : mengembalikan nilai true apabila sudah ada tersusun lengkap pada tiang tengah atau bawah, dan false apabila belum ada yang tersusun lengkap
 */
 
-char* descLevel(int cakram);
+char* descLevel(int cakram, int language);
 
 void showIsWin(boolean isWin, int moves, int mode, int language);
 
