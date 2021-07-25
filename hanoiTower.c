@@ -333,6 +333,7 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 			printf("\nMove\nfrom tower ('0' to surrender) : "); scanf("%d", &dari); fflush(stdin);
 		}
 		if(dari == 0){
+			Beep(300, 300);
 			return;
 		}
 		if(language == 1){
@@ -425,5 +426,38 @@ void showWelcome(int language){
 			printf("%c", 219);
 		printf("\n\n");
 	}
+	system("pause");
+}
+
+void showBegin(){
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : program belum berjalan 
+  F.S : Menampilkan tampilan awal game hanoi tower
+*/
+	int i, h, j = 1;
+
+	for (i=0 ; i < 32 ; i++)
+		printf("%c", 219);
+	printf("\n\n");
+	printf("           HANOI TOWER         \n\n");
+	for(h = 0; h < 5 ; h++){
+		for(i = 0; i < (15 - j); i++)
+			printf(" ");
+		for(i = 0; i <= (2 * j) + 1; i++)
+			printf("%c", 178);
+		printf("\n");
+		j++;
+	}
+	for(i = 0; i < 10; i++)
+		printf(" ");
+	for(i = 0; i <= 11; i++)
+		printf("=");
+	printf("\n\n");
+	for (i=0 ; i < 32 ; i++)
+		printf("%c", 219);
+	printf("\n\n");
+
+	Beep(500,500);
+
 	system("pause");
 }
