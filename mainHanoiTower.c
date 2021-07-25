@@ -16,16 +16,17 @@ int main(){
     stack Tower1;
     stack Tower2;
     stack Tower3;
-    int choose, mode, language, i;
-    int moves = 0;
-    boolean isWin = false;
+    int language, i;
     char nama[20];
 
     buatTower(&Tower1);
     buatTower(&Tower2);
     buatTower(&Tower3);
 
-    //algorithm 
+    //algorithm
+    showBegin(); //menampilkan tampilan awal
+    system("cls");
+    
     banner();
     inputUname(nama); //menu input username
     system("cls");
@@ -38,8 +39,11 @@ int main(){
 
     while (true)
     {
+        int choose, mode, moves = 0;
+        boolean isWin = false;
+
         system("cls");
-        choose = printMenu(language); //Menampilkan Main Menu //butuh parameter kondisi bahasa
+        choose = printMenu(language, nama); //Menampilkan Main Menu //butuh parameter kondisi bahasa
         system("cls");
 
         switch (choose)
@@ -49,9 +53,9 @@ int main(){
             if(mode == 0){
                 continue;
             }
-            /*for(i = mode; i > 0; i--){
-            	
-			}*/
+            for(i = mode; i > 0; i--){
+                masukCakram(&Tower1, i);
+			}
             play(mode, &isWin, Tower1, Tower2, Tower3, &moves, language);
             showIsWin(isWin, moves, mode, language);
             system("pause");

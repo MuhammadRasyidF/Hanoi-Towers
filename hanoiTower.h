@@ -31,7 +31,7 @@ I.S. : bahasa belum dipilih
 F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 utnuk bahasa Inggris*/
 
 //fitur main menu
-int printMenu(int language);
+int printMenu(int language, char nama[20]);
 /* 	Author : Gefi Aulia Sanjaya 
 I.S : Layar kosong
 F.S : Menampilkan tampilan Main Menu ke layar*/
@@ -81,7 +81,7 @@ boolean checkWinner(stack S, int mode);
    F.S : mengembalikan nilai true apabila sudah ada tersusun lengkap pada tiang tengah atau bawah, dan false apabila belum ada yang tersusun lengkap
 */
 
-char* descLevel(int cakram);
+char* descLevel(int cakram, int language);
 
 void showIsWin(boolean isWin, int moves, int mode, int language);
 
@@ -101,6 +101,12 @@ void showWelcome(int language);
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : program belum berjalan 
    F.S : Menampilkan ucapan selamat datang di game hanoi tower
+*/
+
+void showBegin();
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : program belum berjalan 
+  F.S : Menampilkan tampilan awal game hanoi tower
 */
 
 #endif
