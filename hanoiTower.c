@@ -26,7 +26,7 @@ void inputUname(char nama[20]){
 	for (i=0 ; i < 11 ; i++)
    		printf("%c", 219);
    printf("\n\n");
-   printf("\nUsername	: ");
+   printf("\n Username	: ");
    scanf("%s", nama); fflush(stdin);
    printf("\n");
 }
@@ -57,7 +57,7 @@ F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 untuk bahasa Ing
 }
 
 //fitur main menu
-int printMenu(int language){
+int printMenu(int language, char nama[20]){
 /* 	Author : Gefi Aulia Sanjaya 
 I.S : Layar kosong
 F.S : Menampilkan tampilan Main Menu ke layar*/
@@ -76,13 +76,16 @@ F.S : Menampilkan tampilan Main Menu ke layar*/
 			printf("%c", 219);	
 		}
 		printf("\n\n");
+
 		if(language == 1){
+			printf(" Nama Pemain : %s\n\n", nama);
 			printf(" [1] Bermain\n");
 		  	printf(" [2] Tutorial\n");
 		   	printf(" [3] Highscore\n");
 		   	printf(" [0] Keluar\n\n");
 		   	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
 		} else{
+			printf(" Username : %s\n\n", nama);
 			printf(" [1] Play\n");
 		  	printf(" [2] Tutorial\n");
 		   	printf(" [3] Highscore\n");

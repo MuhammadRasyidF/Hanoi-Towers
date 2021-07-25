@@ -39,7 +39,7 @@ int main(){
     while (true)
     {
         system("cls");
-        choose = printMenu(language); //Menampilkan Main Menu //butuh parameter kondisi bahasa
+        choose = printMenu(language, nama); //Menampilkan Main Menu //butuh parameter kondisi bahasa
         system("cls");
 
         switch (choose)
