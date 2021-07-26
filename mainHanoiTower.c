@@ -34,7 +34,7 @@ int main(){
     language = chooseLanguage(); //menu pilih bahasa
     system("cls");
 
-    showWelcome(language);
+    showWelcome(language); //menampilkan selamat bermain
     system("cls");
 
     while (true)
@@ -49,21 +49,20 @@ int main(){
         switch (choose)
         {
         case 1: //play
-            mode = chooseMode(language); //butuh parameter kondisi bahasa
+            mode = chooseMode(language); //memilih mode
             if(mode == 0){
                 continue;
             }
-            
-            play(mode, &isWin, Tower1, Tower2, Tower3, &moves, language);
-            showIsWin(isWin, moves, mode, language);
+            play(mode, &isWin, Tower1, Tower2, Tower3, &moves, language); //menampilkan permainan
+            showIsWin(isWin, moves, mode, language); //menampilkan menang atau surender (GAMEOVER)
             system("pause");
             break;
         case 2: //tutorial
-            printTutorial(language); //butuh parameter kondisi bahasa
+            printTutorial(language); //meanmpilkan tutorial
             system("pause");
             break;
         case 3: //highscore
-            printHighscore();
+            printHighscore(); //menampilkan highscore
             system("pause");
             break;
         case 0: //Exit Program
