@@ -325,17 +325,32 @@ void showIsWin(boolean isWin, int moves, int mode, int language){
 
 void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, int *moves, int language){
 	int dari, ke, i;
-	boolean isMoved = false;
 	for(i = mode; i > 0; i--){
         masukCakram(&Tower1, i);
 	}
 	
 	while((*isWin) == false){
+		boolean isMoved = false; //variale untuk mengecek apakah tower dipindahkan
+
 		system("cls");
-		//tampilin tower
 		banner();
+		switch (mode) //meanmpilkan ideal move
+		{
+			case 3:
+				printf("Ideal Move : 7\n");
+				break;
+
+			case 4:
+				printf("Ideal Move : 15\n");
+				break;
+
+			case 5:
+				printf("Ideal Move : 31\n");
+				break;
+
+		}
 		printf("\nMoves : %d\n\n", *moves);
-		showTowers(Tower1, Tower2, Tower3, mode);
+		showTowers(Tower1, Tower2, Tower3, mode); //tampilin tower
 		if(language == 1){
 			printf("\nPindahkan\ndari tower ('0' untuk menyerah) : "); scanf("%d", &dari); fflush(stdin);
 		}else{
@@ -360,7 +375,7 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 						moveCakram(&Tower1, &Tower2, &isMoved);
 					else if(ke == 3)
 						moveCakram(&Tower1, &Tower3, &isMoved);
-					if(isMoved)
+					if(isMoved) //mengecek apakah tower dipindahkan
 						(*moves)++;
 				}
 				break;
@@ -371,7 +386,7 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 						moveCakram(&Tower2, &Tower1, &isMoved);
 					else if(ke == 3)
 						moveCakram(&Tower2, &Tower3, &isMoved);
-					if(isMoved)
+					if(isMoved) //mengecek apakah tower dipindahkan
 						(*moves)++;
 				}
 				break;
@@ -382,7 +397,7 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 						moveCakram(&Tower3, &Tower1, &isMoved);
 					else if(ke == 2)
 						moveCakram(&Tower3, &Tower2, &isMoved);
-					if(isMoved)
+					if(isMoved) //mengecek apakah tower dipindahkan
 						(*moves)++;
 				}
 				break;
