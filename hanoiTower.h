@@ -81,14 +81,23 @@ boolean checkWinner(stack S, int mode);
    F.S : mengembalikan nilai true apabila sudah ada tersusun lengkap pada tiang tengah atau bawah, dan false apabila belum ada yang tersusun lengkap
 */
 
-char* descLevel(int cakram, int language);
+char* descLevel(int mode, int language);
+/* Author : Salma Syawalan Putriadhinia 
+* I.S : Mode sudah terdefinisi
+  F.S : Mengembalikan string yang mendeskripsikan level ketika suatu mode dipilih
+*/
 
 void showIsWin(boolean isWin, int moves, int mode, int language);
+/* Author : Salma Syawalan Putriadhinia 
+* I.S : kondisi menang atau tidaknya pemain sudah ditentukan
+  F.S : Menampilkan banyak moves dan skor jika pemain menang, 
+        menampilkan keterangan bahwa pemain menyerah ketika pemain tidak dapat menyelesaikan permainan
+*/
 
 void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, int *moves, int language);
 /* Author : Salma Syawalan Putriadhinia 
 * I.S : mode permainan sudah dipilih
-   F.S : memulai permainan, permainan berlangsung sampai pemain menang atau menyerah
+  F.S : memulai permainan, permainan berlangsung sampai pemain menang atau menyerah
 */
 
 void banner();
