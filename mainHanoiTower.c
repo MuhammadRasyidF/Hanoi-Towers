@@ -4,7 +4,8 @@
  *	Deskripsi     : Main Program Hanoi Tower Game
  *  Author        : Muhammad Rasyid Fadlurrahman - 201524019
  *                  Gefi Aulia Sanjaya - 201524008
- *                  Salma Syawalan Putriadhinia - 201524027 
+ *                  Salma Syawalan Putriadhinia - 201524027
+ *  IDE           : Dev C++ 
  */
 
 #include <stdio.h>
