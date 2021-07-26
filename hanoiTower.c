@@ -269,8 +269,8 @@ boolean checkWinner(stack S, int mode){
 }
 
 
-char* descLevel(int cakram, int language){
-	switch(cakram){
+char* descLevel(int mode, int language){
+	switch(mode){
 		case 3:
 			if(language == 1){
 				return "Mudah";
@@ -330,11 +330,11 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 	}
 	
 	while((*isWin) == false){
-		boolean isMoved = false; //variale untuk mengecek apakah tower dipindahkan
+		boolean isMoved = false; //variable untuk mengecek apakah tower dipindahkan
 
 		system("cls");
 		banner();
-		switch (mode) //meanmpilkan ideal move
+		switch (mode) //menampilkan ideal move
 		{
 			case 3:
 				printf("Ideal Move : 7\n");
@@ -350,7 +350,7 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 
 		}
 		printf("\nMoves : %d\n\n", *moves);
-		showTowers(Tower1, Tower2, Tower3, mode); //tampilin tower
+		showTowers(Tower1, Tower2, Tower3, mode); //menampilikan tower
 		if(language == 1){
 			printf("\nPindahkan\ndari tower ('0' untuk menyerah) : "); scanf("%d", &dari); fflush(stdin);
 		}else{
@@ -367,7 +367,7 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 		}
 		Beep(300, 300);
 		
-		//move pake switch
+		//move menggunakan switch
 		switch(dari){
 			case 1 :{ 
 				if(!isTowerEmpty(Tower1)){
@@ -409,10 +409,6 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 		if((*isWin))
 			continue;
 		(*isWin) = checkWinner(Tower3, mode);
-		/*if(isWin){
-			printf("Selamat! Anda berhasil menyelesaikan permainan!\n");
-			return;
-		}*/
 	}
 }
 
