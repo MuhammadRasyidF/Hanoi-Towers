@@ -663,12 +663,50 @@ void sortFile(Data pemain){
 void printHighscore(int language, char nama[20]){
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : mengambil data dari file
-   F.S : menampilkan highhscore 10 besar 
+   F.S : menampilkan highhscore 10 besar
 */
+	int choose, i;
 	
-	printEasy(language, nama);
-	// printMedium(language, nama);
-	// printHard(language, nama);
+	while(choose < 1 || choose > 3){
+		system("cls");
+		banner();
+		for(i = 0; i < 11 ; i++){
+			printf("%c", 219);	
+		}
+		printf(" HIGHSCORE ");
+		for(i = 0; i < 10 ; i++){
+			printf("%c", 219);	
+		}
+		printf("\n\n");
+		if(language == 1){
+		printf(" Pilih Mode Yang Akan Ditampilkan\n Di Highscore :\n\n");
+		printf(" [1] Tampilkan Mode Mudah \n");
+	  	printf(" [2] Tampilkan Mode Sedang \n");
+	   	printf(" [3] Tampilkan Mode Sulit \n\n");
+	   	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
+	   }else{
+		printf(" Choose Mode To Show\n In Hihghscore :\n\n");
+		printf(" [1] Show Easy Mode\n");
+	  	printf(" [2] Show Medium Mode\n");
+	   	printf(" [3] Show Hard Mode\n\n");
+	   	printf(" Your Choice : "); scanf("%d", &choose); fflush(stdin);
+	   }
+	}
+	system("cls");
+
+	switch (choose)
+	{
+	case 1:
+		printEasy(language, nama);
+		break;
+	case 2:
+		printMedium(language, nama);
+		break;
+	case 3:
+		printHard(language, nama);
+		break;
+	}
+	
 }
 
 void printEasy(int language, char nama[20]){
@@ -696,11 +734,24 @@ void printEasy(int language, char nama[20]){
 	for (i=0 ; i < 48 ; i++)
 		printf("\xDB");
 	printf("\n\n");
-	printf("                 HIGHSCORE (EASY)        \n\n");
-	for (i=0 ; i < 48 ; i++)
+	switch (language)
+	{
+	case 1 :
+		printf("                HIGHSCORE (MUDAH)         \n\n");
+		for (i=0 ; i < 48 ; i++)
 		printf("\xDB");
-	printf("\n\n");
-	printf("Rank Username             Mode    Moves    Score\n");
+		printf("\n\n");
+		printf("Rank Nama                 Mode    Moves  Skor \n");
+		break;
+	case 2 :
+		printf("                 HIGHSCORE (EASY)        \n\n");
+		for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+		printf("\n\n");
+		printf("Rank Username             Mode    Moves  Score\n");
+		break;
+	}
+	
 	//print content of highscore
 	for(i=0 ; i < 10 ; i++){
 		//print empthy in table
@@ -712,12 +763,12 @@ void printEasy(int language, char nama[20]){
 		if (strcmp(dataFile[i].nama, nama) == 0)
 		{
 			makeOutputBlue();
-			printf(" %-3d %-20s %-7s %-8d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, 1), dataFile[i].moves, dataFile[i].score);
+			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score);
 			makeOutputWhite();
 		}
 		else{
 			makeOutputWhite();
-			printf(" %-3d %-20s %-7s %-8d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, 1), dataFile[i].moves, dataFile[i].score);
+			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score);
 		}
 	}
 	printf("\n");
@@ -728,17 +779,145 @@ void printEasy(int language, char nama[20]){
 	fclose(fptr);
 }
 
-void printMedium(int language, char nama[20]){}
+void printMedium(int language, char nama[20]){
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : mengambil data dari file
    F.S : menampilkan highhscore 10 besar mode Sedang 
 */
+	int i;
 
-void printHard(int language, char nama[20]){}
+	//Make record to read the file
+	Data dataFile[15] = {}; //maks 15 data in file
+
+	//deklarasi file
+	FILE *fptr;
+
+	//open file for read the file
+	fptr = fopen("Mode Sedang.dat", "rb");
+
+	fread(dataFile, sizeof(Data), 15, fptr);
+
+	for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+	printf("\n\n");
+	printf("                   HANOI TOWER        \n\n");
+	for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+	printf("\n\n");
+	switch (language)
+	{
+	case 1 :
+		printf("                HIGHSCORE (SEDANG)         \n\n");
+		for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+		printf("\n\n");
+		printf("Rank Nama                 Mode    Moves  Skor \n");
+		break;
+	case 2 :
+		printf("                HIGHSCORE (MEDIUM)        \n\n");
+		for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+		printf("\n\n");
+		printf("Rank Username             Mode    Moves  Score\n");
+		break;
+	}
+	
+	//print content of highscore
+	for(i=0 ; i < 10 ; i++){
+		//print empthy in table
+		if(dataFile[i].nama[0] == Nil){
+			printf("\n");
+			continue;
+		}
+		//print highscore Easy mode
+		if (strcmp(dataFile[i].nama, nama) == 0)
+		{
+			makeOutputBlue();
+			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score);
+			makeOutputWhite();
+		}
+		else{
+			makeOutputWhite();
+			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score);
+		}
+	}
+	printf("\n");
+	for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+	printf("\n");
+
+	fclose(fptr);
+}
+
+void printHard(int language, char nama[20]){
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : mengambil data dari file
    F.S : menampilkan highhscore 10 besar mode Sulit
 */
+	int i;
+
+	//Make record to read the file
+	Data dataFile[15] = {}; //maks 15 data in file
+
+	//deklarasi file
+	FILE *fptr;
+
+	//open file for read the file
+	fptr = fopen("Mode Sulit.dat", "rb");
+
+	fread(dataFile, sizeof(Data), 15, fptr);
+
+	for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+	printf("\n\n");
+	printf("                   HANOI TOWER        \n\n");
+	for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+	printf("\n\n");
+	switch (language)
+	{
+	case 1 :
+		printf("                HIGHSCORE (SULIT)         \n\n");
+		for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+		printf("\n\n");
+		printf("Rank Nama                 Mode    Moves  Skor \n");
+		break;
+	case 2 :
+		printf("                 HIGHSCORE (HARD)        \n\n");
+		for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+		printf("\n\n");
+		printf("Rank Username             Mode    Moves  Score\n");
+		break;
+	}
+	
+	//print content of highscore
+	for(i=0 ; i < 10 ; i++){
+		//print empthy in table
+		if(dataFile[i].nama[0] == Nil){
+			printf("\n");
+			continue;
+		}
+		//print highscore Easy mode
+		if (strcmp(dataFile[i].nama, nama) == 0)
+		{
+			makeOutputBlue();
+			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score);
+			makeOutputWhite();
+		}
+		else{
+			makeOutputWhite();
+			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score);
+		}
+	}
+	printf("\n");
+	for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+	printf("\n");
+
+	fclose(fptr);
+}
 
 void makeOutputBlue(){
 /* Author : Muhammad Rasyid Fadlurrahman 
