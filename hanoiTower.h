@@ -14,9 +14,19 @@
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <windows.h>
 #include "stackHanoi.h"
 
 //deklarasi tipe data baru
+typedef struct UserData
+{
+   char nama[20];
+   int mode;
+   int moves;
+   int score;
+}Data;
+
 
 //fitur username
 void inputUname (char* nama);
@@ -65,12 +75,6 @@ int score(int moves, int mode);
    	F.S : Mengembalikan nilai score */
 // 
 
-void printHighscore();
-/* Author : Muhammad Rasyid Fadlurrahman 
-* I.S : mengambil data dari file
-   F.S : menampilkan highhscore 10 besar 
-*/
-
 int chooseMode(int language);
 /* Author : Gefi Aulia Sanjaya 
    I.S : mode belum dipilih
@@ -88,7 +92,7 @@ char* descLevel(int mode, int language);
   F.S : Mengembalikan string yang mendeskripsikan level ketika suatu mode dipilih
 */
 
-void showIsWin(boolean isWin, int moves, int mode, int language);
+void showIsWin(char nama[20], boolean isWin, int moves, int mode, int language);
 /* Author : Salma Syawalan Putriadhinia 
 * I.S : kondisi menang atau tidaknya pemain sudah ditentukan
   F.S : Menampilkan banyak moves dan skor jika pemain menang, 
@@ -117,6 +121,54 @@ void showBegin();
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : program belum berjalan 
   F.S : Menampilkan tampilan awal game hanoi tower
+*/
+
+void saveToFile(Data pemain);
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : data pemain belum terdapat di file 
+  F.S : Menyimpan data pemain di file
+*/
+
+void sortFile(Data pemain);
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : file belum terurut
+  F.S : file terurut secara descending berdasarkan jumlah score
+*/
+
+void printHighscore(int language, char nama[20]);
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : mengambil data dari file
+   F.S : menampilkan highhscore 10 besar sesuai mode 
+*/
+
+void printEasy(int language, char nama[20]);
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : mengambil data dari file
+   F.S : menampilkan highhscore 10 besar mode mudah 
+*/
+
+void printMedium(int language, char nama[20]);
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : mengambil data dari file
+   F.S : menampilkan highhscore 10 besar mode Sedang 
+*/
+
+void printHard(int language, char nama[20]);
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : mengambil data dari file
+   F.S : menampilkan highhscore 10 besar mode Sulit
+*/
+
+void makeOutputBlue();
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : warna font terdefinisi
+   F.S : menampilkan warna font biru
+*/
+
+void makeOutputWhite();
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : warna font terdefinisi
+   F.S : menampilkan warna font putih
 */
 
 #endif
