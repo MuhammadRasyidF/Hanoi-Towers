@@ -208,22 +208,12 @@ int score(int moves, int mode){
 	return score;
 }
 
-void printHighscore(){
-/* Author : Muhammad Rasyid Fadlurrahman 
-* I.S : mengambil data dari file
-   F.S : menampilkan highhscore 10 besar 
-*/
-
-}
-
 int chooseMode(int language){
 /* Author : Gefi Aulia Sanjaya 
    I.S : mode belum dipilih
    F.S : mengembalikan nilai chooseMode antara 3/4/5 
 */	
 	int choose, i;
-	
-	
 	
 	while(choose < 0 || choose > 3){
 		system("cls");
@@ -292,7 +282,7 @@ char* descLevel(int mode, int language){
 	}
 }
 
-void showIsWin(boolean isWin, int moves, int mode, int language){
+void showIsWin(char nama[20], boolean isWin, int moves, int mode, int language){
 	system("cls");
 	banner();
 
@@ -489,4 +479,28 @@ void showBegin(){
 	Beep(500,500);
 
 	system("pause");
+}
+
+void saveToFile(Data pemain){
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : data pemain belum terdapat di file 
+  F.S : Menyimpan data pemain di file
+*/
+
+}
+
+void sortFile(){
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : file belum terurut
+  F.S : file terurut secara descending berdasarkan jumlah score
+*/
+
+}
+
+void printHighscore(){
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : mengambil data dari file
+   F.S : menampilkan highhscore 10 besar 
+*/
+
 }

@@ -16,6 +16,14 @@
 #include "stackHanoi.h"
 
 //deklarasi tipe data baru
+typedef struct UserData
+{
+   char nama[20];
+   int mode;
+   int moves;
+   int score;
+}Data;
+
 
 //fitur username
 void inputUname (char* nama);
@@ -64,12 +72,6 @@ int score(int moves, int mode);
    	F.S : Mengembalikan nilai score */
 // 
 
-void printHighscore();
-/* Author : Muhammad Rasyid Fadlurrahman 
-* I.S : mengambil data dari file
-   F.S : menampilkan highhscore 10 besar 
-*/
-
 int chooseMode(int language);
 /* Author : Gefi Aulia Sanjaya 
    I.S : mode belum dipilih
@@ -87,7 +89,7 @@ char* descLevel(int mode, int language);
   F.S : Mengembalikan string yang mendeskripsikan level ketika suatu mode dipilih
 */
 
-void showIsWin(boolean isWin, int moves, int mode, int language);
+void showIsWin(char nama[20], boolean isWin, int moves, int mode, int language);
 /* Author : Salma Syawalan Putriadhinia 
 * I.S : kondisi menang atau tidaknya pemain sudah ditentukan
   F.S : Menampilkan banyak moves dan skor jika pemain menang, 
@@ -116,6 +118,24 @@ void showBegin();
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : program belum berjalan 
   F.S : Menampilkan tampilan awal game hanoi tower
+*/
+
+void saveToFile(Data pemain);
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : data pemain belum terdapat di file 
+  F.S : Menyimpan data pemain di file
+*/
+
+void sortFile();
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : file belum terurut
+  F.S : file terurut secara descending berdasarkan jumlah score
+*/
+
+void printHighscore();
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : mengambil data dari file
+   F.S : menampilkan highhscore 10 besar 
 */
 
 #endif

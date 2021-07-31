@@ -54,7 +54,7 @@ int main(){
                 continue;
             }
             play(mode, &isWin, Tower1, Tower2, Tower3, &moves, language); //menampilkan permainan
-            showIsWin(isWin, moves, mode, language); //menampilkan menang atau surender (GAMEOVER)
+            showIsWin(nama, isWin, moves, mode, language); //menampilkan menang atau surender (GAMEOVER)
             system("pause");
             break;
         case 2: //tutorial
