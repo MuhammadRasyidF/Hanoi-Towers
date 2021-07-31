@@ -4,7 +4,8 @@
  *	Deskripsi     : Main Program Hanoi Tower Game
  *  Author        : Muhammad Rasyid Fadlurrahman - 201524019
  *                  Gefi Aulia Sanjaya - 201524008
- *                  Salma Syawalan Putriadhinia - 201524027 
+ *                  Salma Syawalan Putriadhinia - 201524027
+ *  IDE           : Dev C++ 
  */
 
 #include <stdio.h>
@@ -54,7 +55,7 @@ int main(){
                 continue;
             }
             play(mode, &isWin, Tower1, Tower2, Tower3, &moves, language); //menampilkan permainan
-            showIsWin(isWin, moves, mode, language); //menampilkan menang atau surender (GAMEOVER)
+            showIsWin(nama, isWin, moves, mode, language); //menampilkan menang atau surender (GAMEOVER)
             system("pause");
             break;
         case 2: //tutorial
@@ -62,7 +63,7 @@ int main(){
             system("pause");
             break;
         case 3: //highscore
-            printHighscore(); //menampilkan highscore
+            printHighscore(language, nama); //menampilkan highscore
             system("pause");
             break;
         case 0: //Exit Program

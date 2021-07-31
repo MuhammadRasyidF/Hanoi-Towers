@@ -5,6 +5,7 @@
  *  Author        : Muhammad Rasyid Fadlurrahman - 201524019
  *                  Gefi Aulia Sanjaya - 201524008
  *                  Salma Syawalan Putriadhinia - 201524027 
+ *  IDE           : Dev C++ 
  */
 
 #include <stdio.h>
@@ -208,22 +209,12 @@ int score(int moves, int mode){
 	return score;
 }
 
-void printHighscore(){
-/* Author : Muhammad Rasyid Fadlurrahman 
-* I.S : mengambil data dari file
-   F.S : menampilkan highhscore 10 besar 
-*/
-
-}
-
 int chooseMode(int language){
 /* Author : Gefi Aulia Sanjaya 
    I.S : mode belum dipilih
    F.S : mengembalikan nilai chooseMode antara 3/4/5 
 */	
 	int choose, i;
-	
-	
 	
 	while(choose < 0 || choose > 3){
 		system("cls");
@@ -292,7 +283,7 @@ char* descLevel(int mode, int language){
 	}
 }
 
-void showIsWin(boolean isWin, int moves, int mode, int language){
+void showIsWin(char nama[20], boolean isWin, int moves, int mode, int language){
 	system("cls");
 	banner();
 
@@ -308,6 +299,13 @@ void showIsWin(boolean isWin, int moves, int mode, int language){
 		if(isWin){
 			printf("Selamat!\nAnda berhasil menyelesaikan \npermainan Hanoi Tower \ndengan %d langkah dalam mode %s !\n\n", moves, descLevel(mode,1));
 			printf("Skor anda : %d\n\n", score(moves, mode));
+			Data pemain;
+			strcpy(pemain.nama, nama);
+			pemain.mode = mode;
+			pemain.moves = moves;
+			pemain.score = score(moves, mode);
+			saveToFile(pemain); //save to file
+			sortFile(pemain); //sort file
 		}
 		else{
 			printf("Anda memilih untuk menyerah...\n\n");
@@ -316,6 +314,13 @@ void showIsWin(boolean isWin, int moves, int mode, int language){
 		if(isWin){
 			printf("Congratulations!\nYou have won Hanoi Tower Game \nwithin %d steps at %s mode!\n\n", moves, descLevel(mode,2));
 			printf("Your score : %d\n\n", score(moves, mode));
+			Data pemain;
+			strcpy(pemain.nama, nama);
+			pemain.mode = mode;
+			pemain.moves = moves;
+			pemain.score = score(moves, mode);
+			saveToFile(pemain); //save to file
+			sortFile(pemain); //sort file
 		}
 		else{
 			printf("You have been surrender...\n\n");
@@ -350,7 +355,7 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 
 		}
 		printf("\nMoves : %d\n\n", *moves);
-		showTowers(Tower1, Tower2, Tower3, mode); //menampilikan tower
+		showTowers(Tower1, Tower2, Tower3, mode); //menampilkan tower
 		if(language == 1){
 			printf("\nPindahkan\ndari tower ('0' untuk menyerah) : "); scanf("%d", &dari); fflush(stdin);
 		}else{
@@ -489,4 +494,448 @@ void showBegin(){
 	Beep(500,500);
 
 	system("pause");
+}
+
+void saveToFile(Data pemain){
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : data pemain belum terdapat di file 
+  F.S : Menyimpan data pemain di file sebanyak maksimal 15 data, kalau penuh, timpa data paling bawah
+*/
+	//Make record to read the file
+	Data temp[15] = {}; //maks 15 data in file
+
+	//deklarasi file
+	FILE *fptr;
+
+	//open file for read the file
+	switch (pemain.mode)
+	{
+	case 3:
+		fptr = fopen("Mode Mudah.dat", "rb");
+		break;
+	case 4:
+		fptr = fopen("Mode Sedang.dat", "rb");
+		break;
+	case 5:
+		fptr = fopen("Mode Sulit.dat", "rb");
+		break;
+	}
+
+	if(fptr == Nil){ //if there is nothing file with specific file name write new one
+		temp[0] = pemain;
+		fclose(fptr);
+
+		//open file for write in new file
+		switch (pemain.mode)
+		{
+		case 3:
+			fptr = fopen("Mode Mudah.dat", "wb");
+			break;
+		case 4:
+			fptr = fopen("Mode Sedang.dat", "wb");
+			break;
+		case 5:
+			fptr = fopen("Mode Sulit.dat", "wb");
+			break;
+		}
+
+		fwrite(temp, sizeof(Data), 15, fptr);
+		fclose(fptr);
+	}
+	else{ //if there is file with specific file name write the file with new content
+		fread(temp, sizeof(Data), 15, fptr);
+
+		int i = 0;
+		while (temp[i].nama[0] != Nil && i < 14)
+		{
+			if(strcmp(temp[i].nama, pemain.nama) == 0){ //check is there the name of user in the file or no 
+				if (temp[i].score < pemain.score){ //check if the score of user in the file is lower than new score, overwrite 
+					temp[i] = pemain;
+					fclose(fptr);
+
+					//open file for write new file
+					switch (pemain.mode)
+					{
+					case 3:
+						fptr = fopen("Mode Mudah.dat", "wb");
+						break;
+					case 4:
+						fptr = fopen("Mode Sedang.dat", "wb");
+						break;
+					case 5:
+						fptr = fopen("Mode Sulit.dat", "wb");
+						break;
+					}
+
+					fwrite(temp, sizeof(Data), 15, fptr);
+					fclose(fptr);
+				}
+				return;
+			}
+			i++; //to next record
+		}
+
+		//if there is empthy space in record or in last record and new name
+		temp[i] = pemain;
+		fclose(fptr);
+		//open file for write new file
+		switch (pemain.mode)
+		{
+		case 3:
+			fptr = fopen("Mode Mudah.dat", "wb");
+			break;
+		case 4:
+			fptr = fopen("Mode Sedang.dat", "wb");
+			break;
+		case 5:
+			fptr = fopen("Mode Sulit.dat", "wb");
+			break;
+		}
+		fwrite(temp, sizeof(Data), 15, fptr);
+		fclose(fptr);
+	}
+}
+
+void sortFile(Data pemain){
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : file belum terurut
+  F.S : file terurut secara descending berdasarkan jumlah score
+*/
+	int i, j;
+	Data temp; //place to save temporary data
+	//Make record to read the file
+	Data dataFile[15] = {}; //maks 15 data in file
+
+	//deklarasi file
+	FILE *fptr;
+
+	//open file for read the file
+	switch (pemain.mode)
+	{
+	case 3:
+		fptr = fopen("Mode Mudah.dat", "rb");
+		break;
+	case 4:
+		fptr = fopen("Mode Sedang.dat", "rb");
+		break;
+	case 5:
+		fptr = fopen("Mode Sulit.dat", "rb");
+		break;
+	}
+
+	if(fptr == Nil){ //if there is nothing file with specific file name, return
+		return;
+	}
+
+	fread(dataFile, sizeof(Data), 15, fptr);
+
+	for(i = 0 ; i < 14 ; i++){
+        if(dataFile[i].nama[0] == Nil)
+            continue;
+        for(j = i ; j < 15 ; j++){
+            if(dataFile[j].nama[0] == Nil)
+                continue;
+            if(dataFile[i].score < dataFile[j].score){
+                    temp = dataFile[i];
+                    dataFile[i] = dataFile[j];
+                    dataFile[j] = temp;
+            }
+        }
+    }
+	fclose(fptr);
+
+	//open file for write new file
+	switch (pemain.mode)
+	{
+	case 3:
+		fptr = fopen("Mode Mudah.dat", "wb");
+		break;
+	case 4:
+		fptr = fopen("Mode Sedang.dat", "wb");
+		break;
+	case 5:
+		fptr = fopen("Mode Sulit.dat", "wb");
+		break;
+	}
+	fwrite(dataFile, sizeof(Data), 15, fptr);
+	fclose(fptr);
+}
+
+void printHighscore(int language, char nama[20]){
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : mengambil data dari file
+   F.S : menampilkan highhscore 10 besar
+*/
+	int choose, i;
+	
+	while(choose < 1 || choose > 3){
+		system("cls");
+		banner();
+		for(i = 0; i < 11 ; i++){
+			printf("%c", 219);	
+		}
+		printf(" HIGHSCORE ");
+		for(i = 0; i < 10 ; i++){
+			printf("%c", 219);	
+		}
+		printf("\n\n");
+		if(language == 1){
+		printf(" Pilih Mode Yang Akan Ditampilkan\n Di Highscore :\n\n");
+		printf(" [1] Tampilkan Mode Mudah \n");
+	  	printf(" [2] Tampilkan Mode Sedang \n");
+	   	printf(" [3] Tampilkan Mode Sulit \n\n");
+	   	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
+	   }else{
+		printf(" Choose Mode To Show\n In Hihghscore :\n\n");
+		printf(" [1] Show Easy Mode\n");
+	  	printf(" [2] Show Medium Mode\n");
+	   	printf(" [3] Show Hard Mode\n\n");
+	   	printf(" Your Choice : "); scanf("%d", &choose); fflush(stdin);
+	   }
+	}
+	system("cls");
+
+	switch (choose)
+	{
+	case 1:
+		printEasy(language, nama);
+		break;
+	case 2:
+		printMedium(language, nama);
+		break;
+	case 3:
+		printHard(language, nama);
+		break;
+	}
+	
+}
+
+void printEasy(int language, char nama[20]){
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : mengambil data dari file
+   F.S : menampilkan highhscore 10 besar mode mudah 
+*/
+	int i;
+
+	//Make record to read the file
+	Data dataFile[15] = {}; //maks 15 data in file
+
+	//deklarasi file
+	FILE *fptr;
+
+	//open file for read the file
+	fptr = fopen("Mode Mudah.dat", "rb");
+
+	fread(dataFile, sizeof(Data), 15, fptr);
+
+	for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+	printf("\n\n");
+	printf("                   HANOI TOWER        \n\n");
+	for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+	printf("\n\n");
+	switch (language)
+	{
+	case 1 :
+		printf("                HIGHSCORE (MUDAH)         \n\n");
+		for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+		printf("\n\n");
+		printf("Rank Nama                 Mode    Moves  Skor \n");
+		break;
+	case 2 :
+		printf("                 HIGHSCORE (EASY)        \n\n");
+		for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+		printf("\n\n");
+		printf("Rank Username             Mode    Moves  Score\n");
+		break;
+	}
+	
+	//print content of highscore
+	for(i=0 ; i < 10 ; i++){
+		//print empthy in table
+		if(dataFile[i].nama[0] == Nil){
+			printf("\n");
+			continue;
+		}
+		//print highscore Easy mode
+		if (strcmp(dataFile[i].nama, nama) == 0)
+		{
+			makeOutputBlue();
+			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score);
+			makeOutputWhite();
+		}
+		else{
+			makeOutputWhite();
+			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score);
+		}
+	}
+	printf("\n");
+	for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+	printf("\n");
+
+	fclose(fptr);
+}
+
+void printMedium(int language, char nama[20]){
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : mengambil data dari file
+   F.S : menampilkan highhscore 10 besar mode Sedang 
+*/
+	int i;
+
+	//Make record to read the file
+	Data dataFile[15] = {}; //maks 15 data in file
+
+	//deklarasi file
+	FILE *fptr;
+
+	//open file for read the file
+	fptr = fopen("Mode Sedang.dat", "rb");
+
+	fread(dataFile, sizeof(Data), 15, fptr);
+
+	for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+	printf("\n\n");
+	printf("                   HANOI TOWER        \n\n");
+	for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+	printf("\n\n");
+	switch (language)
+	{
+	case 1 :
+		printf("                HIGHSCORE (SEDANG)         \n\n");
+		for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+		printf("\n\n");
+		printf("Rank Nama                 Mode    Moves  Skor \n");
+		break;
+	case 2 :
+		printf("                HIGHSCORE (MEDIUM)        \n\n");
+		for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+		printf("\n\n");
+		printf("Rank Username             Mode    Moves  Score\n");
+		break;
+	}
+	
+	//print content of highscore
+	for(i=0 ; i < 10 ; i++){
+		//print empthy in table
+		if(dataFile[i].nama[0] == Nil){
+			printf("\n");
+			continue;
+		}
+		//print highscore Easy mode
+		if (strcmp(dataFile[i].nama, nama) == 0)
+		{
+			makeOutputBlue();
+			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score);
+			makeOutputWhite();
+		}
+		else{
+			makeOutputWhite();
+			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score);
+		}
+	}
+	printf("\n");
+	for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+	printf("\n");
+
+	fclose(fptr);
+}
+
+void printHard(int language, char nama[20]){
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : mengambil data dari file
+   F.S : menampilkan highhscore 10 besar mode Sulit
+*/
+	int i;
+
+	//Make record to read the file
+	Data dataFile[15] = {}; //maks 15 data in file
+
+	//deklarasi file
+	FILE *fptr;
+
+	//open file for read the file
+	fptr = fopen("Mode Sulit.dat", "rb");
+
+	fread(dataFile, sizeof(Data), 15, fptr);
+
+	for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+	printf("\n\n");
+	printf("                   HANOI TOWER        \n\n");
+	for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+	printf("\n\n");
+	switch (language)
+	{
+	case 1 :
+		printf("                HIGHSCORE (SULIT)         \n\n");
+		for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+		printf("\n\n");
+		printf("Rank Nama                 Mode    Moves  Skor \n");
+		break;
+	case 2 :
+		printf("                 HIGHSCORE (HARD)        \n\n");
+		for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+		printf("\n\n");
+		printf("Rank Username             Mode    Moves  Score\n");
+		break;
+	}
+	
+	//print content of highscore
+	for(i=0 ; i < 10 ; i++){
+		//print empthy in table
+		if(dataFile[i].nama[0] == Nil){
+			printf("\n");
+			continue;
+		}
+		//print highscore Easy mode
+		if (strcmp(dataFile[i].nama, nama) == 0)
+		{
+			makeOutputBlue();
+			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score);
+			makeOutputWhite();
+		}
+		else{
+			makeOutputWhite();
+			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score);
+		}
+	}
+	printf("\n");
+	for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+	printf("\n");
+
+	fclose(fptr);
+}
+
+void makeOutputBlue(){
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : warna font terdefinisi
+   F.S : menampilkan warna font biru
+*/
+	HANDLE hconsole;
+    hconsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hconsole, 9);
+}
+
+void makeOutputWhite(){
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : warna font terdefinisi
+   F.S : menampilkan warna font putih
+*/
+    HANDLE hconsole;
+    hconsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hconsole, 15);
 }
