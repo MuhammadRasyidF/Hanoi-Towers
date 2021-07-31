@@ -62,7 +62,7 @@ int main(){
             system("pause");
             break;
         case 3: //highscore
-            printHighscore(); //menampilkan highscore
+            printHighscore(language, nama); //menampilkan highscore
             system("pause");
             break;
         case 0: //Exit Program

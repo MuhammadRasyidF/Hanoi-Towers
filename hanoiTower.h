@@ -14,6 +14,7 @@
 #include <conio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <windows.h>
 #include "stackHanoi.h"
 
 //deklarasi tipe data baru
@@ -127,16 +128,46 @@ void saveToFile(Data pemain);
   F.S : Menyimpan data pemain di file
 */
 
-void sortFile();
+void sortFile(Data pemain);
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : file belum terurut
   F.S : file terurut secara descending berdasarkan jumlah score
 */
 
-void printHighscore();
+void printHighscore(int language, char nama[20]);
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : mengambil data dari file
-   F.S : menampilkan highhscore 10 besar 
+   F.S : menampilkan highhscore 10 besar sesuai mode 
+*/
+
+void printEasy(int language, char nama[20]);
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : mengambil data dari file
+   F.S : menampilkan highhscore 10 besar mode mudah 
+*/
+
+void printMedium(int language, char nama[20]);
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : mengambil data dari file
+   F.S : menampilkan highhscore 10 besar mode Sedang 
+*/
+
+void printHard(int language, char nama[20]);
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : mengambil data dari file
+   F.S : menampilkan highhscore 10 besar mode Sulit
+*/
+
+void makeOutputBlue();
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : warna font terdefinisi
+   F.S : menampilkan warna font biru
+*/
+
+void makeOutputWhite();
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : warna font terdefinisi
+   F.S : menampilkan warna font putih
 */
 
 #endif

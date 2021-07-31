@@ -298,11 +298,13 @@ void showIsWin(char nama[20], boolean isWin, int moves, int mode, int language){
 		if(isWin){
 			printf("Selamat!\nAnda berhasil menyelesaikan \npermainan Hanoi Tower \ndengan %d langkah dalam mode %s !\n\n", moves, descLevel(mode,1));
 			printf("Skor anda : %d\n\n", score(moves, mode));
-			Data Pemain;
-			strcpy(Pemain.nama, nama);
-			Pemain.mode = mode;
-			Pemain.moves = moves;
-			Pemain.score = score(moves, mode);
+			Data pemain;
+			strcpy(pemain.nama, nama);
+			pemain.mode = mode;
+			pemain.moves = moves;
+			pemain.score = score(moves, mode);
+			saveToFile(pemain); //save to file
+			sortFile(pemain); //sort file
 		}
 		else{
 			printf("Anda memilih untuk menyerah...\n\n");
@@ -311,11 +313,13 @@ void showIsWin(char nama[20], boolean isWin, int moves, int mode, int language){
 		if(isWin){
 			printf("Congratulations!\nYou have won Hanoi Tower Game \nwithin %d steps at %s mode!\n\n", moves, descLevel(mode,2));
 			printf("Your score : %d\n\n", score(moves, mode));
-			Data Pemain;
-			strcpy(Pemain.nama, nama);
-			Pemain.mode = mode;
-			Pemain.moves = moves;
-			Pemain.score = score(moves, mode);
+			Data pemain;
+			strcpy(pemain.nama, nama);
+			pemain.mode = mode;
+			pemain.moves = moves;
+			pemain.score = score(moves, mode);
+			saveToFile(pemain); //save to file
+			sortFile(pemain); //sort file
 		}
 		else{
 			printf("You have been surrender...\n\n");
@@ -494,10 +498,10 @@ void showBegin(){
 void saveToFile(Data pemain){
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : data pemain belum terdapat di file 
-  F.S : Menyimpan data pemain di file
+  F.S : Menyimpan data pemain di file sebanyak maksimal 15 data, kalau penuh, timpa data paling bawah
 */
 	//Make record to read the file
-	Data temp[15] = {};
+	Data temp[15] = {}; //maks 15 data in file
 
 	//deklarasi file
 	FILE *fptr;
@@ -505,31 +509,31 @@ void saveToFile(Data pemain){
 	//open file for read the file
 	switch (pemain.mode)
 	{
-	case 1:
+	case 3:
 		fptr = fopen("Mode Mudah.dat", "rb");
 		break;
-	case 2:
+	case 4:
 		fptr = fopen("Mode Sedang.dat", "rb");
 		break;
-	case 3:
+	case 5:
 		fptr = fopen("Mode Sulit.dat", "rb");
 		break;
 	}
 
-	if(fptr == Nil){ //if there is nothing file with specific name write new one
+	if(fptr == Nil){ //if there is nothing file with specific file name write new one
 		temp[0] = pemain;
 		fclose(fptr);
 
 		//open file for write in new file
 		switch (pemain.mode)
 		{
-		case 1:
+		case 3:
 			fptr = fopen("Mode Mudah.dat", "wb");
 			break;
-		case 2:
+		case 4:
 			fptr = fopen("Mode Sedang.dat", "wb");
 			break;
-		case 3:
+		case 5:
 			fptr = fopen("Mode Sulit.dat", "wb");
 			break;
 		}
@@ -537,11 +541,11 @@ void saveToFile(Data pemain){
 		fwrite(temp, sizeof(Data), 15, fptr);
 		fclose(fptr);
 	}
-	else{ //if there is file with specific name write the file with new content
+	else{ //if there is file with specific file name write the file with new content
 		fread(temp, sizeof(Data), 15, fptr);
 
 		int i = 0;
-		while (temp[i].nama[0] = Nil && i < 14)
+		while (temp[i].nama[0] != Nil && i < 14)
 		{
 			if(strcmp(temp[i].nama, pemain.nama) == 0){ //check is there the name of user in the file or no 
 				if (temp[i].score < pemain.score){ //check if the score of user in the file is lower than new score, overwrite 
@@ -551,13 +555,13 @@ void saveToFile(Data pemain){
 					//open file for write new file
 					switch (pemain.mode)
 					{
-					case 1:
+					case 3:
 						fptr = fopen("Mode Mudah.dat", "wb");
 						break;
-					case 2:
+					case 4:
 						fptr = fopen("Mode Sedang.dat", "wb");
 						break;
-					case 3:
+					case 5:
 						fptr = fopen("Mode Sulit.dat", "wb");
 						break;
 					}
@@ -576,13 +580,13 @@ void saveToFile(Data pemain){
 		//open file for write new file
 		switch (pemain.mode)
 		{
-		case 1:
+		case 3:
 			fptr = fopen("Mode Mudah.dat", "wb");
 			break;
-		case 2:
+		case 4:
 			fptr = fopen("Mode Sedang.dat", "wb");
 			break;
-		case 3:
+		case 5:
 			fptr = fopen("Mode Sulit.dat", "wb");
 			break;
 		}
@@ -591,18 +595,167 @@ void saveToFile(Data pemain){
 	}
 }
 
-void sortFile(){
+void sortFile(Data pemain){
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : file belum terurut
   F.S : file terurut secara descending berdasarkan jumlah score
 */
+	int i, j;
+	Data temp; //place to save temporary data
+	//Make record to read the file
+	Data dataFile[15] = {}; //maks 15 data in file
 
+	//deklarasi file
+	FILE *fptr;
+
+	//open file for read the file
+	switch (pemain.mode)
+	{
+	case 3:
+		fptr = fopen("Mode Mudah.dat", "rb");
+		break;
+	case 4:
+		fptr = fopen("Mode Sedang.dat", "rb");
+		break;
+	case 5:
+		fptr = fopen("Mode Sulit.dat", "rb");
+		break;
+	}
+
+	if(fptr == Nil){ //if there is nothing file with specific file name, return
+		return;
+	}
+
+	fread(dataFile, sizeof(Data), 15, fptr);
+
+	for(i = 0 ; i < 14 ; i++){
+        if(dataFile[i].nama[0] == Nil)
+            continue;
+        for(j = i ; j < 15 ; j++){
+            if(dataFile[j].nama[0] == Nil)
+                continue;
+            if(dataFile[i].score < dataFile[j].score){
+                    temp = dataFile[i];
+                    dataFile[i] = dataFile[j];
+                    dataFile[j] = temp;
+            }
+        }
+    }
+	fclose(fptr);
+
+	//open file for write new file
+	switch (pemain.mode)
+	{
+	case 3:
+		fptr = fopen("Mode Mudah.dat", "wb");
+		break;
+	case 4:
+		fptr = fopen("Mode Sedang.dat", "wb");
+		break;
+	case 5:
+		fptr = fopen("Mode Sulit.dat", "wb");
+		break;
+	}
+	fwrite(dataFile, sizeof(Data), 15, fptr);
+	fclose(fptr);
 }
 
-void printHighscore(){
+void printHighscore(int language, char nama[20]){
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : mengambil data dari file
    F.S : menampilkan highhscore 10 besar 
 */
+	
+	printEasy(language, nama);
+	// printMedium(language, nama);
+	// printHard(language, nama);
+}
 
+void printEasy(int language, char nama[20]){
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : mengambil data dari file
+   F.S : menampilkan highhscore 10 besar mode mudah 
+*/
+	int i;
+
+	//Make record to read the file
+	Data dataFile[15] = {}; //maks 15 data in file
+
+	//deklarasi file
+	FILE *fptr;
+
+	//open file for read the file
+	fptr = fopen("Mode Mudah.dat", "rb");
+
+	fread(dataFile, sizeof(Data), 15, fptr);
+
+	for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+	printf("\n\n");
+	printf("                   HANOI TOWER        \n\n");
+	for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+	printf("\n\n");
+	printf("                 HIGHSCORE (EASY)        \n\n");
+	for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+	printf("\n\n");
+	printf("Rank Username             Mode    Moves    Score\n");
+	//print content of highscore
+	for(i=0 ; i < 10 ; i++){
+		//print empthy in table
+		if(dataFile[i].nama[0] == Nil){
+			printf("\n");
+			continue;
+		}
+		//print highscore Easy mode
+		if (strcmp(dataFile[i].nama, nama) == 0)
+		{
+			makeOutputBlue();
+			printf(" %-3d %-20s %-7s %-8d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, 1), dataFile[i].moves, dataFile[i].score);
+			makeOutputWhite();
+		}
+		else{
+			makeOutputWhite();
+			printf(" %-3d %-20s %-7s %-8d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, 1), dataFile[i].moves, dataFile[i].score);
+		}
+	}
+	printf("\n");
+	for (i=0 ; i < 48 ; i++)
+		printf("\xDB");
+	printf("\n");
+
+	fclose(fptr);
+}
+
+void printMedium(int language, char nama[20]){}
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : mengambil data dari file
+   F.S : menampilkan highhscore 10 besar mode Sedang 
+*/
+
+void printHard(int language, char nama[20]){}
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : mengambil data dari file
+   F.S : menampilkan highhscore 10 besar mode Sulit
+*/
+
+void makeOutputBlue(){
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : warna font terdefinisi
+   F.S : menampilkan warna font biru
+*/
+	HANDLE hconsole;
+    hconsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hconsole, 9);
+}
+
+void makeOutputWhite(){
+/* Author : Muhammad Rasyid Fadlurrahman 
+* I.S : warna font terdefinisi
+   F.S : menampilkan warna font putih
+*/
+    HANDLE hconsole;
+    hconsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hconsole, 15);
 }
