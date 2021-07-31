@@ -5,6 +5,7 @@
  *  Author        : Muhammad Rasyid Fadlurrahman - 201524019
  *                  Gefi Aulia Sanjaya - 201524008
  *                  Salma Syawalan Putriadhinia - 201524027 
+ *  IDE           : Dev C++ 
  */
 
 #ifndef stackHanoi_H

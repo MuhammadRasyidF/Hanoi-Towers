@@ -5,6 +5,7 @@
  *  Author        : Muhammad Rasyid Fadlurrahman - 201524019
  *                  Gefi Aulia Sanjaya - 201524008
  *                  Salma Syawalan Putriadhinia - 201524027 
+ *  IDE           : Dev C++ 
  */
 
 #include <stdio.h>
@@ -350,7 +351,7 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 
 		}
 		printf("\nMoves : %d\n\n", *moves);
-		showTowers(Tower1, Tower2, Tower3, mode); //menampilikan tower
+		showTowers(Tower1, Tower2, Tower3, mode); //menampilkan tower
 		if(language == 1){
 			printf("\nPindahkan\ndari tower ('0' untuk menyerah) : "); scanf("%d", &dari); fflush(stdin);
 		}else{
