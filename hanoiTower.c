@@ -298,6 +298,11 @@ void showIsWin(char nama[20], boolean isWin, int moves, int mode, int language){
 		if(isWin){
 			printf("Selamat!\nAnda berhasil menyelesaikan \npermainan Hanoi Tower \ndengan %d langkah dalam mode %s !\n\n", moves, descLevel(mode,1));
 			printf("Skor anda : %d\n\n", score(moves, mode));
+			Data Pemain;
+			strcpy(Pemain.nama, nama);
+			Pemain.mode = mode;
+			Pemain.moves = moves;
+			Pemain.score = score(moves, mode);
 		}
 		else{
 			printf("Anda memilih untuk menyerah...\n\n");
@@ -306,6 +311,11 @@ void showIsWin(char nama[20], boolean isWin, int moves, int mode, int language){
 		if(isWin){
 			printf("Congratulations!\nYou have won Hanoi Tower Game \nwithin %d steps at %s mode!\n\n", moves, descLevel(mode,2));
 			printf("Your score : %d\n\n", score(moves, mode));
+			Data Pemain;
+			strcpy(Pemain.nama, nama);
+			Pemain.mode = mode;
+			Pemain.moves = moves;
+			Pemain.score = score(moves, mode);
 		}
 		else{
 			printf("You have been surrender...\n\n");
@@ -486,7 +496,99 @@ void saveToFile(Data pemain){
 * I.S : data pemain belum terdapat di file 
   F.S : Menyimpan data pemain di file
 */
+	//Make record to read the file
+	Data temp[15] = {};
 
+	//deklarasi file
+	FILE *fptr;
+
+	//open file for read the file
+	switch (pemain.mode)
+	{
+	case 1:
+		fptr = fopen("Mode Mudah.dat", "rb");
+		break;
+	case 2:
+		fptr = fopen("Mode Sedang.dat", "rb");
+		break;
+	case 3:
+		fptr = fopen("Mode Sulit.dat", "rb");
+		break;
+	}
+
+	if(fptr == Nil){ //if there is nothing file with specific name write new one
+		temp[0] = pemain;
+		fclose(fptr);
+
+		//open file for write in new file
+		switch (pemain.mode)
+		{
+		case 1:
+			fptr = fopen("Mode Mudah.dat", "wb");
+			break;
+		case 2:
+			fptr = fopen("Mode Sedang.dat", "wb");
+			break;
+		case 3:
+			fptr = fopen("Mode Sulit.dat", "wb");
+			break;
+		}
+
+		fwrite(temp, sizeof(Data), 15, fptr);
+		fclose(fptr);
+	}
+	else{ //if there is file with specific name write the file with new content
+		fread(temp, sizeof(Data), 15, fptr);
+
+		int i = 0;
+		while (temp[i].nama[0] = Nil && i < 14)
+		{
+			if(strcmp(temp[i].nama, pemain.nama) == 0){ //check is there the name of user in the file or no 
+				if (temp[i].score < pemain.score){ //check if the score of user in the file is lower than new score, overwrite 
+					temp[i] = pemain;
+					fclose(fptr);
+
+					//open file for write new file
+					switch (pemain.mode)
+					{
+					case 1:
+						fptr = fopen("Mode Mudah.dat", "wb");
+						break;
+					case 2:
+						fptr = fopen("Mode Sedang.dat", "wb");
+						break;
+					case 3:
+						fptr = fopen("Mode Sulit.dat", "wb");
+						break;
+					}
+
+					fwrite(temp, sizeof(Data), 15, fptr);
+					fclose(fptr);
+				}
+				return;
+			}
+			i++; //to next record
+		}
+
+		//if there is empthy space in record or in last record and new name
+		temp[i] = pemain;
+		fclose(fptr);
+		//open file for write new file
+		switch (pemain.mode)
+		{
+		case 1:
+			fptr = fopen("Mode Mudah.dat", "wb");
+			break;
+		case 2:
+			fptr = fopen("Mode Sedang.dat", "wb");
+			break;
+		case 3:
+			fptr = fopen("Mode Sulit.dat", "wb");
+			break;
+		}
+		fwrite(temp, sizeof(Data), 15, fptr);
+		fclose(fptr);
+	}
 }
 
 void sortFile(){
