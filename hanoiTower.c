@@ -5,6 +5,7 @@
  *  Author        : Muhammad Rasyid Fadlurrahman - 201524019
  *                  Gefi Aulia Sanjaya - 201524008
  *                  Salma Syawalan Putriadhinia - 201524027 
+ *  IDE           : Dev C++ 
  */
 
 #include <stdio.h>
@@ -123,6 +124,12 @@ int printTutorial(int language){
 		printf("[3] Pemain harus memindahkan cakram ke tiang lain, baik\n");
 		printf("    tiang tengah atau tiang kanan, sampai susunan cakram\n");
 		printf("    tersusun di tiang lain\n\n");
+		printf("========================= PANDUAN ========================\n\n");
+		printf("[1] Untuk memindahkan cakram, pemain harus menginputkan\n");
+		printf("    angka yang merepresentasikan tower dimana cakram\n");
+		printf("    tersebut berasal lalu klik enter.\n");
+		printf("[2] Setelah itu, pemain harus menginputkan angka yang\n");
+		printf("    merepresentasikan tower yang dituju lalu klik enter\n\n");
 		printf("========================== ATURAN ========================\n\n");
 		printf("[1] Pemain hanya dapat memindahkan satu cakram dalam satu\n");
 		printf("    waktu.\n");
@@ -148,6 +155,12 @@ int printTutorial(int language){
 		printf("[3] Players must move the disc to another tower,\n");
 		printf("    either the center tower or the right tower, until\n");
 		printf("    the discs are arranged on the other tower.\n\n");
+		printf("========================= TUTORIAL ========================\n\n");
+		printf("[1] To move the disc, the player must input\n");
+		printf("    number representing the tower where the disc\n");
+		printf("    comes from then click enter.\n");
+		printf("[2] After that, the player must input the number that\n");
+		printf("    represents the goal tower then click enter\n");
 		printf("========================== RULES ==========================\n\n");
 		printf("[1] Players can only move one disc at a time\n");
 		printf("[2] Players may not place a disc on top of another,\n");
@@ -183,11 +196,11 @@ void showTowers(stack a, stack b, stack c, int mode){
 I.S. : ketiga tower belum ditampilkan ke layar
 F.S. : ketiga tower sudah ditampilkan ke layar*/
 	printTower(a, mode);
-	printf("\n\n");
+	printf("\nTower 1\n\n");
 	printTower(b, mode);
-	printf("\n\n");
+	printf("\nTower 2\n\n");
 	printTower(c, mode);
-	printf("\n");
+	printf("\nTower 3\n");
 }
 
 //fitur surrender(Gefi)
@@ -354,7 +367,7 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 
 		}
 		printf("\nMoves : %d\n\n", *moves);
-		showTowers(Tower1, Tower2, Tower3, mode); //menampilikan tower
+		showTowers(Tower1, Tower2, Tower3, mode); //menampilkan tower
 		if(language == 1){
 			printf("\nPindahkan\ndari tower ('0' untuk menyerah) : "); scanf("%d", &dari); fflush(stdin);
 		}else{
