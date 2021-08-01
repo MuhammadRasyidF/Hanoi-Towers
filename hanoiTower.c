@@ -497,7 +497,7 @@ void showBegin(){
 
 void saveToFile(Data pemain){
 /* Author : Muhammad Rasyid Fadlurrahman 
-* I.S : data pemain belum terdapat di file 
+* I.S : Data pemain belum terdapat di file 
   F.S : Menyimpan data pemain di file sebanyak maksimal 15 data, kalau penuh, timpa data paling bawah
 */
 	//Make record to read the file
@@ -824,7 +824,7 @@ void printMedium(int language, char nama[20]){
 	
 	//print content of highscore
 	for(i=0 ; i < 10 ; i++){
-		//print empthy in table
+		//print empty in table
 		if(dataFile[i].nama[0] == Nil){
 			printf("\n");
 			continue;
