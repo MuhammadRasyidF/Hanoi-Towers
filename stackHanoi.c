@@ -53,13 +53,16 @@ void printTower(stack S, int mode){
 	int h, i;	//h = height
 	int tanpaCakram = mode - hitungBanyakCakram(S);
 	
+	//untuk menampilkan bagian atas tower yang tidak berisi cakram
 	for(h = 0; h < tanpaCakram; h++){
 		for(i = 0; i < mode; i++){
 			printf(" ");
 		}
 		printf("|\n");
 	}
+	
 	Address current = Top(S);
+	//untuk menampilkan cakram-cakram yang ada pada tower sesuai dengan nilai-nilai yang ada pada stack S
 	for(h = 0; h < hitungBanyakCakram(S) && current != Nil ; h++){
 		for(i = 0; i < (mode - Info(current)); i++)
 			printf(" ");
@@ -88,9 +91,9 @@ int hitungBanyakCakram(stack S){
 	Address current = Top(S);
 	int banyakCakram = 0;
 	
-	while(current != Nil){
+	while(current != Nil){	//selama di current masih ada nilai
 		banyakCakram++;
-		current = --current;
+		current = --current;	//current turun ke elemen bawahnya
 	}
 	
 	return banyakCakram;
