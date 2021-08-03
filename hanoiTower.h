@@ -63,11 +63,8 @@ F.S. : cakram sudah berpindah ke stack b*/
 //fitur menampilkan tower
 void showTowers(stack a, stack b, stack c, int mode);
 /*	Author : Salma Syawalan Putriadhinia
-I.S. : ketiga tower belum ditampilkan ke layar
+I.S. : ketiga tower belum ditampilkan ke layar, stack a, stack b, stack c, dan mode sudah terdefinisi
 F.S. : ketiga tower sudah ditampilkan ke layar*/
-
-//fitur surrender(Gefi)
-/* ini bisa tanpa modul. Misal ada if( variabel == 0) maka menampilkan pilihan mau return ke mainmenu atau quit .*/
 
 int score(int moves, int mode);
 /* 	Author : Gefi Aulia Sanjaya 
