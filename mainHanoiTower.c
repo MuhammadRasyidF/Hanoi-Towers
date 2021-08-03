@@ -1,7 +1,8 @@
 //mainHanoiTower.c
 /*
  *	File          : mainHanoiTower.c
- *	Deskripsi     : Main Program Hanoi Tower Game
+ *	Deskripsi     : Main Program Hanoi Tower Game, menggunakan ADT stackHanoi dan hanoiTower untuk 
+ *                  membuat Game hanoi tower yang dimana pada mainHanoiTower semua modul di itegrasikan menjadi sebuah game Hanoi Tower
  *  Author        : Muhammad Rasyid Fadlurrahman - 201524019
  *                  Gefi Aulia Sanjaya - 201524008
  *                  Salma Syawalan Putriadhinia - 201524027
