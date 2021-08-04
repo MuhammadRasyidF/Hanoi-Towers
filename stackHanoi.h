@@ -36,7 +36,7 @@ typedef struct telmstack{
 
 /* Prototype ADT Stack [Linked List] */
 /* {Konstruktor pembentuk Stack} */
-void buatTower(stack *S);
+void buatTower(stack *S); //modul untuk membuat state Nil pada nilai tower
 /* Author : Muhammad Rasyid Fadlurrahman 
    I.S : S terdefinisi, tidak diketahui nilainya
    F.S : S diinisialisasi top(s) = 0,
@@ -49,7 +49,7 @@ void masukCakram(stack *S, infotype X);
    F.S : S bertambah sebuah elemen sebagai elemen pertama
 */
 
-void keluarCakram(stack *S, infotype *X);
+void keluarCakram(stack *S, infotype *X); //modul untuk mengambil nilai cakram dan melepaskannya dari tower
 /* Author : Muhammad Rasyid Fadlurrahman 
    I.S : S terdefinisi, Stack tidak kosong
    F.S : Menghapus elemen pada top(s)
