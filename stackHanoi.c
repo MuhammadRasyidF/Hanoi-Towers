@@ -15,7 +15,7 @@
 
 /* Prototype ADT Stack [Linked List] */
 /* {Konstruktor pembentuk Stack} */
-void buatTower(stack *S){
+void buatTower(stack *S){ //modul untuk membuat state Nil pada nilai tower
 /* Author : Muhammad Rasyid Fadlurrahman 
    I.S : S terdefinisi, tidak diketahui nilainya
    F.S : S diinisialisasi top(s) = 0,
@@ -33,16 +33,16 @@ void masukCakram(stack *S, infotype X){
 	InfoTop(*S) = X;
 }
 
-void keluarCakram(stack *S, infotype *X){
+void keluarCakram(stack *S, infotype *X){ //modul untuk mengambil nilai cakram dan melepaskannya dari tower
 /* Author : Muhammad Rasyid Fadlurrahman 
    I.S : S terdefinisi, Stack tidak kosong
    F.S : Menghapus elemen pada top(s)
 */
-	if(isTowerEmpty(*S)){
+	if(isTowerEmpty(*S)){ //cek apakah tower kosong atau tidak
 		return;
 	}
-    *X = InfoTop(*S);
-	Top(*S) = Top(*S)-1;
+    *X = InfoTop(*S); //mengambil nilai cakram teratas pada tower
+	Top(*S) = Top(*S)-1; //memindahkan top ke bawah cakram teratas
 }
 
 void printTower(stack S, int mode){
@@ -53,13 +53,16 @@ void printTower(stack S, int mode){
 	int h, i;	//h = height
 	int tanpaCakram = mode - hitungBanyakCakram(S);
 	
+	//untuk menampilkan bagian atas tower yang tidak berisi cakram
 	for(h = 0; h < tanpaCakram; h++){
 		for(i = 0; i < mode; i++){
 			printf(" ");
 		}
 		printf("|\n");
 	}
+	
 	Address current = Top(S);
+	//untuk menampilkan cakram-cakram yang ada pada tower sesuai dengan nilai-nilai yang ada pada stack S
 	for(h = 0; h < hitungBanyakCakram(S) && current != Nil ; h++){
 		for(i = 0; i < (mode - Info(current)); i++)
 			printf(" ");
@@ -88,9 +91,9 @@ int hitungBanyakCakram(stack S){
 	Address current = Top(S);
 	int banyakCakram = 0;
 	
-	while(current != Nil){
+	while(current != Nil){	//selama di current masih ada nilai
 		banyakCakram++;
-		current = --current;
+		current = --current;	//current turun ke elemen bawahnya
 	}
 	
 	return banyakCakram;

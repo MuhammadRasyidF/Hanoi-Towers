@@ -1,7 +1,7 @@
 //hanoiTower.c
 /*
  *	File          : stackHanoi.h
- *	Deskripsi     : implementasi header file dari ADT Stack [Linked List]
+ *	Deskripsi     : implementasi header file dari hanoiTower
  *  Author        : Muhammad Rasyid Fadlurrahman - 201524019
  *                  Gefi Aulia Sanjaya - 201524008
  *                  Salma Syawalan Putriadhinia - 201524027 
@@ -15,7 +15,7 @@
 #include "hanoiTower.h"
 
 //fitur username
-void inputUname(char nama[20]){
+void inputUname(char nama[20]){ //modul untuk meminta inputan username
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : nama = NULL
    F.S : mengembalikan nama yang sudah diinputkan 
@@ -28,7 +28,7 @@ void inputUname(char nama[20]){
    		printf("%c", 219);
    printf("\n\n");
    printf("\n Username	: ");
-   scanf("%s", nama); fflush(stdin);
+   scanf("%s", nama); fflush(stdin); //variable nama untuk menyimpan nama username
    printf("\n");
 }
 
@@ -124,6 +124,12 @@ int printTutorial(int language){
 		printf("[3] Pemain harus memindahkan cakram ke tiang lain, baik\n");
 		printf("    tiang tengah atau tiang kanan, sampai susunan cakram\n");
 		printf("    tersusun di tiang lain\n\n");
+		printf("========================= PANDUAN ========================\n\n");
+		printf("[1] Untuk memindahkan cakram, pemain harus menginputkan\n");
+		printf("    angka yang merepresentasikan tower dimana cakram\n");
+		printf("    tersebut berasal lalu klik enter.\n");
+		printf("[2] Setelah itu, pemain harus menginputkan angka yang\n");
+		printf("    merepresentasikan tower yang dituju lalu klik enter\n\n");
 		printf("========================== ATURAN ========================\n\n");
 		printf("[1] Pemain hanya dapat memindahkan satu cakram dalam satu\n");
 		printf("    waktu.\n");
@@ -149,6 +155,12 @@ int printTutorial(int language){
 		printf("[3] Players must move the disc to another tower,\n");
 		printf("    either the center tower or the right tower, until\n");
 		printf("    the discs are arranged on the other tower.\n\n");
+		printf("========================= TUTORIAL ========================\n\n");
+		printf("[1] To move the disc, the player must input\n");
+		printf("    number representing the tower where the disc\n");
+		printf("    comes from then click enter.\n");
+		printf("[2] After that, the player must input the number that\n");
+		printf("    represents the goal tower then click enter\n");
 		printf("========================== RULES ==========================\n\n");
 		printf("[1] Players can only move one disc at a time\n");
 		printf("[2] Players may not place a disc on top of another,\n");
@@ -164,7 +176,7 @@ int printTutorial(int language){
 }
 
 //fitur pindah cakram
-void moveCakram(stack *a, stack *b, boolean *isMoved){
+void moveCakram(stack *a, stack *b, boolean *isMoved){ //modul untuk memindahkan cakram dari tower a ke tower b
 /*	Author : Muhammad Rasyid Fadlurrahman
 I.S. : cakram teratas dari stack a belum berpindah
 F.S. : cakram sudah berpindah ke stack b*/
@@ -172,7 +184,7 @@ F.S. : cakram sudah berpindah ke stack b*/
     if(InfoTop(*a) < InfoTop(*b) || isTowerEmpty((*b))){
     	keluarCakram(a, &temp);
     	masukCakram(b, temp);
-    	*isMoved = true;
+    	*isMoved = true; //isMoved digunakan untuk cek apakah tower pindah atau tidak
     	return;
 	}
 	*isMoved = false;
@@ -181,18 +193,18 @@ F.S. : cakram sudah berpindah ke stack b*/
 //fitur menampilkan tower
 void showTowers(stack a, stack b, stack c, int mode){
 /*	Author : Salma Syawalan Putriadhinia
-I.S. : ketiga tower belum ditampilkan ke layar
+I.S. : ketiga tower belum ditampilkan ke layar, stack a, stack b, stack c, dan mode sudah terdefinisi
 F.S. : ketiga tower sudah ditampilkan ke layar*/
-	printTower(a, mode);
-	printf("\n\n");
+
+	//menampilkan isi dari stack a, b, dan c dalam bentuk hanoi tower
+	printTower(a, mode);	
+	printf("\nTower 1\n\n");
 	printTower(b, mode);
-	printf("\n\n");
+	printf("\nTower 2\n\n");
 	printTower(c, mode);
-	printf("\n");
+	printf("\nTower 3\n");
 }
 
-//fitur surrender(Gefi)
-/* ini bisa tanpa modul. Misal ada if( variabel == 0) maka menampilkan pilihan mau return ke mainmenu atau quit .*/
 
 int score(int moves, int mode){
 /* 	Author : Gefi Aulia Sanjaya 
@@ -247,12 +259,12 @@ int chooseMode(int language){
    return choose == 1 ? 3 : choose == 2 ? 4 : choose == 3 ? 5 : 0;
 }
 
-boolean checkWinner(stack S, int mode){
+boolean checkWinner(stack S, int mode){ //untuk cek apakah sudah ada tower yang diisi dengan semua cakram yang ada
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : stack S mungkin kosong atau ada isi 
    F.S : mengembalikan nilai true apabila sudah ada tersusun lengkap pada tower tengah atau bawah, dan false apabila belum ada yang tersusun lengkap
 */
-   if(hitungBanyakCakram(S) == mode){
+   if(hitungBanyakCakram(S) == mode){ //mode berisi jumlah cakram yang dimainkan
       return true;
    }
 
@@ -261,7 +273,11 @@ boolean checkWinner(stack S, int mode){
 
 
 char* descLevel(int mode, int language){
-	switch(mode){
+/* Author : Salma Syawalan Putriadhinia 
+* I.S : Mode sudah terdefinisi
+  F.S : Mengembalikan string yang mendeskripsikan level ketika suatu mode dipilih
+*/
+	switch(mode){	//inputan mode akan menenentukan string yang akan dikembalikan ke modul pemanggil
 		case 3:
 			if(language == 1){
 				return "Mudah";
@@ -284,6 +300,11 @@ char* descLevel(int mode, int language){
 }
 
 void showIsWin(char nama[20], boolean isWin, int moves, int mode, int language){
+/* Author : Salma Syawalan Putriadhinia 
+* I.S : kondisi menang atau tidaknya pemain sudah ditentukan
+  F.S : Menampilkan banyak moves dan skor jika pemain menang, 
+        menampilkan keterangan bahwa pemain menyerah ketika pemain tidak dapat menyelesaikan permainan
+*/
 	system("cls");
 	banner();
 
@@ -329,17 +350,22 @@ void showIsWin(char nama[20], boolean isWin, int moves, int mode, int language){
 }
 
 void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, int *moves, int language){
+/* Author : Salma Syawalan Putriadhinia 
+* I.S : mode permainan sudah dipilih
+  F.S : memulai permainan, permainan berlangsung sampai pemain menang atau menyerah
+*/
+
 	int dari, ke, i;
 	for(i = mode; i > 0; i--){
-        masukCakram(&Tower1, i);
+        masukCakram(&Tower1, i);	//tower1 diisi cakram dengan jumlah yang sesuai dengan mode permainan
 	}
 	
 	while((*isWin) == false){
 		boolean isMoved = false; //variable untuk mengecek apakah tower dipindahkan
 
 		system("cls");
-		banner();
-		switch (mode) //menampilkan ideal move
+		banner();	//menampilkan banner
+		switch (mode) //menampilkan ideal move (move paling sedikit yang memungkinkan) dari suatu mode
 		{
 			case 3:
 				printf("Ideal Move : 7\n");
@@ -355,13 +381,13 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 
 		}
 		printf("\nMoves : %d\n\n", *moves);
-		showTowers(Tower1, Tower2, Tower3, mode); //menampilkan tower
+		showTowers(Tower1, Tower2, Tower3, mode); //menampilkan ketiga tower
 		if(language == 1){
 			printf("\nPindahkan\ndari tower ('0' untuk menyerah) : "); scanf("%d", &dari); fflush(stdin);
 		}else{
 			printf("\nMove\nfrom tower ('0' to surrender) : "); scanf("%d", &dari); fflush(stdin);
 		}
-		if(dari == 0){
+		if(dari == 0){	//jika pemain memilih untuk menyerah, maka akan keluar dari modul play dan kembali ke main program
 			Beep(300, 300);
 			return;
 		}
@@ -374,35 +400,35 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 		
 		//move menggunakan switch
 		switch(dari){
-			case 1 :{ 
+			case 1 :{ 	//jika tower yang akan diambil cakramnya adalah tower1
 				if(!isTowerEmpty(Tower1)){
-					if(ke == 2)
-						moveCakram(&Tower1, &Tower2, &isMoved);
-					else if(ke == 3)
-						moveCakram(&Tower1, &Tower3, &isMoved);
-					if(isMoved) //mengecek apakah tower dipindahkan
-						(*moves)++;
+					if(ke == 2)	//jika tower yang menjadi tujuan cakram dipindahkan adalah tower2
+						moveCakram(&Tower1, &Tower2, &isMoved);	//memindahkan cakram dari tower1 ke tower2
+					else if(ke == 3)	//jika tower yang menjadi tujuan cakram dipindahkan adalah tower3
+						moveCakram(&Tower1, &Tower3, &isMoved);	//memindahkan cakram dari tower1 ke tower3
+					if(isMoved) //memeriksa apakah cakram berhasil dipindahkan
+						(*moves)++;	//perhitungan moves bertambah
 				}
 				break;
 			}
-			case 2:{
+			case 2:{	//jika tower yang akan diambil cakramnya adalah tower2
 				if(!isTowerEmpty(Tower2)){
-					if(ke == 1)
-						moveCakram(&Tower2, &Tower1, &isMoved);
-					else if(ke == 3)
-						moveCakram(&Tower2, &Tower3, &isMoved);
-					if(isMoved) //mengecek apakah tower dipindahkan
+					if(ke == 1)		//jika tower yang menjadi tujuan cakram dipindahkan adalah tower1
+						moveCakram(&Tower2, &Tower1, &isMoved);	//memindahkan cakram dari tower2 ke tower1
+					else if(ke == 3)	//jika tower yang menjadi tujuan cakram dipindahkan adalah tower3
+						moveCakram(&Tower2, &Tower3, &isMoved);	//memindahkan cakram dari tower2 ke tower3
+					if(isMoved) //memeriksa apakah cakram berhasil dipindahkan
 						(*moves)++;
 				}
 				break;
 			}
-			case 3:{
+			case 3:{	//jika tower yang akan diambil cakramnya adalah tower3
 				if(!isTowerEmpty(Tower3)){
 					if(ke == 1)
-						moveCakram(&Tower3, &Tower1, &isMoved);
+						moveCakram(&Tower3, &Tower1, &isMoved);	//memindahkan cakram dari tower3 ke tower1
 					else if(ke == 2)
-						moveCakram(&Tower3, &Tower2, &isMoved);
-					if(isMoved) //mengecek apakah tower dipindahkan
+						moveCakram(&Tower3, &Tower2, &isMoved);	//memindahkan cakram dari tower3 ke tower2
+					if(isMoved) 
 						(*moves)++;
 				}
 				break;
@@ -417,14 +443,14 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 	}
 }
 
-void banner(){
+void banner(){ //modul untuk menampilkan banner pada game, banner adalah tampilan di atas game
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : program belum berjalan 
    F.S : Menampilkan banner game pada bagian atas interface
 */
    int i;
 	for (i=0 ; i < 32 ; i++)
-   		printf("%c", 223);
+   		printf("%c", 223); //memakai ascii untuk menampilkan blok
    	printf("\n");
    	printf("           HANOI TOWER          \n");
    	for (i=0 ; i < 32 ; i++)
@@ -432,16 +458,16 @@ void banner(){
    	printf("\n\n");
 }
 
-void showWelcome(int language){
+void showWelcome(int language){ //modul untuk menampilkan ucapan selamat bermain dalam game
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : program belum berjalan 
    F.S : Menampilkan ucapan selamat bermain game hanoi tower
 */
-	int i;
-	if (language == 1)
+	int i; //var iterasi
+	if (language == 1) //cek bahasa yang di gunakan
 	{
 		for (i=0 ; i < 32 ; i++)
-			printf("%c", 219);
+			printf("%c", 219); //memakai ascii untuk menampilkan blok
 		printf("\n\n");
 		printf("        SELAMAT BERMAIN         \n");
 		printf("        GAME HANOI TOWER        \n\n");
@@ -463,15 +489,15 @@ void showWelcome(int language){
 	system("pause");
 }
 
-void showBegin(){
+void showBegin(){ //menampilkan tampilan awal pada game
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : program belum berjalan 
   F.S : Menampilkan tampilan awal game hanoi tower
 */
-	int i, h, j = 1;
+	int i, h, j = 1; //variable untuk iterasi
 
 	for (i=0 ; i < 32 ; i++)
-		printf("%c", 219);
+		printf("%c", 219); //memakai ascii untuk menampilkan blok
 	printf("\n\n");
 	printf("           HANOI TOWER         \n\n");
 	for(h = 0; h < 5 ; h++){
@@ -496,19 +522,19 @@ void showBegin(){
 	system("pause");
 }
 
-void saveToFile(Data pemain){
+void saveToFile(Data pemain){ //modul untuk menyimpan data-data yang sudah dimainkan oleh user ke file 
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : Data pemain belum terdapat di file 
   F.S : Menyimpan data pemain di file sebanyak maksimal 15 data, kalau penuh, timpa data paling bawah
 */
 	//Make record to read the file
-	Data temp[15] = {}; //maks 15 data in file
+	Data temp[15] = {}; //maks 15 data in file //var untuk mengambil isi dari file
 
 	//deklarasi file
-	FILE *fptr;
+	FILE *fptr; //variable pointer ke file
 
 	//open file for read the file
-	switch (pemain.mode)
+	switch (pemain.mode) //cek mode yang dimainkan yang nantinya akan membuka file tertentu
 	{
 	case 3:
 		fptr = fopen("Mode Mudah.dat", "rb");
@@ -526,7 +552,7 @@ void saveToFile(Data pemain){
 		fclose(fptr);
 
 		//open file for write in new file
-		switch (pemain.mode)
+		switch (pemain.mode) //cek mode yang dimainkan yang nantinya akan membuka file tertentu
 		{
 		case 3:
 			fptr = fopen("Mode Mudah.dat", "wb");
@@ -539,14 +565,14 @@ void saveToFile(Data pemain){
 			break;
 		}
 
-		fwrite(temp, sizeof(Data), 15, fptr);
+		fwrite(temp, sizeof(Data), 15, fptr); //memasukan data baru ke file
 		fclose(fptr);
 	}
 	else{ //if there is file with specific file name write the file with new content
-		fread(temp, sizeof(Data), 15, fptr);
+		fread(temp, sizeof(Data), 15, fptr); //mengambil data-data yang ada di file dimasukkan ke variable temp
 
 		int i = 0;
-		while (temp[i].nama[0] != Nil && i < 14)
+		while (temp[i].nama[0] != Nil && i < 14) // cek apakah index ke i ada isi data atau tidak
 		{
 			if(strcmp(temp[i].nama, pemain.nama) == 0){ //check is there the name of user in the file or no 
 				if (temp[i].score < pemain.score){ //check if the score of user in the file is lower than new score, overwrite 
@@ -554,7 +580,7 @@ void saveToFile(Data pemain){
 					fclose(fptr);
 
 					//open file for write new file
-					switch (pemain.mode)
+					switch (pemain.mode) //cek mode yang dimainkan yang nantinya akan membuka file tertentu
 					{
 					case 3:
 						fptr = fopen("Mode Mudah.dat", "wb");
@@ -575,11 +601,11 @@ void saveToFile(Data pemain){
 			i++; //to next record
 		}
 
-		//if there is empthy space in record or in last record and new name
-		temp[i] = pemain;
+		//if there is empthy space in record or in last record and it has new name
+		temp[i] = pemain; //ketika array penuh maka array ke 15 akan ditimpa dengan data baru
 		fclose(fptr);
 		//open file for write new file
-		switch (pemain.mode)
+		switch (pemain.mode) //cek mode yang dimainkan yang nantinya akan membuka file tertentu
 		{
 		case 3:
 			fptr = fopen("Mode Mudah.dat", "wb");
@@ -591,26 +617,26 @@ void saveToFile(Data pemain){
 			fptr = fopen("Mode Sulit.dat", "wb");
 			break;
 		}
-		fwrite(temp, sizeof(Data), 15, fptr);
+		fwrite(temp, sizeof(Data), 15, fptr); //memasukan data baru ke file
 		fclose(fptr);
 	}
 }
 
-void sortFile(Data pemain){
+void sortFile(Data pemain){ // modul untuk mengurutkan file secara descending
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : file belum terurut
   F.S : file terurut secara descending berdasarkan jumlah score
 */
-	int i, j;
+	int i, j; //variable untuk iterasi
 	Data temp; //place to save temporary data
 	//Make record to read the file
-	Data dataFile[15] = {}; //maks 15 data in file
+	Data dataFile[15] = {}; //maks 15 data in file //var untuk mengambil isi dari file
 
 	//deklarasi file
-	FILE *fptr;
+	FILE *fptr; //variable pointer ke file
 
 	//open file for read the file
-	switch (pemain.mode)
+	switch (pemain.mode)//cek mode yang dimainkan yang nantinya akan membuka file tertentu
 	{
 	case 3:
 		fptr = fopen("Mode Mudah.dat", "rb");
@@ -627,7 +653,7 @@ void sortFile(Data pemain){
 		return;
 	}
 
-	fread(dataFile, sizeof(Data), 15, fptr);
+	fread(dataFile, sizeof(Data), 15, fptr); //mengambil data-data yang ada di file dimasukkan ke variable temp
 
 	for(i = 0 ; i < 14 ; i++){
         if(dataFile[i].nama[0] == Nil)
@@ -645,7 +671,7 @@ void sortFile(Data pemain){
 	fclose(fptr);
 
 	//open file for write new file
-	switch (pemain.mode)
+	switch (pemain.mode)//cek mode yang dimainkan yang nantinya akan membuka file tertentu
 	{
 	case 3:
 		fptr = fopen("Mode Mudah.dat", "wb");
@@ -657,18 +683,18 @@ void sortFile(Data pemain){
 		fptr = fopen("Mode Sulit.dat", "wb");
 		break;
 	}
-	fwrite(dataFile, sizeof(Data), 15, fptr);
+	fwrite(dataFile, sizeof(Data), 15, fptr); //memasukan data baru ke file
 	fclose(fptr);
 }
 
-void printHighscore(int language, char nama[20]){
+void printHighscore(int language, char nama[20]){ //modul untuk menampilkan highscore mana yang akan ditampilkan, setelah memiilih modul akan memanggil modul tertentu
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : mengambil data dari file
    F.S : menampilkan highhscore 10 besar
 */
-	int choose, i;
+	int choose, i; //choose untuk variable pilihan // i untuk variable iterasi
 	
-	while(choose < 1 || choose > 3){
+	while(choose < 1 || choose > 3){ // apabila input tidak 1 2 3 maka tidak akan berlanjut kemana-mana
 		system("cls");
 		banner();
 		for(i = 0; i < 11 ; i++){
@@ -695,38 +721,38 @@ void printHighscore(int language, char nama[20]){
 	}
 	system("cls");
 
-	switch (choose)
+	switch (choose) //menentukan highscore mana yang akan ditampilkan
 	{
 	case 1:
-		printEasy(language, nama);
+		printEasy(language, nama); //menampilkan highscore mode mudah
 		break;
 	case 2:
-		printMedium(language, nama);
+		printMedium(language, nama); //menampilkan highscore mode sedang
 		break;
 	case 3:
-		printHard(language, nama);
+		printHard(language, nama); //menampilkan highscore mode sulit
 		break;
 	}
 	
 }
 
-void printEasy(int language, char nama[20]){
+void printEasy(int language, char nama[20]){ //modul menampilkan highscore mode mudah
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : mengambil data dari file
    F.S : menampilkan highhscore 10 besar mode mudah 
 */
-	int i;
+	int i; // var untuk iterasi
 
 	//Make record to read the file
-	Data dataFile[15] = {}; //maks 15 data in file
+	Data dataFile[15] = {}; //maks 15 data in file //var untuk mengambil isi dari file
 
 	//deklarasi file
-	FILE *fptr;
+	FILE *fptr; //variable pointer ke file
 
 	//open file for read the file
-	fptr = fopen("Mode Mudah.dat", "rb");
+	fptr = fopen("Mode Mudah.dat", "rb"); //membuka file mode mudah
 
-	fread(dataFile, sizeof(Data), 15, fptr);
+	fread(dataFile, sizeof(Data), 15, fptr); //mengambil data-data yang ada di file dimasukkan ke variable dataFile
 
 	for (i=0 ; i < 48 ; i++)
 		printf("\xDB");
@@ -756,20 +782,20 @@ void printEasy(int language, char nama[20]){
 	//print content of highscore
 	for(i=0 ; i < 10 ; i++){
 		//print empthy in table
-		if(dataFile[i].nama[0] == Nil){
+		if(dataFile[i].nama[0] == Nil){ //cek apakah index ke i dari file ada isinya atau tidak jika tidak maka print enter
 			printf("\n");
 			continue;
 		}
 		//print highscore Easy mode
-		if (strcmp(dataFile[i].nama, nama) == 0)
+		if (strcmp(dataFile[i].nama, nama) == 0) //cek apakah username yang dimainkan sama dengan yang ada di file, jika sama maka ubah font jadi warna biru
 		{
-			makeOutputBlue();
-			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score);
-			makeOutputWhite();
+			makeOutputBlue(); //mengubah warna font menjadi biru
+			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score); //menampilkan data-data para 10 pemain dengan score 10 teratas
+			makeOutputWhite(); //mengubah warna font menjadi putih
 		}
 		else{
-			makeOutputWhite();
-			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score);
+			makeOutputWhite(); //mengubah warna font menjadi putih
+			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score); //menampilkan data-data para 10 pemain dengan score 10 teratas
 		}
 	}
 	printf("\n");
@@ -780,23 +806,23 @@ void printEasy(int language, char nama[20]){
 	fclose(fptr);
 }
 
-void printMedium(int language, char nama[20]){
+void printMedium(int language, char nama[20]){ //modul menampilkan highscore mode sedang
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : mengambil data dari file
    F.S : menampilkan highhscore 10 besar mode Sedang 
 */
-	int i;
+	int i; // var untuk iterasi
 
 	//Make record to read the file
-	Data dataFile[15] = {}; //maks 15 data in file
+	Data dataFile[15] = {}; //maks 15 data in file //var untuk mengambil isi dari file
 
 	//deklarasi file
-	FILE *fptr;
+	FILE *fptr; // var untuk pointer ke file
 
 	//open file for read the file
-	fptr = fopen("Mode Sedang.dat", "rb");
+	fptr = fopen("Mode Sedang.dat", "rb"); //membuka file mode sedang
 
-	fread(dataFile, sizeof(Data), 15, fptr);
+	fread(dataFile, sizeof(Data), 15, fptr); //mengambil data-data yang ada di file dimasukkan ke variable dataFile
 
 	for (i=0 ; i < 48 ; i++)
 		printf("\xDB");
@@ -826,20 +852,20 @@ void printMedium(int language, char nama[20]){
 	//print content of highscore
 	for(i=0 ; i < 10 ; i++){
 		//print empty in table
-		if(dataFile[i].nama[0] == Nil){
+		if(dataFile[i].nama[0] == Nil){ //cek apakah index ke i dari file ada isinya atau tidak jika tidak maka print enter
 			printf("\n");
 			continue;
 		}
 		//print highscore Easy mode
-		if (strcmp(dataFile[i].nama, nama) == 0)
+		if (strcmp(dataFile[i].nama, nama) == 0) //cek apakah username yang dimainkan sama dengan yang ada di file, jika sama maka ubah font jadi warna biru
 		{
-			makeOutputBlue();
-			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score);
-			makeOutputWhite();
+			makeOutputBlue(); //mengubah warna font menjadi biru
+			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score); //menampilkan data-data para 10 pemain dengan score 10 teratas
+			makeOutputWhite();//mengubah warna font menjadi putih
 		}
 		else{
-			makeOutputWhite();
-			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score);
+			makeOutputWhite();//mengubah warna font menjadi putih
+			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score); //menampilkan data-data para 10 pemain dengan score 10 teratas
 		}
 	}
 	printf("\n");
@@ -850,23 +876,23 @@ void printMedium(int language, char nama[20]){
 	fclose(fptr);
 }
 
-void printHard(int language, char nama[20]){
+void printHard(int language, char nama[20]){ //modul menampilkan highscore mode sulit
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : mengambil data dari file
    F.S : menampilkan highhscore 10 besar mode Sulit
 */
-	int i;
+	int i; //var untuk iterasi
 
 	//Make record to read the file
-	Data dataFile[15] = {}; //maks 15 data in file
+	Data dataFile[15] = {}; //maks 15 data in file //var untuk mengambil isi dari file
 
 	//deklarasi file
-	FILE *fptr;
+	FILE *fptr; // var untuk iterasi
 
 	//open file for read the file
-	fptr = fopen("Mode Sulit.dat", "rb");
+	fptr = fopen("Mode Sulit.dat", "rb"); //membuka file mode sulit
 
-	fread(dataFile, sizeof(Data), 15, fptr);
+	fread(dataFile, sizeof(Data), 15, fptr); //mengambil data-data yang ada di file dimasukkan ke variable dataFile
 
 	for (i=0 ; i < 48 ; i++)
 		printf("\xDB");
@@ -901,15 +927,15 @@ void printHard(int language, char nama[20]){
 			continue;
 		}
 		//print highscore Easy mode
-		if (strcmp(dataFile[i].nama, nama) == 0)
+		if (strcmp(dataFile[i].nama, nama) == 0) //cek apakah username yang dimainkan sama dengan yang ada di file, jika sama maka ubah font jadi warna biru
 		{
-			makeOutputBlue();
-			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score);
-			makeOutputWhite();
+			makeOutputBlue();  //mengubah warna font menjadi biru
+			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score); //menampilkan data-data para 10 pemain dengan score 10 teratas
+			makeOutputWhite(); //mengubah warna font menjadi putih
 		}
 		else{
-			makeOutputWhite();
-			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score);
+			makeOutputWhite(); //mengubah warna font menjadi putih
+			printf(" %-3d %-20s %-7s %-6d %d\n", i+1, dataFile[i].nama, descLevel(dataFile[i].mode, language), dataFile[i].moves, dataFile[i].score); //menampilkan data-data para 10 pemain dengan score 10 teratas
 		}
 	}
 	printf("\n");
@@ -920,7 +946,7 @@ void printHard(int language, char nama[20]){
 	fclose(fptr);
 }
 
-void makeOutputBlue(){
+void makeOutputBlue(){ //modul untuk mengubah warna font menjadi biru
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : warna font terdefinisi
    F.S : menampilkan warna font biru
@@ -930,7 +956,7 @@ void makeOutputBlue(){
     SetConsoleTextAttribute(hconsole, 9);
 }
 
-void makeOutputWhite(){
+void makeOutputWhite(){ //modul untuk mengubah warna font menjadi putih
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : warna font terdefinisi
    F.S : menampilkan warna font putih

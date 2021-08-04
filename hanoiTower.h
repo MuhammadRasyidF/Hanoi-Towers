@@ -29,7 +29,7 @@ typedef struct UserData
 
 
 //fitur username
-void inputUname (char* nama);
+void inputUname (char* nama); //modul untuk meminta inputan username
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : nama = NULL
    F.S : mengembalikan nama yang sudah diinputkan 
@@ -54,7 +54,7 @@ I.S. : layar
 F.S. : pada layar telah tampil penjelasan permainan, cara bermain, dan juga credits mengenai identitas pembuat program.*/
 
 //fitur pindah cakram
-void moveCakram(stack *a, stack *b, boolean *isMoved); 
+void moveCakram(stack *a, stack *b, boolean *isMoved);  //modul untuk memindahkan cakram dari tower a ke tower b
 /*	Author : Muhammad Rasyid Fadlurrahman
 I.S. : cakram teratas dari stack a belum berpindah
 F.S. : cakram sudah berpindah ke stack b*/
@@ -63,11 +63,8 @@ F.S. : cakram sudah berpindah ke stack b*/
 //fitur menampilkan tower
 void showTowers(stack a, stack b, stack c, int mode);
 /*	Author : Salma Syawalan Putriadhinia
-I.S. : ketiga tower belum ditampilkan ke layar
+I.S. : ketiga tower belum ditampilkan ke layar, stack a, stack b, stack c, dan mode sudah terdefinisi
 F.S. : ketiga tower sudah ditampilkan ke layar*/
-
-//fitur surrender(Gefi)
-/* ini bisa tanpa modul. Misal ada if( variabel == 0) maka menampilkan pilihan mau return ke mainmenu atau quit .*/
 
 int score(int moves, int mode);
 /* 	Author : Gefi Aulia Sanjaya 
@@ -80,8 +77,8 @@ int chooseMode(int language);
    I.S : mode belum dipilih
    F.S : mengembalikan nilai chooseMode antara 3/4/5 */
 
-boolean checkWinner(stack S, int mode);
-/* Author : Muhammad Rasyid Fadlurrahman 
+boolean checkWinner(stack S, int mode); //untuk cek apakah sudah ada tower yang diisi dengan semua cakram yang ada
+/* Author : Muhammad Rasyid Fadlurrahman  
 * I.S : stack S mungkin kosong atau ada isi 
    F.S : mengembalikan nilai true apabila sudah ada tersusun lengkap pada tiang tengah atau bawah, dan false apabila belum ada yang tersusun lengkap
 */
@@ -111,61 +108,61 @@ void banner();
    F.S : Menampilkan banner game pada bagian atas interface
 */
 
-void showWelcome(int language);
+void showWelcome(int language);  //modul untuk menampilkan ucapan selamat bermain dalam game
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : program belum berjalan 
    F.S : Menampilkan ucapan selamat datang di game hanoi tower
 */
 
-void showBegin();
+void showBegin(); //menampilkan tampilan awal pada game
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : program belum berjalan 
   F.S : Menampilkan tampilan awal game hanoi tower
 */
 
-void saveToFile(Data pemain);
+void saveToFile(Data pemain); //modul untuk menyimpan data-data yang sudah dimainkan oleh user ke file 
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : data pemain belum terdapat di file 
   F.S : Menyimpan data pemain di file
 */
 
-void sortFile(Data pemain);
+void sortFile(Data pemain); // modul untuk mengurutkan file secara descending
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : file belum terurut
   F.S : file terurut secara descending berdasarkan jumlah score
 */
 
-void printHighscore(int language, char nama[20]);
+void printHighscore(int language, char nama[20]); //modul untuk menampilkan highscore mana yang akan ditampilkan, setelah memiilih modul akan memanggil modul tertentu
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : mengambil data dari file
    F.S : menampilkan highhscore 10 besar sesuai mode 
 */
 
-void printEasy(int language, char nama[20]);
+void printEasy(int language, char nama[20]);  //modul menampilkan highscore mode mudah 
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : mengambil data dari file
    F.S : menampilkan highhscore 10 besar mode mudah 
 */
 
-void printMedium(int language, char nama[20]);
+void printMedium(int language, char nama[20]);  //modul menampilkan highscore mode sedang
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : mengambil data dari file
    F.S : menampilkan highhscore 10 besar mode Sedang 
 */
 
-void printHard(int language, char nama[20]);
+void printHard(int language, char nama[20]);  //modul menampilkan highscore mode sulit
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : mengambil data dari file
    F.S : menampilkan highhscore 10 besar mode Sulit
 */
 
-void makeOutputBlue();
+void makeOutputBlue(); //modul untuk mengubah warna font menjadi biru
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : warna font terdefinisi
    F.S : menampilkan warna font biru
 */
 
-void makeOutputWhite();
+void makeOutputWhite(); //modul untuk mengubah warna font menjadi putih
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : warna font terdefinisi
    F.S : menampilkan warna font putih
