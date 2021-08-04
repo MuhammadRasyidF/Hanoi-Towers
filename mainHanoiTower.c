@@ -15,15 +15,15 @@
 #include "hanoiTower.h"
 
 int main(){
-    stack Tower1;
-    stack Tower2;
-    stack Tower3;
-    int language, i;
+    stack Tower1; //deklarasi tower ke 1
+    stack Tower2; //deklarasi tower ke 2
+    stack Tower3; //deklarasi tower ke 3
+    int language, i; //language adalah variable untuk menyimpan bahasa yang digunakan // i untuk var iterasi 
     char nama[20];
 
-    buatTower(&Tower1);
-    buatTower(&Tower2);
-    buatTower(&Tower3);
+    buatTower(&Tower1); //make state that tower 1 is empthy
+    buatTower(&Tower2); //make state that tower 2 is empthy
+    buatTower(&Tower3); //make state that tower 3 is empthy
 
     //algorithm
     showBegin(); //menampilkan tampilan awal
@@ -41,18 +41,18 @@ int main(){
 
     while (true)
     {
-        int choose, mode, moves = 0;
-        boolean isWin = false;
+        int choose, mode, moves = 0; // choose untuk var menyimpan pilihan // var mode untuk menyimpan mode yang dipilih // var moves untuk menyimpan berapa step yang user butuhkan untuk menyelesaikan game
+        boolean isWin = false; // isWin untuk menandai apakah player sudah menang atau belum
 
         system("cls");
-        choose = printMenu(language, nama); //Menampilkan Main Menu //butuh parameter kondisi bahasa
+        choose = printMenu(language, nama); //Menampilkan Main Menu
         system("cls");
 
         switch (choose)
         {
         case 1: //play
             mode = chooseMode(language); //memilih mode
-            if(mode == 0){
+            if(mode == 0){ //apabila mode 0 maka akan kembali ke main menu
                 continue;
             }
             play(mode, &isWin, Tower1, Tower2, Tower3, &moves, language); //menampilkan permainan
