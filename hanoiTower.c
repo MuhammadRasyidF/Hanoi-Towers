@@ -33,16 +33,16 @@ void inputUname(char nama[20]){ //modul untuk meminta inputan username
 }
 
 //fitur choose language
-int chooseLanguage(){
-/*	Author : Salma Syawalan Putriadhinia
+int chooseLanguage(){ //modul untuk memilih bahasa pada program
+/*	Author : Gefi Aulia Sanjaya
 I.S. : bahasa belum dipilih
 F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 untuk bahasa Inggris*/
 	int choose = 0;
 	int i;
-	while(choose < 1 || choose > 2){
+	while(choose < 1 || choose > 2){//jika pilihan selain 1/2 maka program tidak akan berlanjut
 		system("cls");
 		banner();
-		for(i = 0; i < 11; i++){
+		for(i = 0; i < 11; i++){// print banner language
 			printf("%c", 219);	
 		}
 		printf(" LANGUAGE ");
@@ -52,13 +52,13 @@ F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 untuk bahasa Ing
 		printf("\n\n");
 		printf("[1] ID		[2] EN\n");
 		printf("\npilihan bahasa anda : ");
-		scanf("%d", &choose); fflush(stdin);
+		scanf("%d", &choose); fflush(stdin);//variable choose untuk menyimpan pilihan bahasa
 	}
 	return choose;
 }
 
 //fitur main menu
-int printMenu(int language, char nama[20]){
+int printMenu(int language, char nama[20]){//modul untuk menampilkan main menu
 /* 	Author : Gefi Aulia Sanjaya 
 I.S : Layar kosong
 F.S : Menampilkan tampilan Main Menu ke layar*/
@@ -66,10 +66,10 @@ F.S : Menampilkan tampilan Main Menu ke layar*/
 	
 	
 	
-	while(choose < 0 || choose > 3){
+	while(choose < 0 || choose > 3){//jika pilihan selain 1/2/3 maka program tidak akan berlanjut
 		system("cls");
 		banner();
-		for(i = 0; i < 11; i++){
+		for(i = 0; i < 11; i++){// print banner MainMenu
 			printf("%c", 219);	
 		}
 		printf(" MAINMENU ");
@@ -84,14 +84,14 @@ F.S : Menampilkan tampilan Main Menu ke layar*/
 		  	printf(" [2] Tutorial\n");
 		   	printf(" [3] Highscore\n");
 		   	printf(" [0] Keluar\n\n");
-		   	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
+		   	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);//variable choose untuk mennyimpan pilihan user
 		} else{
 			printf(" Username : %s\n\n", nama);
 			printf(" [1] Play\n");
 		  	printf(" [2] Tutorial\n");
 		   	printf(" [3] Highscore\n");
 		   	printf(" [0] Exit\n\n");
-		   	printf(" Your Choice : "); scanf("%d", &choose); fflush(stdin);
+		   	printf(" Your Choice : "); scanf("%d", &choose); fflush(stdin);//variable choose untuk mennyimpan pilihan user
 		}
 	}
     
@@ -99,7 +99,7 @@ F.S : Menampilkan tampilan Main Menu ke layar*/
 }
 
 //fitur tutorial
-int printTutorial(int language){
+int printTutorial(int language){//modul unutk menampilkan tutorial, credits dan aturan bermain
 	/*	Author : Salma Syawalan Putriadhinia
 	I.S. : tutorial, cara bermain, dan credits belum ditampilkan ke layar
 	F.S. : pada layar telah tampil penjelasan permainan, cara bermain, dan juga credits mengenai identitas pembuat program.*/
@@ -191,7 +191,7 @@ F.S. : cakram sudah berpindah ke stack b*/
 }
 
 //fitur menampilkan tower
-void showTowers(stack a, stack b, stack c, int mode){
+void showTowers(stack a, stack b, stack c, int mode){//modul untuk menampilkan tower
 /*	Author : Salma Syawalan Putriadhinia
 I.S. : ketiga tower belum ditampilkan ke layar, stack a, stack b, stack c, dan mode sudah terdefinisi
 F.S. : ketiga tower sudah ditampilkan ke layar*/
@@ -206,7 +206,7 @@ F.S. : ketiga tower sudah ditampilkan ke layar*/
 }
 
 
-int score(int moves, int mode){
+int score(int moves, int mode){//modul untuk mengolah perhitungan dari moves yang akan menjadi score
 /* 	Author : Gefi Aulia Sanjaya 
    	I.S : score = Nil
    	F.S : Mengembalikan nilai score */
@@ -214,24 +214,24 @@ int score(int moves, int mode){
 	
 	temp = moves - (pow(2,mode) -1 ); // untuk mencari moves yang lebih dari minimum
 	if(temp == 0){
-		score = mode * 1000;
+		score = mode * 1000;//jika moves = ideal moves maka akan mengembalikan max score
 	}else{
 		score = (mode * 1000) - (temp *(300/mode)) - ((temp - 1)* 10);
 	}
 	return score;
 }
 
-int chooseMode(int language){
+int chooseMode(int language){//modul untuk memilih gamemode sebelum bermain
 /* Author : Gefi Aulia Sanjaya 
    I.S : mode belum dipilih
    F.S : mengembalikan nilai chooseMode antara 3/4/5 
 */	
 	int choose, i;
 	
-	while(choose < 0 || choose > 3){
+	while(choose < 0 || choose > 3){//jika pilihan selain 1/2/3 maka program tidak akan berlanjut
 		system("cls");
 		banner();
-		for(i = 0; i < 11; i++){
+		for(i = 0; i < 11; i++){//print banner GameMode
 			printf("%c", 219);	
 		}
 		printf(" GAMEMODE ");
@@ -245,14 +245,14 @@ int chooseMode(int language){
 	  	printf(" [2] Sedang (4 Cakram)\n");
 	   	printf(" [3] Sulit (5 Cakram)\n");
 	   	printf(" [0] Kembali\n");
-	   	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);
+	   	printf(" Pilihan : "); scanf("%d", &choose); fflush(stdin);//variable choose untuk menyimpan pilihan dari user
 	   }else{
 		printf(" Choose Game Mode :\n");
 		printf(" [1] Easy (3 Disks)\n");
 	  	printf(" [2] Medium (4 Disks)\n");
 	   	printf(" [3] Hard (5 Disks)\n");
 	   	printf(" [0] Back\n");
-	   	printf(" Your Choice : "); scanf("%d", &choose); fflush(stdin);
+	   	printf(" Your Choice : "); scanf("%d", &choose); fflush(stdin);//variable choose untuk menyimpan pilihan dari user
 	   }
 	}
 
@@ -272,7 +272,7 @@ boolean checkWinner(stack S, int mode){ //untuk cek apakah sudah ada tower yang 
 }
 
 
-char* descLevel(int mode, int language){
+char* descLevel(int mode, int language){//modul untuk mengubah gamemode menjadi string
 /* Author : Salma Syawalan Putriadhinia 
 * I.S : Mode sudah terdefinisi
   F.S : Mengembalikan string yang mendeskripsikan level ketika suatu mode dipilih
@@ -299,7 +299,7 @@ char* descLevel(int mode, int language){
 	}
 }
 
-void showIsWin(char nama[20], boolean isWin, int moves, int mode, int language){
+void showIsWin(char nama[20], boolean isWin, int moves, int mode, int language){//modul untuk menampilkan user sudah menang/menyerah
 /* Author : Salma Syawalan Putriadhinia 
 * I.S : kondisi menang atau tidaknya pemain sudah ditentukan
   F.S : Menampilkan banyak moves dan skor jika pemain menang, 
@@ -309,7 +309,7 @@ void showIsWin(char nama[20], boolean isWin, int moves, int mode, int language){
 	banner();
 
 	int i;
-	for (i=0 ; i < 11 ; i++)
+	for (i=0 ; i < 11 ; i++)//print banner Gameover
            printf("%c", 219);
     printf(" GAMEOVER ");
     for (i=0 ; i < 11 ; i++)
@@ -349,7 +349,7 @@ void showIsWin(char nama[20], boolean isWin, int moves, int mode, int language){
 	}
 }
 
-void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, int *moves, int language){
+void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, int *moves, int language){//modul untuk memulai permainan
 /* Author : Salma Syawalan Putriadhinia 
 * I.S : mode permainan sudah dipilih
   F.S : memulai permainan, permainan berlangsung sampai pemain menang atau menyerah
