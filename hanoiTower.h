@@ -36,19 +36,19 @@ void inputUname (char* nama); //modul untuk meminta inputan username
 */
 
 //fitur choose language
-int chooseLanguage();
+int chooseLanguage();//modul untuk memilih bahasa pada program
 /*	Author : Salma Syawalan Putriadhinia
 I.S. : bahasa belum dipilih
 F.S. : mengembalikan nilai 1 untuk bahasa Indonesia dan nilai 2 utnuk bahasa Inggris*/
 
 //fitur main menu
-int printMenu(int language, char nama[20]);
+int printMenu(int language, char nama[20]);//modul untuk menampilkan main menu
 /* 	Author : Gefi Aulia Sanjaya 
 I.S : Layar kosong
 F.S : Menampilkan tampilan Main Menu ke layar*/
 
 //fitur tutorial
-int printTutorial(int language);
+int printTutorial(int language);//modul unutk menampilkan tutorial, credits dan aturan bermain
 /*	Author : Salma Syawalan Putriadhinia
 I.S. : layar
 F.S. : pada layar telah tampil penjelasan permainan, cara bermain, dan juga credits mengenai identitas pembuat program.*/
@@ -61,18 +61,18 @@ F.S. : cakram sudah berpindah ke stack b*/
 
 
 //fitur menampilkan tower
-void showTowers(stack a, stack b, stack c, int mode);
+void showTowers(stack a, stack b, stack c, int mode);//modul untuk menampilkan tower
 /*	Author : Salma Syawalan Putriadhinia
 I.S. : ketiga tower belum ditampilkan ke layar, stack a, stack b, stack c, dan mode sudah terdefinisi
 F.S. : ketiga tower sudah ditampilkan ke layar*/
 
-int score(int moves, int mode);
+int score(int moves, int mode);//modul untuk mengolah perhitungan dari moves yang akan menjadi score
 /* 	Author : Gefi Aulia Sanjaya 
    	I.S : score = Nil
    	F.S : Mengembalikan nilai score */
 // 
 
-int chooseMode(int language);
+int chooseMode(int language);//modul untuk memilih gamemode sebelum bermain
 /* Author : Gefi Aulia Sanjaya 
    I.S : mode belum dipilih
    F.S : mengembalikan nilai chooseMode antara 3/4/5 */
@@ -83,26 +83,26 @@ boolean checkWinner(stack S, int mode); //untuk cek apakah sudah ada tower yang 
    F.S : mengembalikan nilai true apabila sudah ada tersusun lengkap pada tiang tengah atau bawah, dan false apabila belum ada yang tersusun lengkap
 */
 
-char* descLevel(int mode, int language);
+char* descLevel(int mode, int language);//modul untuk mengubah gamemode menjadi string
 /* Author : Salma Syawalan Putriadhinia 
 * I.S : Mode sudah terdefinisi
   F.S : Mengembalikan string yang mendeskripsikan level ketika suatu mode dipilih
 */
 
-void showIsWin(char nama[20], boolean isWin, int moves, int mode, int language);
+void showIsWin(char nama[20], boolean isWin, int moves, int mode, int language);//modul untuk menampilkan user sudah menang/menyerah
 /* Author : Salma Syawalan Putriadhinia 
 * I.S : kondisi menang atau tidaknya pemain sudah ditentukan
   F.S : Menampilkan banyak moves dan skor jika pemain menang, 
         menampilkan keterangan bahwa pemain menyerah ketika pemain tidak dapat menyelesaikan permainan
 */
 
-void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, int *moves, int language);
+void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, int *moves, int language);//modul untuk memulai permainan
 /* Author : Salma Syawalan Putriadhinia 
 * I.S : mode permainan sudah dipilih
   F.S : memulai permainan, permainan berlangsung sampai pemain menang atau menyerah
 */
 
-void banner();
+void banner();//modul untuk menampilkan banner pada game, banner adalah tampilan di atas game
 /* Author : Muhammad Rasyid Fadlurrahman 
 * I.S : program belum berjalan 
    F.S : Menampilkan banner game pada bagian atas interface
