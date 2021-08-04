@@ -193,9 +193,11 @@ F.S. : cakram sudah berpindah ke stack b*/
 //fitur menampilkan tower
 void showTowers(stack a, stack b, stack c, int mode){
 /*	Author : Salma Syawalan Putriadhinia
-I.S. : ketiga tower belum ditampilkan ke layar
+I.S. : ketiga tower belum ditampilkan ke layar, stack a, stack b, stack c, dan mode sudah terdefinisi
 F.S. : ketiga tower sudah ditampilkan ke layar*/
-	printTower(a, mode);
+
+	//menampilkan isi dari stack a, b, dan c dalam bentuk hanoi tower
+	printTower(a, mode);	
 	printf("\nTower 1\n\n");
 	printTower(b, mode);
 	printf("\nTower 2\n\n");
@@ -203,8 +205,6 @@ F.S. : ketiga tower sudah ditampilkan ke layar*/
 	printf("\nTower 3\n");
 }
 
-//fitur surrender(Gefi)
-/* ini bisa tanpa modul. Misal ada if( variabel == 0) maka menampilkan pilihan mau return ke mainmenu atau quit .*/
 
 int score(int moves, int mode){
 /* 	Author : Gefi Aulia Sanjaya 
@@ -273,7 +273,11 @@ boolean checkWinner(stack S, int mode){ //untuk cek apakah sudah ada tower yang 
 
 
 char* descLevel(int mode, int language){
-	switch(mode){
+/* Author : Salma Syawalan Putriadhinia 
+* I.S : Mode sudah terdefinisi
+  F.S : Mengembalikan string yang mendeskripsikan level ketika suatu mode dipilih
+*/
+	switch(mode){	//inputan mode akan menenentukan string yang akan dikembalikan ke modul pemanggil
 		case 3:
 			if(language == 1){
 				return "Mudah";
@@ -350,17 +354,18 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 * I.S : mode permainan sudah dipilih
   F.S : memulai permainan, permainan berlangsung sampai pemain menang atau menyerah
 */
+
 	int dari, ke, i;
 	for(i = mode; i > 0; i--){
-        masukCakram(&Tower1, i);
+        masukCakram(&Tower1, i);	//tower1 diisi cakram dengan jumlah yang sesuai dengan mode permainan
 	}
 	
 	while((*isWin) == false){
 		boolean isMoved = false; //variable untuk mengecek apakah tower dipindahkan
 
 		system("cls");
-		banner();
-		switch (mode) //menampilkan ideal move
+		banner();	//menampilkan banner
+		switch (mode) //menampilkan ideal move (move paling sedikit yang memungkinkan) dari suatu mode
 		{
 			case 3:
 				printf("Ideal Move : 7\n");
@@ -376,13 +381,13 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 
 		}
 		printf("\nMoves : %d\n\n", *moves);
-		showTowers(Tower1, Tower2, Tower3, mode); //menampilkan tower
+		showTowers(Tower1, Tower2, Tower3, mode); //menampilkan ketiga tower
 		if(language == 1){
 			printf("\nPindahkan\ndari tower ('0' untuk menyerah) : "); scanf("%d", &dari); fflush(stdin);
 		}else{
 			printf("\nMove\nfrom tower ('0' to surrender) : "); scanf("%d", &dari); fflush(stdin);
 		}
-		if(dari == 0){
+		if(dari == 0){	//jika pemain memilih untuk menyerah, maka akan keluar dari modul play dan kembali ke main program
 			Beep(300, 300);
 			return;
 		}
@@ -395,35 +400,35 @@ void play(int mode, boolean *isWin, stack Tower1, stack Tower2, stack Tower3, in
 		
 		//move menggunakan switch
 		switch(dari){
-			case 1 :{ 
+			case 1 :{ 	//jika tower yang akan diambil cakramnya adalah tower1
 				if(!isTowerEmpty(Tower1)){
-					if(ke == 2)
-						moveCakram(&Tower1, &Tower2, &isMoved);
-					else if(ke == 3)
-						moveCakram(&Tower1, &Tower3, &isMoved);
-					if(isMoved) //mengecek apakah tower dipindahkan
-						(*moves)++;
+					if(ke == 2)	//jika tower yang menjadi tujuan cakram dipindahkan adalah tower2
+						moveCakram(&Tower1, &Tower2, &isMoved);	//memindahkan cakram dari tower1 ke tower2
+					else if(ke == 3)	//jika tower yang menjadi tujuan cakram dipindahkan adalah tower3
+						moveCakram(&Tower1, &Tower3, &isMoved);	//memindahkan cakram dari tower1 ke tower3
+					if(isMoved) //memeriksa apakah cakram berhasil dipindahkan
+						(*moves)++;	//perhitungan moves bertambah
 				}
 				break;
 			}
-			case 2:{
+			case 2:{	//jika tower yang akan diambil cakramnya adalah tower2
 				if(!isTowerEmpty(Tower2)){
-					if(ke == 1)
-						moveCakram(&Tower2, &Tower1, &isMoved);
-					else if(ke == 3)
-						moveCakram(&Tower2, &Tower3, &isMoved);
-					if(isMoved) //mengecek apakah tower dipindahkan
+					if(ke == 1)		//jika tower yang menjadi tujuan cakram dipindahkan adalah tower1
+						moveCakram(&Tower2, &Tower1, &isMoved);	//memindahkan cakram dari tower2 ke tower1
+					else if(ke == 3)	//jika tower yang menjadi tujuan cakram dipindahkan adalah tower3
+						moveCakram(&Tower2, &Tower3, &isMoved);	//memindahkan cakram dari tower2 ke tower3
+					if(isMoved) //memeriksa apakah cakram berhasil dipindahkan
 						(*moves)++;
 				}
 				break;
 			}
-			case 3:{
+			case 3:{	//jika tower yang akan diambil cakramnya adalah tower3
 				if(!isTowerEmpty(Tower3)){
 					if(ke == 1)
-						moveCakram(&Tower3, &Tower1, &isMoved);
+						moveCakram(&Tower3, &Tower1, &isMoved);	//memindahkan cakram dari tower3 ke tower1
 					else if(ke == 2)
-						moveCakram(&Tower3, &Tower2, &isMoved);
-					if(isMoved) //mengecek apakah tower dipindahkan
+						moveCakram(&Tower3, &Tower2, &isMoved);	//memindahkan cakram dari tower3 ke tower2
+					if(isMoved) 
 						(*moves)++;
 				}
 				break;
